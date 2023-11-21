@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
+import clsx from 'clsx';
+
 import { RootState } from '../../../js/store/index';
 import { selectActiveTab, toggleTabviewPanel } from '../../../js/store/appState/actions';
 import TabViewContainer from './TabViewContainer';
@@ -13,6 +15,7 @@ import { InfoTabIcon } from '../../../images/infoTabIcon';
 import { HamburgerIcon } from '../../../images/hamburgerIcon';
 
 import '../../../css/leftpanel.scss';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 export interface TabProps {
   key: string;
@@ -157,6 +160,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 };
 
 const LeftPanel = (): React.ReactElement => {
+  const [isShowing, setIsShowing] = useState<boolean>(true);
   const hideWidgetActive = useSelector((store: RootState) => store.appState.hideWidgetActive);
   const renderDocTab = useSelector((store: RootState) => store.appSettings.includeDocumentsTab);
   const narrative = useSelector((store: RootState) => store.appSettings.narrative);
@@ -206,10 +210,48 @@ const LeftPanel = (): React.ReactElement => {
 
   const tabsToRender = tabsArray.filter((tab) => tab.render);
 
+  const handleToggle = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsShowing(!isShowing);
+    },
+    [isShowing]
+  );
+
   return (
-    <div className={`left-panel ${hideWidgetActive ? 'hide' : ''}`} data-cy="left-panel">
-      <Tabs tabsToRender={tabsToRender} />
-      <TabViewContainer tabViewsToRender={tabsToRender} />
+    <div
+      className={clsx('relative z-10 h-full', {
+        hidden: hideWidgetActive,
+        'w-0': !isShowing,
+      })}
+      data-cy="left-panel"
+    >
+      <div
+        className={clsx('w-[442px] h-full bg-white transition-all duration-150', {
+          'opacity-0 -translate-x-full': !isShowing,
+          'opacity-100 translate-x-0': isShowing,
+        })}
+      >
+        <Tabs tabsToRender={tabsToRender} />
+        <TabViewContainer tabViewsToRender={tabsToRender} />
+      </div>
+      <button
+        className={clsx(
+          'absolute h-6 w-6 top-[50px] right-0 z-20 flex items-center justify-center rounded-full border border-white bg-primary transition-transform duration-150',
+          {
+            'translate-x-1/2': isShowing,
+            'translate-x-12': !isShowing,
+          }
+        )}
+        onClick={handleToggle}
+      >
+        <ChevronLeftIcon
+          className={clsx('h-4 w-4 text-white transition-transform duration-150', {
+            'rotate-180': !isShowing,
+          })}
+        />
+      </button>
     </div>
   );
 };

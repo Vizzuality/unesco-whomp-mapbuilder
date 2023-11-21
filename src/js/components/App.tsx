@@ -143,11 +143,11 @@ const App = (props: AppSettings | any): JSX.Element => {
           size={100}
         />
       ) : (
-        <>
+        <div className="relative w-full h-screen flex flex-col">
           {!reportView && !hideHeader && <Header />}
           <MapContent report={reportView} />
           <ModalCard />
-        </>
+        </div>
       )}
     </>
   );
