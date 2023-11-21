@@ -1,16 +1,18 @@
+@import '../../../css/variables.scss';
+
 .banner {
   height: auto;
   z-index: 1;
   width: 100%;
-  color: #1a1919;
-  border-color: #f3b229;
-  background-color: #f3b229;
+  color: $base-color;
+  border-color: $base-yellow;
+  background-color: $base-yellow;
   line-height: 17px;
   text-align: center;
-  h1 {
+
+  .banner__text__title {
     font-size: 0.875rem;
-    font-family: 'Fira Sans', sans-serif;
-    font-weight: bold;
+    font-family: $inter-sans;
     padding: 3px;
     margin: 6px;
   }

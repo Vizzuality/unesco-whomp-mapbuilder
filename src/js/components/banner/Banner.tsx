@@ -8,12 +8,17 @@ const Banner = () => {
   const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
   return (
     <div className="banner">
-      <h1 className="banner__text__title">
+      <div className="banner__text__title">
         {bannerContent[selectedLanguage].text}{' '}
-        <a href={'http://mapbuilder.wri.org/tutorials/tml-to-tcc'} className="banner__text__link" target="_blank">
+        <a
+          href={'http://mapbuilder.wri.org/tutorials/tml-to-tcc'}
+          className="banner__text__link"
+          target="_blank"
+          rel="noreferrer"
+        >
           {bannerContent[selectedLanguage].linkUrlText}
         </a>
-      </h1>
+      </div>
     </div>
   );
 };
