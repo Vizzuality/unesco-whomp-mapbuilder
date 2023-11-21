@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-base leading-normal text-gray-dark antialiased;
+  }
+
+  p > a {
+    @apply underline;
+  }
+}
