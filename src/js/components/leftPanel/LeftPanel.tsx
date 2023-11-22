@@ -228,7 +228,7 @@ const LeftPanel = (): React.ReactElement => {
       data-cy="left-panel"
     >
       <div
-        className={clsx('w-[442px] h-full bg-white transition-all duration-150', {
+        className={clsx('w-[442px] h-full bg-white transition-all duration-150 overflow-y-auto', {
           'opacity-0 -translate-x-full': !isShowing,
           'opacity-100 translate-x-0': isShowing,
         })}
@@ -238,7 +238,7 @@ const LeftPanel = (): React.ReactElement => {
       </div>
       <button
         className={clsx(
-          'absolute h-6 w-6 top-[50px] right-0 z-20 flex items-center justify-center rounded-full border border-white bg-primary transition-transform duration-150',
+          'absolute h-8 w-8 top-[50px] right-0 z-20 flex items-center justify-center rounded-full border border-white bg-primary transition-transform duration-150',
           {
             'translate-x-1/2': isShowing,
             'translate-x-12': !isShowing,

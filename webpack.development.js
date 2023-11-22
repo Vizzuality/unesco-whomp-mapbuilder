@@ -10,11 +10,12 @@ module.exports = merge(common, {
   optimization: {
     removeEmptyChunks: false,
     removeAvailableModules: false,
-    splitChunks: false
+    splitChunks: false,
   },
   devServer: {
     contentBase: './dist',
+    watchContentBase: true,
     stats: 'minimal',
-    open: false
-  }
+    open: false,
+  },
 });
