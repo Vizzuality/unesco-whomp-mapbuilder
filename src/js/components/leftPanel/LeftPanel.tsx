@@ -221,19 +221,21 @@ const LeftPanel = (): React.ReactElement => {
 
   return (
     <div
-      className={clsx('relative z-10 h-full', {
+      className={clsx('relative flex flex-col h-full', {
         hidden: hideWidgetActive,
         'w-0': !isShowing,
       })}
       data-cy="left-panel"
     >
       <div
-        className={clsx('w-[442px] h-full bg-white transition-all duration-150 overflow-y-auto', {
+        className={clsx('flex flex-col w-[442px] grow bg-white transition-all duration-150 overflow-y-auto', {
           'opacity-0 -translate-x-full': !isShowing,
           'opacity-100 translate-x-0': isShowing,
         })}
       >
-        <Tabs tabsToRender={tabsToRender} />
+        <div className="sticky top-0 shrink-0">
+          <Tabs tabsToRender={tabsToRender} />
+        </div>
         <TabViewContainer tabViewsToRender={tabsToRender} />
       </div>
       <button

@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 /** @type import('tailwindcss').Config */
 module.exports = {
   darkMode: 'media',
-  purge: ['./dist/*.html', './src/js/**/*.tsx'],
+  content: ['./dist/*.html', './src/js/**/*.tsx'],
   theme: {
     extend: {
       sans: ['Inter', 'sans-serif'],

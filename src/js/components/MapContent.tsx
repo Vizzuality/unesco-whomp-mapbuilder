@@ -19,10 +19,10 @@ function determineMapContent(renderReport?: boolean, hideFooter?: boolean): JSX.
     return <Report mapview={Mapview} />;
   } else {
     return (
-      <div className="relative flex-1">
-        <div className="flex h-full w-full">
+      <div className="relative flex flex-col grow">
+        <div className="absolute flex h-full w-full shrink-0">
           <LeftPanel />
-          <div className="relative flex-1">
+          <div className="relative grow">
             <Mapview />
             <MapWidgets />
             <Legend />
