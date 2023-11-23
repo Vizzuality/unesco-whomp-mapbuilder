@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
+import clsx from 'clsx';
 import { useSelector, useDispatch } from 'react-redux';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { RootState } from '../../../../js/store';
 import { setOpenLayerGroup } from '../../../../js/store/appState/actions';
 import ImagerySlider from './RecentImagery/ImagerySlider';
@@ -203,10 +205,10 @@ const ImageryLayersGroup = (props: LayerGroupProps): React.ReactElement => {
         >
           <span>{layerGroupTitle}</span>
           <button className="caret-button" onClick={handleGroupToggle}>
-            {groupOpen ? '▼' : '▲'}
+            {groupOpen ? <ChevronDownIcon className="h-4 w-4" /> : <ChevronUpIcon className="h-4 w-4" />}
           </button>
         </div>
-        <div className={groupOpen ? 'layers-control-container' : 'hidden'}>
+        <div className={clsx('mt-4', { hidden: !groupOpen })}>
           <ImageryLayerControl
             hoverTileData={hoverTileData}
             selectedLanguage={selectedLanguage}

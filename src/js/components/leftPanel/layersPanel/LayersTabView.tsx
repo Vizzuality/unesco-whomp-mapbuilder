@@ -2,31 +2,16 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../js/store';
-import { mapController } from '../../../../js/controllers/mapController';
 import WebmapLayersGroup from './WebmapLayersGroup';
 import BasemapLayersGroup from './BasemapLayersGroup';
 import DefaultLayerGroup from './DefaultLayerGroup';
 import ImageryLayersGroup from './ImageryLayersGroup';
-import { layersPanelTranslations } from '../../../../../configs/translations/leftPanel.translations';
 
 import '../../../../css/leftpanel.scss';
 
 interface LayerControlProps {
   selectedLanguage: string;
 }
-const AllLayerControls = (props: LayerControlProps): JSX.Element => {
-  return (
-    <div className="all-layer-control-container">
-      <span>{layersPanelTranslations[props.selectedLanguage]?.layers || 'Layers'}</span>
-      <button onClick={() => mapController.selectAllLayers()} data-cy="all-layer-btn">
-        {layersPanelTranslations[props.selectedLanguage]?.selectAll || 'Select All'}
-      </button>
-      <button onClick={() => mapController.clearAllLayers()}>
-        {layersPanelTranslations[props.selectedLanguage]?.clearAll || 'Clear All'}
-      </button>
-    </div>
-  );
-};
 
 interface LayersTabViewProps {
   key: string;
@@ -36,7 +21,7 @@ const LayersTabView = (props: LayersTabViewProps) => {
   const activeTab = useSelector((store: RootState) => store.appState.leftPanel.activeTab);
   const tabViewVisible = useSelector((store: RootState) => store.appState.leftPanel.tabViewVisible);
   const hideWidgetActive = useSelector((store: RootState) => store.appState.hideWidgetActive);
-  const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
+  // const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
   const recentImagery = useSelector((store: RootState) => store.appSettings.recentImagery);
 
   const layerPanel = useSelector((store: RootState) => store.appSettings.layerPanel);
@@ -85,13 +70,13 @@ const LayersTabView = (props: LayersTabViewProps) => {
   return (
     <div className="px-10 py-6">
       {tabViewIsVisible && (
-        <>
+        <div className="space-y-5">
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus laboriosam quis doloribus sit dicta
             nesciunt blanditiis maxime, minus quaerat culpa nisi hic eius architecto veniam est. Repudiandae
             perspiciatis sint quisquam.
           </p>
-          {/* <AllLayerControls selectedLanguage={selectedLanguage} /> */}
+          <div className="w-1/2 h-1 border-b border-b-gray-dark" />
           <div
             className={clsx({
               hidden: hideWidgetActive,
@@ -99,7 +84,7 @@ const LayersTabView = (props: LayersTabViewProps) => {
           >
             <div>{layerGroupsToRender}</div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

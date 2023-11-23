@@ -15,7 +15,7 @@ export default {
   hideFooter: false,
   includeMyGFWLogin: false,
   navLinksInNewTab: false,
-  customColorTheme: '',
+  customColorTheme: '#0077D4',
   language: 'en',
   useAlternativeLanguage: true,
   alternativeWebmap: 'de85e3fcc07948238aa6c1afd2a4ceb0',
