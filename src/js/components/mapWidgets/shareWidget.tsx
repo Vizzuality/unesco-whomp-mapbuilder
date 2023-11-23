@@ -1,24 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch } from 'react-redux';
-import { renderModal } from '../../store/appState/actions';
+import { ShareIcon } from '@heroicons/react/20/solid';
 
-import { ShareIcon } from '../../../images/shareIcon';
+import { renderModal } from '../../store/appState/actions';
+import { MAP_WIDGET_BUTTON_STYLE } from './constants';
 
 const ShareWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div className="widget-container">
-        <button
-          className="image-wrapper"
-          aria-label="share widget"
-          onClick={() => dispatch(renderModal('ShareWidget'))}
-        >
-          <ShareIcon height={25} width={25} fill={'#555'} />
-        </button>
-      </div>
-    </>
+    <button
+      className={MAP_WIDGET_BUTTON_STYLE}
+      aria-label="share widget"
+      onClick={() => dispatch(renderModal('ShareWidget'))}
+    >
+      <ShareIcon className="h-5 w-5" />
+    </button>
   );
 };
 

@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch } from 'react-redux';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+
 import { renderModal } from '../../store/appState/actions';
-import { SearchIcon } from '../../../images/searchIcon';
+import { MAP_WIDGET_BUTTON_STYLE } from './constants';
 
 const SearchWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -10,11 +12,11 @@ const SearchWidget: FunctionComponent = () => {
     <>
       <div className="widget-container">
         <button
-          className="image-wrapper"
+          className={MAP_WIDGET_BUTTON_STYLE}
           aria-label="search widget"
           onClick={() => dispatch(renderModal('SearchWidget'))}
         >
-          <SearchIcon height={25} width={25} fill={'#555'} />
+          <MagnifyingGlassIcon className="h-5 w-5" />
         </button>
       </div>
     </>

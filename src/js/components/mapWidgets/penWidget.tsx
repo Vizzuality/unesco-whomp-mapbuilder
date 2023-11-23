@@ -1,24 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch } from 'react-redux';
-import { renderModal } from '../../store/appState/actions';
+import { PencilIcon } from '@heroicons/react/24/solid';
 
-import { PenIcon } from '../../../images/penIcon';
+import { renderModal } from '../../store/appState/actions';
+import { MAP_WIDGET_BUTTON_STYLE } from './constants';
 
 const PenWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div className="widget-container">
-        <button
-          className="image-wrapper"
-          aria-label="pen widget"
-          onClick={() => dispatch(renderModal('PenWidget'))}
-        >
-          <PenIcon height={25} width={25} fill={'#555'} />
-        </button>
-      </div>
-    </>
+    <button
+      className={MAP_WIDGET_BUTTON_STYLE}
+      aria-label="pen widget"
+      onClick={() => dispatch(renderModal('PenWidget'))}
+    >
+      <PencilIcon className="w-5 h-5" />
+    </button>
   );
 };
 

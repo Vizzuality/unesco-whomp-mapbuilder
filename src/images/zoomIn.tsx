@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ZoomInIcon = (props: any) => {
   return (
-    <svg {...props} className="svg-icon">
+    <svg className="svg-icon" {...props}>
       <svg id="icon-plus" viewBox="0 0 1024 1024">
         <title>Zoom In</title>
         <path

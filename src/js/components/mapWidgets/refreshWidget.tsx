@@ -1,20 +1,13 @@
 import React, { FunctionComponent } from 'react';
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
 
-import { ReactComponent as RefreshIcon } from '../../../images/refreshIcon.svg';
+import { MAP_WIDGET_BUTTON_STYLE } from './constants';
 
 const RefreshWidget: FunctionComponent = () => {
   return (
-    <>
-      <div className="widget-container">
-        <button
-          className="image-wrapper"
-          aria-label="refresh widget"
-          onClick={() => window.location.reload()}
-        >
-          <RefreshIcon height={25} width={25} fill={'#555'} />
-        </button>
-      </div>
-    </>
+    <button className={MAP_WIDGET_BUTTON_STYLE} aria-label="refresh widget" onClick={() => window.location.reload()}>
+      <ArrowPathIcon className="h-5 w-5" />
+    </button>
   );
 };
 

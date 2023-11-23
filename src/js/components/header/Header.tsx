@@ -9,8 +9,6 @@ import { DownloadIcon } from '../../../images/downloadIcon';
 import { RootState } from '../../../js/store/index';
 import { headerContent } from '../../../../configs/translations/header.translations';
 
-import '../../../css/header.scss';
-
 const appSettingsSelector = createSelector(
   (state: RootState) => state.appSettings,
   (appSettings) => ({
