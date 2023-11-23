@@ -1,21 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ReactTooltip from 'react-tooltip';
 import clsx from 'clsx';
+import { ChartBarIcon, Square3Stack3DIcon } from '@heroicons/react/24/solid';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 import { RootState } from '../../../js/store/index';
 import { selectActiveTab, toggleTabviewPanel } from '../../../js/store/appState/actions';
 import TabViewContainer from './TabViewContainer';
 
-import { LayersTabIcon } from '../../../images/layersTabIcon';
-import { AnalysisTabIcon } from '../../../images/analysisTabIcon';
 import { DataTabIcon } from '../../../images/dataTabIcon';
 import { DocumentsTabIcon } from '../../../images/documentsTabIcon';
 import { InfoTabIcon } from '../../../images/infoTabIcon';
 import { HamburgerIcon } from '../../../images/hamburgerIcon';
 
 import '../../../css/leftpanel.scss';
-import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 export interface TabProps {
   key: string;
@@ -83,20 +81,20 @@ const Tab = (props: TabProps): React.ReactElement => {
   }, [label]);
 
   return (
-    <>
-      <button
-        data-tip={label}
-        data-offset="{'top': -5}"
-        className={label === activeTab && tabViewVisible ? 'tab-button tab-button__active' : 'tab-button'}
-        aria-label="left panel tab"
-        onClick={handleTabClick}
-      >
-        <Icon width={25} height={25} fill={'#555'} className={setClassName()} />
-        {documentFlashingActive && documents && documents.length && <span className="yellow-alert" />}
-        {analysisFlashingActive && <span className="yellow-alert" />}
-      </button>
-      <ReactTooltip effect="solid" className="tab-tooltip" />
-    </>
+    <button
+      // data-tip={label}
+      data-offset="{'top': -5}"
+      className={clsx('flex items-center text-white border-b-[6px] border-primary space-x-3 py-2 px-6', {
+        'border-white': label === activeTab && tabViewVisible,
+      })}
+      aria-label="left panel tab"
+      onClick={handleTabClick}
+    >
+      {<Icon />}
+      {documentFlashingActive && documents && documents.length && <span className="yellow-alert" />}
+      {analysisFlashingActive && <span className="yellow-alert" />}
+      <span className="uppercase text-xs font-bold">{label}</span>
+    </button>
   );
 };
 
@@ -156,7 +154,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
     );
   });
 
-  return <div className="tab-header-container">{tabsGroupRow}</div>;
+  return <div className="px-10 flex items-center justify-between">{tabsGroupRow}</div>;
 };
 
 const LeftPanel = (): React.ReactElement => {
@@ -178,7 +176,7 @@ const LeftPanel = (): React.ReactElement => {
     },
     {
       label: 'layers',
-      icon: LayersTabIcon,
+      icon: () => <Square3Stack3DIcon className="h-6 w-6" />,
       tooltipText: 'Layers',
       render: true,
     },
@@ -186,11 +184,11 @@ const LeftPanel = (): React.ReactElement => {
       label: 'data',
       icon: DataTabIcon,
       tooltipText: 'Data',
-      render: true,
+      render: false,
     },
     {
       label: 'analysis',
-      icon: AnalysisTabIcon,
+      icon: () => <ChartBarIcon className="h-6 w-6" />,
       tooltipText: 'Analysis',
       render: true,
     },
@@ -204,7 +202,7 @@ const LeftPanel = (): React.ReactElement => {
       label: 'menu',
       icon: HamburgerIcon,
       tooltipText: 'Menu',
-      render: true,
+      render: false,
     },
   ];
 
@@ -233,14 +231,14 @@ const LeftPanel = (): React.ReactElement => {
           'opacity-100 translate-x-0': isShowing,
         })}
       >
-        <div className="sticky top-0 shrink-0">
+        <div className="sticky top-0 shrink-0 bg-primary pt-8">
           <Tabs tabsToRender={tabsToRender} />
         </div>
         <TabViewContainer tabViewsToRender={tabsToRender} />
       </div>
       <button
         className={clsx(
-          'absolute h-8 w-8 top-[50px] right-0 z-20 flex items-center justify-center rounded-full border border-white bg-primary transition-transform duration-150',
+          'absolute h-8 w-8 top-[30px] right-0 z-20 flex items-center justify-center rounded-full border border-white bg-primary transition-transform duration-150',
           {
             'translate-x-1/2': isShowing,
             'translate-x-12': !isShowing,
@@ -249,7 +247,7 @@ const LeftPanel = (): React.ReactElement => {
         onClick={handleToggle}
       >
         <ChevronLeftIcon
-          className={clsx('h-4 w-4 text-white transition-transform duration-150', {
+          className={clsx('h-[18px] w-[18px] text-white transition-transform duration-150', {
             'rotate-180': !isShowing,
           })}
         />
