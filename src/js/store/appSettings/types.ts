@@ -46,6 +46,7 @@ export interface AppSettings {
   aboutLinkUrl?: string;
   downloadLinkUrl?: string;
   footerLinks: FooterLink[];
+  treeMosaicLandscapes: boolean;
 }
 
 type FooterLink = { label: string; link: string };

@@ -2,8 +2,8 @@ import { AppSettings, AppSettingsTypes, OVERWRITE_SETTINGS, OVERWRITE_COLOR_THEM
 
 const initialState: AppSettings = {
   webmap: '512eef95997b4e7486cdbdc45078739d',
-  title: 'GFW Mapbuilder',
-  subtitle: 'Make maps that matter',
+  title: 'World Heritage Online Maps Platform',
+  subtitle: '',
   logoUrl: 'https://my.gfw-mapbuilder.org/img/gfw-logo.png',
   logoLinkUrl: 'https://developers.globalforestwatch.org/map-builder/',
   useAlternativeLanguage: false,
@@ -39,6 +39,7 @@ const initialState: AppSettings = {
   customColorTheme: '#f0ab00', // #f0ab00 - is the default, it will be overwritten if configed
   footerLinks: [],
   disabledAnalysisModules: [],
+  treeMosaicLandscapes: false,
 };
 
 export function appSettingsReducer(state = initialState, action: AppSettingsTypes): AppSettings {

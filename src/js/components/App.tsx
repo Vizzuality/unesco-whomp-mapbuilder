@@ -6,6 +6,7 @@ import Header from './header/Header';
 import ModalCard from './modal/modalCard';
 import { RootState } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
+import Banner from './banner/Banner';
 import Loader from '../../js/components/sharedComponents/Loader';
 import { overwriteSettings } from '../store/appSettings/actions';
 import { setIsProfileComplete, setLoggedIn } from '../store/appState/actions';
@@ -26,6 +27,7 @@ const App = (props: AppSettings | any): JSX.Element => {
   const [showGlobalSpinner, setShowGlobalSpinner] = useState(true);
   const dispatch = useDispatch();
   //Listen to map loading state that comes from mapController via redux store change
+  const showBanner = useSelector((store: RootState) => store.appSettings.treeMosaicLandscapes);
   const hideHeader = useSelector((store: RootState) => store.appSettings.hideHeader);
   const sharinghost = useSelector((store: RootState) => store.appSettings.sharinghost);
 
@@ -145,6 +147,7 @@ const App = (props: AppSettings | any): JSX.Element => {
       ) : (
         <div className="relative flex flex-col w-full h-screen">
           {!reportView && !hideHeader && <Header />}
+          {showBanner && <Banner />}
           <MapContent report={reportView} />
           <ModalCard />
         </div>
