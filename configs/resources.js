@@ -1,5 +1,5 @@
 export default {
-  webmap: 'de85e3fcc07948238aa6c1afd2a4ceb0',
+  webmap: '3ed30b730e5c4c2eaf2915fa5d87f4d1',
   title: 'World Heritage Online Maps Platform',
   subtitle: '',
   logoUrl: '',
@@ -12,19 +12,19 @@ export default {
   mapThemes: '',
   narrative: '',
   hideHeader: true,
-  hideFooter: false,
+  hideFooter: true,
   includeMyGFWLogin: false,
   navLinksInNewTab: false,
   customColorTheme: '#0077D4',
   language: 'en',
   useAlternativeLanguage: true,
-  alternativeWebmap: 'de85e3fcc07948238aa6c1afd2a4ceb0',
+  alternativeWebmap: '3ed30b730e5c4c2eaf2915fa5d87f4d1',
   alternativeLanguage: 'fr',
   alternativeLanguageTitle: 'UNESCO WHOMP',
   alternativeLanguageSubtitle: '',
   alternativeMapThemes: '',
   alternativeNarrative: '',
-  alternativeWebmapMenuName: 'Custom Layers',
+  alternativeWebmapMenuName: 'Additional Layers',
   initialExtent: {
     x: null,
     y: null,
@@ -70,15 +70,93 @@ export default {
     fr: 'Carto Layers',
   },
   disabledAnalysisModules: [], //'VIIRS_FIRES', 'GLAD_ALERTS', 'TC_LOSS', 'IFL', 'LCC'
+  // layers added in Arcgis Online, map id layer with the group id
+  webmapLayerGroupsMap: {
+    '18c00fedef1-layer-22': 'GROUP_CLIMATE',
+  },
   layerPanel: {
     GROUP_WEBMAP: {
-      order: 2,
+      order: 0,
       label: {},
+      layers: [],
+    },
+    GROUP_WORLD_HERITAGE: {
+      order: 1,
+      groupType: 'default',
+      label: {
+        en: 'World Heritage',
+        fr: 'Patrimoine mondial',
+      },
+      layers: [],
+    },
+    GROUP_NEAR_REAL_TIME: {
+      order: 2,
+      groupType: 'default',
+      label: {
+        en: 'Near Real Time',
+        fr: 'Temps quasi reel',
+      },
+      layers: [
+        {
+          id: 'TREE_COVER_LOSS',
+          order: 1,
+          type: 'remoteDataLayer',
+          uuid: '2aed67b3-3643-40d3-9c1e-8af9afb5d9e2',
+        },
+        {
+          id: 'GFW_INTEGRATED_ALERTS',
+          order: 8,
+          type: 'remoteDataLayer',
+          uuid: 'bd58f25d-d3bb-4d59-9daa-cecddd27d9f4',
+          groupId: 'GROUP_LCD',
+        },
+        {
+          id: 'VIIRS_ACTIVE_FIRES',
+          order: 7,
+          type: 'remoteDataLayer',
+          uuid: '6d316908-92c8-4f95-8598-f2a0c72786af',
+        },
+      ],
+    },
+    GROUP_PROTECTION_AND_MANAGEMENT: {
+      order: 3,
+      groupType: 'default',
+      label: {
+        en: 'Protection and Management',
+        fr: 'Protection et gestion',
+      },
+      layers: [],
+    },
+    GROUP_NATURAL_VALUES: {
+      order: 4,
+      groupType: 'default',
+      label: {
+        en: 'Natural Values',
+        fr: 'Valeurs naturelles',
+      },
+      layers: [],
+    },
+    GROUP_SOCIOECONOMIC: {
+      order: 5,
+      groupType: 'default',
+      label: {
+        en: 'Socioeconomic',
+        fr: 'Socioéconomique',
+      },
+      layers: [],
+    },
+    GROUP_THREATS_AND_RISKS: {
+      order: 6,
+      groupType: 'default',
+      label: {
+        en: 'Threats and Risks',
+        fr: 'Menaces et risques',
+      },
       layers: [],
     },
     GROUP_CLIMATE: {
       groupType: 'default',
-      order: 4,
+      order: 7,
       label: {
         en: 'Climate',
         fr: 'Climat',
@@ -134,11 +212,47 @@ export default {
           type: 'remoteDataLayer',
           uuid: 'bd768c4b-f5f8-47f9-b6a0-5bb6078f0fac',
         },
+        {
+          id: 'CUSTOM_1',
+          groupId: 'GROUP_CLIMATE',
+          order: 10,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '1a08810f-34a4-4c53-8a37-6782d0ab6dec',
+          label: {
+            en: 'Custom 1',
+          },
+          sublabel: {
+            en: 'Lorem ipsum',
+          },
+        },
+        {
+          id: 'AIR_QUALITY_CUSTOM',
+          groupId: 'GROUP_CLIMATE',
+          order: 9,
+          type: 'flagship',
+          // "datasetURL": "https://data-api.globalforestwatch.org/dataset/nexgddp_change_dry_spells_2000_2080/latest",
+          // "datasetLegendConfigURL": "https://api.resourcewatch.org/v1/layer/7c497efb-1671-49bf-87a2-3c96ddb9ff88?filterIncludesByEnv=true&includes=vocabulary,metadata&env=production",
+          // datasetURL: 'https://api.resourcewatch.org/v1/dataset/c66d7f3a-d1a8-488f-af8b-302b0f2c3840',
+          // datasetLegendConfigURL: 'https://api.resourcewatch.org/v1/layer/70e900f1-2c37-470d-9367-7b34567e3084',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '70e900f1-2c37-470d-9367-7b34567e3084',
+          label: {
+            en: 'Air Quality testing',
+            fr: 'Air Quality testing',
+          },
+          sublabel: {
+            en: '2019, 30m, global, UMD/NASA GEDI',
+            fr: '2019, 30m, global, UMD/NASA GEDI',
+          },
+        },
       ],
     },
     GROUP_LCD: {
       groupType: 'default',
-      order: 1,
+      order: 8,
       label: {
         en: 'Land Cover Dynamics',
         fr: 'Evolution de la couverture des sols',
@@ -216,7 +330,7 @@ export default {
     },
     GROUP_LC: {
       groupType: 'default',
-      order: 3,
+      order: 9,
       label: {
         en: 'Land Cover',
         fr: 'Couverture des sols',
@@ -285,7 +399,7 @@ export default {
     },
     GROUP_IMAGERY: {
       groupType: 'imagery',
-      order: 4,
+      order: 10,
       label: {
         en: 'Recent Imagery',
         fr: 'Recent Imagery',
@@ -337,39 +451,6 @@ export default {
       },
       layers: [
         {
-          id: 'landsat',
-          thumbnailUrl: 'https://my.gfw-mapbuilder.org/img/basemaps-sdd18a411a3-5bf18f445e58b8766f773184b7741c67.png',
-          templateUrl: 'https://d2h71bpqsyf4vw.cloudfront.net/2016/${level}/${col}/${row}.png',
-          years: [
-            '2000',
-            '2001',
-            '2002',
-            '2003',
-            '2004',
-            '2005',
-            '2006',
-            '2007',
-            '2008',
-            '2009',
-            '2010',
-            '2011',
-            '2012',
-            '2013',
-            '2014',
-            '2015',
-            '2016',
-          ],
-          title: {
-            en: 'Landsat',
-            fr: 'Landsat',
-            es: 'Landsat',
-            pt: 'Landsat',
-            id: 'Landsat',
-            zh: 'Landsat',
-            ka: 'Landsat',
-          },
-        },
-        {
           id: 'wri_mono',
           thumbnailUrl: 'https://my.gfw-mapbuilder.org/img/wri_mono.png',
           title: {
@@ -393,21 +474,6 @@ export default {
             id: 'WRI Contextual',
             zh: 'WRI Contextual',
             ka: 'WRI Contextual',
-          },
-        },
-        {
-          id: 'planet',
-          thumbnailUrl: 'https://my.gfw-mapbuilder.org/img/wri_mono.png',
-          url: 'https://tiles.globalforestwatch.org/planet/v1/planet_medres_normalized_analytic/{z}/{x}/{y}.png',
-          visible: true,
-          title: {
-            en: 'Planet',
-            fr: 'Planet',
-            es: 'Planet',
-            pt: 'Planet',
-            id: 'Planet',
-            zh: 'Planet',
-            ka: 'Planet',
           },
         },
       ],

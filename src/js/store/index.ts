@@ -16,7 +16,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 const middlewares: any[] = [];
 // Environment specific middlewares configuration
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' && process.env.DEBUG) {
   // eslint-disable-line no-undef
   const logger = createLogger();
   middlewares.push(logger);
