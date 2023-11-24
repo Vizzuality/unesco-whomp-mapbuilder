@@ -1,34 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { EyeIcon } from '@heroicons/react/24/solid';
 
 import { setHideWidget } from '../../../js/store/appState/actions';
-
 import { RootState } from '../../../js/store/index';
-
-import { HideIcon } from '../../../images/hideIcon';
+import { MAP_WIDGET_BUTTON_STYLE } from './constants';
 
 const HideWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const { hideWidgetActive } = useSelector(
-    (state: RootState) => state.appState
-  );
+  const { hideWidgetActive } = useSelector((state: RootState) => state.appState);
 
   const toggleContent = (): void => {
     dispatch(setHideWidget(!hideWidgetActive));
   };
 
   return (
-    <>
-      <div className="widget-container">
-        <button
-          className="image-wrapper"
-          aria-label="hide left panel and legend"
-          onClick={toggleContent}
-        >
-          <HideIcon height={25} width={25} fill={'#555'} />
-        </button>
-      </div>
-    </>
+    <button className={MAP_WIDGET_BUTTON_STYLE} aria-label="hide left panel and legend" onClick={toggleContent}>
+      <EyeIcon className="h-5 w-5" />
+    </button>
   );
 };
 

@@ -10,7 +10,7 @@ const Mapview: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="mapview-container">
+    <div className="mapview-container bg-gray-dark">
       <div className="mapview" ref={mapElementRef}></div>
     </div>
   );

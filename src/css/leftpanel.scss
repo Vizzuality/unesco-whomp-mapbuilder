@@ -722,10 +722,10 @@
 
 .info-icon-container {
   border-radius: 50%;
-  width: 16px;
-  min-width: 16px;
-  min-height: 16px;
-  height: 16px;
+  width: 12px;
+  min-width: 12px;
+  min-height: 12px;
+  height: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -744,7 +744,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 0;
   font-family: $fira-sans;
   font-size: 1rem;
 
@@ -760,13 +760,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5px;
-  border-bottom: solid 1px #555;
 
   span {
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 0.9375rem;
+    font-weight: 400;
+    font-size: 1rem;
   }
 
   .caret-button {

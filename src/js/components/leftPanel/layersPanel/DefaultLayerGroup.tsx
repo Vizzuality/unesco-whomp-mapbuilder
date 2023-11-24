@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { layerIsInScale } from '../../../../js/helpers/layerScaleCheck';
 import { allAvailableLayers as allAvailableLayersAction } from '../../../../js/store/mapview/actions';
 import GenericLayerControl from './GenericLayerControl';
@@ -11,6 +12,7 @@ import { setOpenLayerGroup } from '../../../../js/store/appState/actions';
 import { mapController } from '../../../../js/controllers/mapController';
 import styled from 'styled-components';
 import { handleCustomColorTheme } from '../../../../utils';
+import clsx from 'clsx';
 
 const getListStyle = (isDraggingOver: boolean) => ({
   background: isDraggingOver ? 'white' : '',
@@ -228,7 +230,7 @@ const DefaultLayerGroup = ({ layerGroupKey, layerGroupConfig }: LayerGroupProps)
           <Droppable droppableId={layerGroupKey}>
             {(provided, snapshot) => (
               <div
-                className="dataset"
+                className="dataset space-y-2"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
@@ -250,7 +252,7 @@ const DefaultLayerGroup = ({ layerGroupKey, layerGroupConfig }: LayerGroupProps)
           <Droppable droppableId={layerGroupKey}>
             {(provided, snapshot) => (
               <div
-                className="dataset"
+                className="dataset space-y-2"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
@@ -268,7 +270,7 @@ const DefaultLayerGroup = ({ layerGroupKey, layerGroupConfig }: LayerGroupProps)
           <Droppable droppableId={layerGroupKey}>
             {(provided, snapshot) => (
               <div
-                className="dataset"
+                className="dataset space-y-2"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
@@ -324,10 +326,10 @@ const DefaultLayerGroup = ({ layerGroupKey, layerGroupConfig }: LayerGroupProps)
       >
         <span>{layerGroupTitle}</span>
         <button className="caret-button" onClick={handleGroupToggle}>
-          {groupOpen ? '▼' : '▲'}
+          {groupOpen ? <ChevronDownIcon className="h-4 w-4" /> : <ChevronUpIcon className="h-4 w-4" />}
         </button>
       </div>
-      <div className={groupOpen ? 'layers-control-container' : 'hidden'}>
+      <div className={clsx('my-4', { hidden: !groupOpen })}>
         <DragDropContext onDragEnd={onDragEnd}>{renderLayerGroup()}</DragDropContext>
       </div>
     </div>

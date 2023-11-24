@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
 import Select from 'react-select';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
+
 import LayerToggleSwitch from './LayerToggleSwitch';
 import LayerTransparencySlider from './LayerTransparencySlider';
 import LayerRadioButton from './LayerRadioButton';
@@ -16,7 +18,6 @@ import { RootState } from '../../../store';
 import { LayerProps } from '../../../store/mapview/types';
 import { mapController } from '../../../controllers/mapController';
 import { densityEnabledLayers, drySpellMarks, landCoverMarks } from '../../../../../configs/layer-config';
-import { InfoIcon } from '../../../../images/infoIcon';
 import { DashboardIcon } from '../../../../images/dashboardIcon';
 import { LayerVersionPicker } from './LayerVersionPicker';
 import TreeHeightPicker from '../../sharedComponents/TreeHeightPicker';
@@ -289,11 +290,7 @@ const GenericLayerControl = (props: LayerControlProps): React.ReactElement => {
       } else {
         subTitle = layer.sublabel[selectedLanguage];
       }
-      return (
-        <>
-          <span className="layer-subtitle">{subTitle}</span>
-        </>
-      );
+      return <span className="text-xs text-gray-light leading-none">{subTitle}</span>;
     } else {
       return;
     }
@@ -423,56 +420,43 @@ const GenericLayerControl = (props: LayerControlProps): React.ReactElement => {
     <div
       ref={props!.dndProvided!.innerRef}
       {...props!.dndProvided!.draggableProps}
-      className="draggable-card"
+      // className="draggable-card"
       style={getItemStyle(props!.dndSnapshot!.isDragging, props!.dndProvided!.draggableProps.style)}
     >
       <div
-        style={
-          layer.title !== 'RADD Alerts' && layer.title !== 'GLAD S2 Alerts'
-            ? { visibility: 'visible', borderBottom: '1px solid #8983834a', paddingBottom: 10 }
-            : { display: 'none' }
-        }
+      // style={
+      //   layer.title !== 'RADD Alerts' && layer.title !== 'GLAD S2 Alerts'
+      //     ? { visibility: 'visible', borderBottom: '1px solid #8983834a', paddingBottom: 10 }
+      //     : { display: 'none' }
+      // }
       >
-        <div className="layers-control-checkbox">
-          <div className="label-wrapper">
+        <div className="flex items-start">
+          <div className="label-wrapper grow">
             <div {...props!.dndProvided!.dragHandleProps}>
-              <div className="label-control-top">
-                <div style={{ marginRight: 5, cursor: 'grab', zIndex: 100 }}>
+              <div className="flex items-start space-x-2">
+                <div className="cursor-grabbing">
                   <DragIcon titleId="drag-icon" />
                 </div>
                 {returnLayerControl()}
-                <div className="title-wrapper">
-                  <span className="layer-label" style={{ textTransform: 'capitalize' }}>
-                    {layerTitle}
-                  </span>
+                <div>
+                  <div className="text-gray-dark text-xs font-bold">{layerTitle}</div>
+                  <div>{returnSubtitle()}</div>
                 </div>
               </div>
             </div>
-            {returnSubtitle()}
           </div>
-          <div style={{ display: 'flex', gap: 5, flexDirection: 'row' }}>
-            <div
-              className="info-icon-container"
-              style={{ backgroundColor: `${themeColor}` }}
-              onClick={(): void => toggleOpacitySlider()}
-            >
-              <OpacityIcon width={12} height={12} fill={'#fff'} />
-            </div>
-            <div
-              className="info-icon-container"
-              style={{ backgroundColor: `${themeColor}` }}
-              onClick={(): void => openInfoModal()}
-            >
-              <InfoIcon width={10} height={10} fill={'#fff'} />
-            </div>
+          <div className="flex items-center space-x-2">
+            <button type="button" onClick={(): void => toggleOpacitySlider()}>
+              <OpacityIcon width={12} height={12} fill={themeColor} />
+            </button>
+            <button type="button" onClick={(): void => openInfoModal()}>
+              {/* <InfoIcon width={8} height={8} fill={'#fff'} /> */}
+              <InformationCircleIcon className="w-4 h-4 text-primary" />
+            </button>
             {layer.dashboardURL && (
-              <div
-                className="info-icon-container"
-                style={{ backgroundColor: `${themeColor}` }}
-                onClick={(): void => openDashModal()}
-              >
-                <DashboardIcon width={10} height={10} fill={'#fff'} />
-              </div>
+              <button type="button" onClick={(): void => openDashModal()}>
+                <DashboardIcon width={12} height={12} fill={themeColor} />
+              </button>
             )}
           </div>
         </div>

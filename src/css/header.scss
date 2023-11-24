@@ -3,15 +3,15 @@
 .header-container {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   justify-content: space-between;
   width: 100%;
-  top: 0;
-  height: $header-height;
+  // height: $header-height;
   background-color: $header-color;
   z-index: 2;
   font-family: $fira-sans;
   color: $dark-grey;
+
   .header-spacer {
     display: flex;
     justify-content: space-between;

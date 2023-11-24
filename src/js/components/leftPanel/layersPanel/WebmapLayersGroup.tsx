@@ -1,5 +1,7 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import { useSelector, useDispatch } from 'react-redux';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { allAvailableLayers as allAvailableLayersAction } from '../../../../js/store/mapview/actions';
 import { RootState } from '../../../../js/store';
 import { setOpenLayerGroup } from '../../../../js/store/appState/actions';
@@ -26,8 +28,8 @@ const WebmapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
 
   const scale = useSelector((store: RootState) => store.mapviewState.scale);
   const allAvailableLayers = useSelector((store: RootState) => store.mapviewState.allAvailableLayers);
-  const allLayersInScale = allAvailableLayers.filter(l => layerIsInScale(l, scale));
-  const layersInGroup = allLayersInScale.filter(layer => layer.group === 'webmap');
+  const allLayersInScale = allAvailableLayers.filter((l) => layerIsInScale(l, scale));
+  const layersInGroup = allLayersInScale.filter((layer) => layer.group === 'webmap');
 
   // const webmapLayers = useSelector(webmapLayerSelector);
 
@@ -50,7 +52,7 @@ const WebmapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
   };
 
   const getListStyle = (isDraggingOver: boolean) => ({
-    background: isDraggingOver ? 'white' : ''
+    background: isDraggingOver ? 'white' : '',
   });
 
   function onDragEnd(result) {
@@ -61,7 +63,7 @@ const WebmapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
     const oldLayerGroup = Array.from(layersInGroup);
     const [movedLayer] = oldLayerGroup.splice(result.source.index, 1);
     oldLayerGroup.splice(result.destination.index, 0, movedLayer);
-    const newOrderedArrayGroup = allAvailableLayers.filter(l => l.group !== 'webmap');
+    const newOrderedArrayGroup = allAvailableLayers.filter((l) => l.group !== 'webmap');
     const newOrderedArray = [...newOrderedArrayGroup, ...oldLayerGroup];
     dispatch(allAvailableLayersAction(newOrderedArray));
     mapController.reorderLayer(movedLayer.id, result.destination.index);
@@ -78,15 +80,15 @@ const WebmapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
       >
         <span>{layerGroupTitle}</span>
         <button className="caret-button" onClick={handleGroupToggle}>
-          {groupOpen ? '▼' : '▲'}
+          {groupOpen ? <ChevronDownIcon className="h-4 w-4" /> : <ChevronUpIcon className="h-4 w-4" />}
         </button>
       </div>
-      <div className={groupOpen ? 'layers-control-container' : 'hidden'}>
+      <div className={clsx('mt-4', { hidden: !groupOpen })}>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId={layerGroupKey}>
             {(provided, snapshot) => (
               <div
-                className="dataset"
+                className="dataset space-y-2"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}

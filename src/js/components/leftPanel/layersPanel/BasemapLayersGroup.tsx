@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import clsx from 'clsx';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+
 import { RootState } from '../../../store';
 import { setOpenLayerGroup, renderModal } from '../../../store/appState/actions';
 import { InfoIcon } from '../../../../images/infoIcon';
@@ -333,9 +336,11 @@ const BasemapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
         tabIndex={0}
       >
         <span>{layerGroupTitle}</span>
-        <button className="caret-button">{groupOpen ? '▼' : '▲'}</button>
+        <button className="caret-button">
+          {groupOpen ? <ChevronDownIcon className="h-4 w-4" /> : <ChevronUpIcon className="h-4 w-4" />}
+        </button>
       </div>
-      <div className={groupOpen ? 'layers-control-container' : 'hidden'}>
+      <div className={clsx('mt-4', { hidden: !groupOpen })}>
         {allowedBaseLayers}
         {esriBasemapsToRender}
       </div>

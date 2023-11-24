@@ -2,7 +2,7 @@
 ============================================= */
 
 $white: #fff;
-$base-yellow: rgb(240, 171, 0);
+$base-yellow: #f9c400;
 $light-light-grey: #eee;
 $light-grey: rgb(85, 85, 85);
 $medium-dark-grey: #aaa;
@@ -11,6 +11,7 @@ $black: black;
 $header-color: rgba(255, 255, 255, 0.5);
 $dropdown-border: #ddd;
 $modal-border: #e5e5df;
+$base-color: #2a2a2a;
 
 /* FEATURE DIMENSIONS
 ============================================= */
@@ -28,7 +29,7 @@ $footer-height: 1.5rem;
 
 /* FONTS
 ============================================= */
-
+$inter-sans: 'Inter', sans-serif;
 $fira-sans: 'Fira Sans', sans-serif;
 
 /* MEDIA QUERY, DEVICE WIDTH

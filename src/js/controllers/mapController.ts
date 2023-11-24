@@ -467,7 +467,7 @@ export class MapController {
 
   setPageTitle(currentLanguage: string, defaultLanguage: string, primaryTitle: string, secondaryTitle: string): void {
     if (currentLanguage === defaultLanguage) {
-      window.document.title = primaryTitle;
+      window.document.title = `${primaryTitle} - World Heritage Online Maps Platform`;
     } else {
       window.document.title = secondaryTitle;
     }

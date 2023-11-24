@@ -1,24 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch } from 'react-redux';
-import { renderModal } from '../../store/appState/actions';
+import { PrinterIcon } from '@heroicons/react/24/solid';
 
-import { PrintIcon } from '../../../images/printIcon';
+import { renderModal } from '../../store/appState/actions';
+import { MAP_WIDGET_BUTTON_STYLE } from './constants';
 
 const PrintWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div className="widget-container">
-        <button
-          className="image-wrapper"
-          aria-label="print widget"
-          onClick={() => dispatch(renderModal('PrintWidget'))}
-        >
-          <PrintIcon height={25} width={25} fill={'#555'} />
-        </button>
-      </div>
-    </>
+    <button
+      className={MAP_WIDGET_BUTTON_STYLE}
+      aria-label="print widget"
+      onClick={() => dispatch(renderModal('PrintWidget'))}
+    >
+      <PrinterIcon className="w-5 h-5" />
+    </button>
   );
 };
 
