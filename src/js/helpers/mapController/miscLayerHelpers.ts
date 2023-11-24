@@ -204,6 +204,7 @@ export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<L
         legendInfo = layer.legendInfo ? layer.legendInfo : undefined;
       }
       const { id, title, opacity, visible, definitionExpression, url, maxScale, minScale } = layer;
+      console.log(id, title);
       mapLayerObjects.push({
         id,
         title,
@@ -211,6 +212,7 @@ export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<L
         visible,
         definitionExpression,
         group: 'webmap',
+        // group: 'GROUP_CLIMATE',
         type: 'webmap',
         origin: 'webmap',
         url,
@@ -403,15 +405,21 @@ export async function getRemoteAndServiceLayers(): Promise<any> {
               dataLayer: item,
               layer: {
                 id: item.id,
-                opacity: item.opacity,
+                opacity: item.opacity || 1,
                 order: item.order,
-                url: layer.attributes.layerConfig.source.tiles[0],
+                url:
+                  layer.attributes.provider === 'gee'
+                    ? `https://api.resourcewatch.org/v1/layer/${layer.id}/tile/gee/{z}/{x}/{y}`
+                    : layer.attributes.layerConfig.source.tiles[0],
                 type: item.layerType,
                 label: item.label,
                 sublabel: item.sublabel,
                 metadata: {
                   metadata: metadata,
-                  legendConfig: item.legend,
+                  legendConfig: item.legend || {
+                    name: item.label,
+                    ...layer.attributes.legendConfig,
+                  },
                   interactionConfig: intConfig,
                 },
               },

@@ -291,7 +291,7 @@ export class MapController {
           //TODO: move this elsewhere
           //Remove those layers that we do not support,
           const allowedRemoteLayersObjects = remoteAndServiceLayersObjects.filter((layerObject: any) => {
-            const layerType = layerObject?.dataLayer ? layerObject.layer.type : layerObject.type;
+            const layerType = layerObject?.dataLayer ? layerObject.layer?.type : layerObject?.type;
             return supportedLayers.includes(layerType);
           });
 
@@ -377,6 +377,7 @@ export class MapController {
             remoteLayerObjects.push(newRemoteLayerObject);
           }
           const allLayerObjects = [...mapLayerObjects, ...remoteLayerObjects];
+          console.log('MAP LAYER', mapLayerObjects);
 
           parseURLandApplyChanges();
 
