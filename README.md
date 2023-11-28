@@ -299,20 +299,4 @@ The other location is the `src/js/resources.js` file. There are `layers` and `ba
 
 ### Deployment
 
-Backup 1.5.0 folder
-
-`aws s3 sync s3://wri-sites/gfw-mapbuilder.org/library.gfw-mapbuilder.org/1.5.0/ /Users/dstarr/Desktop/MapbuilderBackups/04212022/ --profile wri`
-
-Copy dist folder into 1.5.0 aws folder
-
-`aws s3 sync --content-type "text/html" /Users/dstarr/Documents/dev/gfw-mapbuilder/dist/ s3://wri-sites/gfw-mapbuilder.org/library.gfw-mapbuilder.org/1.5.0/ --profile wri`
-
-Copy dist > 1.5.0.js file in dist folder into 1.5.0.js file in aws folder
-
-`aws s3 cp --content-type "text/html" /Users/dstarr/Documents/dev/gfw-mapbuilder/dist/loader/1.5.0.js s3://wri-sites/gfw-mapbuilder.org/library.gfw-mapbuilder.org/1.5.0/1.5.0.js --profile wri`
-
-Clear cache
-
-`aws cloudfront create-invalidation --distribution-id E58RE0T7L0R9N --path "/" --profile wri`
-
-`aws cloudfront create-invalidation --distribution-id E2B81LN86UDRTJ --path "/" --profile wri`
+[In progress]
