@@ -17,7 +17,7 @@ module.exports = (env) => {
     },
     output: {
       filename: '[name].js',
-      publicPath: 'unesco-whomp-mapbuilder',
+      publicPath: '/unesco-whomp-mapbuilder',
     },
     optimization: {
       minimizer: [
