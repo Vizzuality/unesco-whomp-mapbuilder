@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
-    index: ['./src/css/index.scss', './src/js/index.tsx'],
+    index: ['./src/css/global.css', './src/css/index.scss', './src/js/index.tsx'],
   },
   output: {
     filename: '[name].[chunkhash].js',

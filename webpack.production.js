@@ -9,17 +9,17 @@ const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 
-module.exports = (env) => {
+module.exports = () => {
   return {
     mode: 'production',
     entry: {
-      main: ['./src/js/static.tsx'],
+      main: ['./src/css/global.css', './src/css/index.scss', './src/js/static.tsx'],
     },
     output: {
       filename: '[name].js',
-      publicPath: '/unesco-whomp-mapbuilder',
     },
     optimization: {
+      minimize: true,
       minimizer: [
         new TerserPlugin({
           cache: true,
@@ -33,7 +33,6 @@ module.exports = (env) => {
         }),
       ],
     },
-    /////
     module: {
       rules: [
         {
@@ -44,8 +43,7 @@ module.exports = (env) => {
         {
           test: /\.s[ac]ss$/i,
           use: [
-            // Creates `style` nodes from JS strings
-            'style-loader',
+            MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
             'css-loader',
             // Compiles Sass to CSS
@@ -54,12 +52,7 @@ module.exports = (env) => {
         },
         {
           test: /\.css$/i,
-          use: [
-            // Creates `style` nodes from JS strings
-            'style-loader',
-            // Translates CSS into CommonJS
-            'css-loader',
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -85,7 +78,6 @@ module.exports = (env) => {
           REACT_APP_PLANET_API_KEY: JSON.stringify(process.env.REACT_APP_PLANET_API_KEY),
         },
       }),
-
       new CopyWebpackPlugin([
         { from: './configs/resources.js', to: 'configuration.js' }, //TODO: this needs to be somehow dynamic
       ]),
@@ -94,19 +86,17 @@ module.exports = (env) => {
         systemvars: true,
       }),
       new HtmlWebPackPlugin({
-        title: 'ArcGIS Template Application',
+        // title: 'ArcGIS Template Application',
         template: './src/static.html',
         filename: './index.html',
         favicon: './src/assets/favicon.ico',
-        chunksSortMode: 'none',
-        inlineSource: '.(css)$',
+        // chunksSortMode: 'none',
+        // inlineSource: '.(css)$',
       }),
-
       new MiniCssExtractPlugin({
         filename: '[name].[chunkhash].css',
         chunkFilename: '[id].css',
       }),
-
       new CompressionPlugin({
         filename: '[path].gz[query]',
         algorithm: 'gzip',

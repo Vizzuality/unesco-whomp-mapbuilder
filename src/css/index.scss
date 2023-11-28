@@ -93,3 +93,8 @@ button {
   color: $dark-grey;
   font-size: 11px;
 }
+
+@import './aoiDashboard.scss', './canopyDensityModal.scss', './coordinatesForm.scss', './editProfile.scss',
+  './footer.scss', './formInputs.scss', './header.scss', './layer-toggle-checkbox.scss', './leftpanel.scss',
+  './legend.scss', './mapWidgets.scss', './measureContent.scss', './modalCard.scss', './penContent.scss', './popup.scss',
+  './printButton.scss', './report.scss', './saveAOI.scss', './subscribeButton.scss', './uploadFile.scss';

@@ -1,5 +1,5 @@
 {
-  "name": "forest_atlas_template",
+  "name": "unesco-whomp-mapbuilder",
   "version": "1.5.0",
   "description": "Template for the WRI Forest Atlas that will be available through ArcGIS Online.",
   "main": "index.html",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wri/forest_atlas_template.git"
+    "url": "git+https://github.com/vizzuality/unesco-whomp-mapbuilder.git"
   },
   "keywords": [
     "wri",
@@ -23,12 +23,9 @@
     "esri",
     "javascript"
   ],
-  "author": "BlueRaster",
+  "author": "Vizzuality",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wri/forest_atlas_template/issues"
-  },
-  "homepage": "https://github.com/wri/forest_atlas_template#readme",
+  "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
@@ -75,6 +72,7 @@
     "@types/redux-logger": "^3.0.7",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
+    "autoprefixer": "^10.4.16",
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^3.0.1",
     "copy-webpack-plugin": "^5.1.1",
