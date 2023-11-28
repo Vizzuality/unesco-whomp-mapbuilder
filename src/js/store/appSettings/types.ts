@@ -47,11 +47,30 @@ export interface AppSettings {
   downloadLinkUrl?: string;
   footerLinks: FooterLink[];
   treeMosaicLandscapes: boolean;
+  webmapLayerGroupsMap: Record<string, string>;
 }
 
 type FooterLink = { label: string; link: string };
 
-type LayerGroupKey = 'GROUP_WEBMAP' | 'GROUP_BASEMAP' | 'GROUP_LC' | 'GROUP_LCD' | 'GROUP_IMAGERY' | 'extraLayers';
+const groupKeys = <const>[
+  'GROUP_WORLD_HERITAGE',
+  'GROUP_NEAR_REAL_TIME',
+  'GROUP_PROTECTION_AND_MANAGEMENT',
+  'GROUP_NATURAL_VALUES',
+  'GROUP_SOCIOECONOMIC',
+  'GROUP_THREATS_AND_RISKS',
+  'GROUP_CLIMATE',
+  // additional groups
+  'GROUP_WEBMAP',
+  'GROUP_BASEMAP',
+  'GROUP_IMAGERY',
+  'extraLayers',
+  // old
+  // 'GROUP_LC',
+  // 'GROUP_LCD',
+];
+
+type LayerGroupKey = typeof groupKeys[number];
 
 type LayerGroup = {
   [key in LayerGroupKey]: LayerGroupInfo;

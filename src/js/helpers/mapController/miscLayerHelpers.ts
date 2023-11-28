@@ -93,12 +93,12 @@ export const requestWMSLayerLegendInfo = async (layerOWSUrl: string, sublayerNam
 export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<LayerProps[]> {
   const mapLayerObjects: LayerProps[] = [];
   if (!esriMap) return [];
+  const { appSettings } = store.getState();
   const layerArray = esriMap.layers.toArray() as any;
 
   let count = 0;
   for (const layer of layerArray) {
     if (layer.type === 'graphics') continue;
-
     //@TODO this needs to be cleaned up and refactored to be more readable
 
     // if sublayers and not tile or wms
@@ -119,7 +119,7 @@ export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<L
           },
           visible,
           definitionExpression,
-          group: 'webmap',
+          group: appSettings.webmapLayerGroupsMap[id] || 'webmap',
           type: 'webmap',
           origin: 'webmap',
           url,
@@ -151,7 +151,7 @@ export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<L
           },
           visible,
           definitionExpression,
-          group: 'webmap',
+          group: appSettings.webmapLayerGroupsMap[layer.id] || 'webmap',
           type: 'wms',
           origin: 'webmap',
           url,
@@ -177,7 +177,7 @@ export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<L
         opacity,
         visible,
         definitionExpression,
-        group: 'webmap',
+        group: appSettings.webmapLayerGroupsMap[id] || 'webmap',
         type: 'webmap',
         origin: 'webmap',
         url,
@@ -204,15 +204,15 @@ export async function extractWebmapLayerObjects(esriMap?: __esri.Map): Promise<L
         legendInfo = layer.legendInfo ? layer.legendInfo : undefined;
       }
       const { id, title, opacity, visible, definitionExpression, url, maxScale, minScale } = layer;
-      console.log(id, title);
+
       mapLayerObjects.push({
         id,
         title,
         opacity,
         visible,
         definitionExpression,
-        group: 'webmap',
-        // group: 'GROUP_CLIMATE',
+        // adding the layers to the webmap group
+        group: appSettings.webmapLayerGroupsMap[id] || 'webmap',
         type: 'webmap',
         origin: 'webmap',
         url,

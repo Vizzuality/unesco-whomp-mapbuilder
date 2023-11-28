@@ -22,10 +22,17 @@ const initialState: AppSettings = {
   language: 'en',
   iso: '',
   layerPanel: {
+    GROUP_WORLD_HERITAGE: {},
+    GROUP_NEAR_REAL_TIME: {},
+    GROUP_PROTECTION_AND_MANAGEMENT: {},
+    GROUP_NATURAL_VALUES: {},
+    GROUP_SOCIOECONOMIC: {},
+    GROUP_THREATS_AND_RISKS: {},
+    GROUP_CLIMATE: {},
     GROUP_WEBMAP: {},
     GROUP_BASEMAP: {},
-    GROUP_LC: {},
-    GROUP_LCD: {},
+    // GROUP_LC: {}, // old
+    // GROUP_LCD: {}, // old
     GROUP_IMAGERY: {},
     extraLayers: {},
   },
@@ -40,6 +47,7 @@ const initialState: AppSettings = {
   footerLinks: [],
   disabledAnalysisModules: [],
   treeMosaicLandscapes: false,
+  webmapLayerGroupsMap: {},
 };
 
 export function appSettingsReducer(state = initialState, action: AppSettingsTypes): AppSettings {
