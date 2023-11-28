@@ -229,7 +229,7 @@ const LeftPanel = (): React.ReactElement => {
           'opacity-100 translate-x-0': isShowing,
         })}
       >
-        <div className="sticky top-0 shrink-0 bg-primary pt-8">
+        <div className="sticky top-0 shrink-0 bg-primary pt-8 z-10">
           <Tabs tabsToRender={tabsToRender} />
         </div>
         <TabViewContainer tabViewsToRender={tabsToRender} />
