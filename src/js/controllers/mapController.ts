@@ -377,7 +377,6 @@ export class MapController {
             remoteLayerObjects.push(newRemoteLayerObject);
           }
           const allLayerObjects = [...mapLayerObjects, ...remoteLayerObjects];
-          console.log('MAP LAYER', mapLayerObjects);
 
           parseURLandApplyChanges();
 

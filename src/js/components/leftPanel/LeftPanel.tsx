@@ -64,16 +64,6 @@ const Tab = (props: TabProps): React.ReactElement => {
     }
   }
 
-  const setClassName = (): string => {
-    if (documentFlashingActive && documents && documents.length) {
-      return 'resize-effect';
-    } else if (analysisFlashingActive) {
-      return 'resize-effect';
-    } else {
-      return '';
-    }
-  };
-
   useEffect(() => {
     setFlashingTab();
   }, [label]);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import clsx from 'clsx';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 import { RootState } from '../../../js/store';
 import { LayerProps } from '../../../js/store/mapview/types';
@@ -7,7 +9,6 @@ import LegendItems from './generateLegendItems';
 import { layerIsInScale } from '../../../js/helpers/layerScaleCheck';
 
 import { layersPanelTranslations } from '../../../../configs/translations/leftPanel.translations';
-import '../../../css/legend.scss';
 
 const getWindowDimensions = () => {
   return {
@@ -76,12 +77,23 @@ const Legend = (): JSX.Element => {
   return (
     <>
       {onMobileOrDesktop && (
-        <div className="legend-container" data-cy="legend">
-          <div className="legend-title" onClick={handleLegendToggle} role="button">
-            <p>{layersPanelTranslations[selectedLanguage].legend || 'Legend'}</p>
-            <button className="caret-button">{legendOpen && !hideWidgetActive ? '▼' : '▲'}</button>
-          </div>
-          <div className={legendOpen && !hideWidgetActive ? 'legend-content' : 'hidden'}>
+        <div
+          className="z-10 absolute bg-white right-6 bottom-6 py-4 px-5 rounded w-full max-w-[282px]"
+          data-cy="legend"
+        >
+          <button
+            type="button"
+            onClick={handleLegendToggle}
+            className="absolute h-8 w-8 top-0 right-[30px] -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-white bg-primary"
+          >
+            <ChevronDownIcon
+              className={clsx('h-[18px] w-[18px] text-white transition-transform duration-150', {
+                'rotate-180': !(legendOpen && !hideWidgetActive),
+              })}
+            />
+          </button>
+          <div className={legendOpen && !hideWidgetActive ? 'space-y-4 max-h-[50vh] overflow-y-auto' : 'hidden'}>
+            <h2 className="text-xs">{layersPanelTranslations[selectedLanguage].legend || 'Legend'}</h2>
             <LegendItems
               visibleLayers={visibleLayersToShow}
               language={selectedLanguage}
