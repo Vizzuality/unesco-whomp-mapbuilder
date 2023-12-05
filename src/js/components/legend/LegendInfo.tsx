@@ -17,8 +17,8 @@ function createSymbolStyles(symbol: any): JSX.Element | undefined {
         symbol.color === null
           ? 'transparent'
           : `rgba(${symbol.color.r}, ${symbol.color.g}, ${symbol.color.b}, ${symbol.color.a}) `;
-      style.width = '15px';
-      style.height = '15px';
+      style.width = '8px';
+      style.height = '8px';
       style['borderRadius'] = '50%';
 
       //BORDER FILL
@@ -29,19 +29,15 @@ function createSymbolStyles(symbol: any): JSX.Element | undefined {
         }, ${border.color.a}) `;
       }
 
-      symbolDOMElement = (
-        <div style={style} className={`legend-symbol ${symbolType === 'circle' ? 'circle' : ''}`}></div>
-      );
+      symbolDOMElement = <div style={style} className={`h-4 w-4 ${symbolType === 'circle' ? 'circle' : ''}`}></div>;
       break;
     }
     case 'simple-marker': {
       style.color = `rgba(${symbol.color.r}, ${symbol.color.g}, ${symbol.color.b}, ${symbol.color.a}) `;
       style.outline = symbol.outline;
-      style.width = '15px';
-      style.height = '15px';
-      symbolDOMElement = (
-        <div style={style} className={`legend-symbol ${symbolType === 'circle' ? 'circle' : ''}`}></div>
-      );
+      style.width = '8px';
+      style.height = '8px';
+      symbolDOMElement = <div style={style} className={`h-4 w-4 ${symbolType === 'circle' ? 'circle' : ''}`}></div>;
       break;
     }
     case 'solid':
@@ -51,17 +47,15 @@ function createSymbolStyles(symbol: any): JSX.Element | undefined {
         symbol.color === null
           ? 'transparent'
           : `rgba(${symbol.color.r}, ${symbol.color.g}, ${symbol.color.b}, ${symbol.color.a}) `;
-      style.width = '15px';
-      style.height = '15px';
+      style.width = '8px';
+      style.height = '8px';
       const border = symbol.outline;
       if (border && border.style !== 'none') {
         style.border = `1px ${borderStyleMap[border.style]} rgba(${border.color.r}, ${border.color.g}, ${
           border.color.b
         }, ${border.color.a}) `;
       }
-      symbolDOMElement = (
-        <div style={style} className={`legend-symbol ${symbolType === 'circle' ? 'circle' : ''}`}></div>
-      );
+      symbolDOMElement = <div style={style} className={`h-4 w-4 ${symbolType === 'circle' ? 'circle' : ''}`}></div>;
       break;
     }
     case 'line': {
@@ -83,17 +77,17 @@ function createSymbolStyles(symbol: any): JSX.Element | undefined {
         }, ${symbol.color.b}, ${symbol.color.a})`;
       }
 
-      symbolDOMElement = <div style={style} className="legend-symbol"></div>;
+      symbolDOMElement = <div style={style} className="h-4 w-4"></div>;
       break;
     }
     case 'image':
-      symbolDOMElement = <img style={style} className="legend-symbol" alt="legend symbol" src={symbol.url} />;
+      symbolDOMElement = <img style={style} className="h-4 w-4" alt="legend symbol" src={symbol.url} />;
       break;
   }
   if (symbol.type === 'picture-marker') {
     style.width = '12px';
     style.height = '12px';
-    symbolDOMElement = <img style={style} className="legend-symbol" alt="legend symbol" src={symbol.url} />;
+    symbolDOMElement = <img style={style} className="h-4 w-4" alt="legend symbol" src={symbol.url} />;
   }
   return symbolDOMElement;
 }
@@ -104,9 +98,9 @@ export function generateLegendInfo(layer: any) {
     const defaultSymbol = layer.renderer.symbol;
     const symbolDOMElement = createSymbolStyles(defaultSymbol);
     container.push(
-      <div className="sublayer-item-feature">
+      <div className="flex items-center space-x-2">
         <div>{symbolDOMElement}</div>
-        <span>{layer.title}</span>
+        <div>{layer.title}</div>
       </div>
     );
   } else if (layer?.renderer?.visualVariables?.length && layer?.renderer?.type !== 'unique-value') {
@@ -159,7 +153,7 @@ export function generateLegendInfo(layer: any) {
       const defaultSymbol = value.symbol;
       const symbolDOMElement = createSymbolStyles(defaultSymbol);
       container.push(
-        <div className="sublayer-item-feature">
+        <div className="flex items-center space-x-2">
           <div>{symbolDOMElement}</div>
           <span>{value.label}</span>
         </div>
@@ -170,9 +164,9 @@ export function generateLegendInfo(layer: any) {
       const defaultSymbol = value.symbol;
       const symbolDOMElement = createSymbolStyles(defaultSymbol);
       container.push(
-        <div className="sublayer-item-feature">
+        <div className="flex items-center space-x-2">
           <div>{symbolDOMElement}</div>
-          <span>{value.label}</span>
+          <div>{value.label}</div>
         </div>
       );
     });

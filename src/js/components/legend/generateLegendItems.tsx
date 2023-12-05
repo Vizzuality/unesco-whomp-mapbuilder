@@ -34,9 +34,9 @@ function checkForRenderer(layer: LayerProps): boolean {
 
 function generateWMSLegendInfo(layer: LayerProps, i: number): JSX.Element {
   return (
-    <div className="layer-item" key={layer.id + `${i}`}>
-      <p className="layer-title">{layer.title}</p>
-      <div className="title">{layer.legendInfo.layerName}</div>
+    <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+      <h3 className="text-xs font-bold">{layer.title}</h3>
+      {layer.legendInfo.layerName && <div className="title">{layer.legendInfo.layerName}</div>}
       <WMSImageWithPlaceholder alt={'wms-legend'} src={layer.legendInfo} errorMessage={'Legend graphic not found'} />
     </div>
   );
@@ -67,15 +67,15 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
             );
           });
           return (
-            <div className="label-item-feature" key={i}>
+            <div className="label-item-feature space-y-1" key={i}>
               {layer.type === 'tiled' && <div className="title">{item.name}</div>}
               {subLabels}
             </div>
           );
         });
         return (
-          <div className="layer-item" key={layer.id + `${i}`}>
-            <p className="layer-title">{layer.title}</p>
+          <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+            <h3 className="text-xs font-bold">{layer.title}</h3>
             {labelIcons}
           </div>
         );
@@ -88,20 +88,20 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
           item.label = item.label && item.label.length ? item.label : layer.title;
           const rendererExists = checkForRenderer(layer);
           return (
-            <div className="label-item" key={i}>
+            <div className="flex items-center space-x-2" key={i}>
               {!rendererExists ? (
                 <LegendLabel type={layer.type} options={item} opacity={layer.opacity.combined} />
               ) : (
                 legendInfoController.getLegendInfoFromRenderer(layer)
               )}
-              <p>{item.label}</p>
+              <div>{item.label}</div>
             </div>
           );
         });
         return (
-          <div className="layer-item" key={layer.id + `${i}`}>
-            <p className="layer-title">{layer.title}</p>
-            <div className="title">{layer.legendInfo.layerName}</div>
+          <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+            <h3 className="text-xs font-bold">{layer.title}</h3>
+            {layer.legendInfo.layerName && <div className="title">{layer.legendInfo.layerName}</div>}
             {labelIcons}
           </div>
         );
@@ -138,23 +138,23 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
           return (
             <div className="label-item" key={i}>
               <LegendLabel type={layer.metadata?.legendConfig?.type} options={item} opacity={layer.opacity.combined} />
-              <p>{item.name[language]}</p>
+              <div>{item.name[language]}</div>
             </div>
           );
         });
       }
 
       return (
-        <div className="layer-item" key={layer.id + `${i}`}>
-          <p className="layer-title">
+        <div className="space-y-2" key={layer.id + `${i}`}>
+          <h3 className="text-xs font-bold">
             {layer.title === 'Integrated Deforestation Alerts' ? integratedAlertLabel : layer.title}
-          </p>
+          </h3>
           {labelIcons}
         </div>
       );
     }
   });
-  return <div className="legend-item-container">{items}</div>;
+  return <div className="space-y-4 text-xs">{items}</div>;
 };
 
 export default LegendItems;

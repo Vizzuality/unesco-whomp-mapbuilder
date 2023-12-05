@@ -16,14 +16,14 @@ const ManualLegend = (props: ManualLegendProps) => {
     versionedLabel = layer.versions[idx].label[language];
   }
   const label = (
-    <div className="label-item-feature">
+    <div className="label-item-feature space-y-1">
       {legendInfo}
       {versionedLabel !== '' && versionedLabel}
     </div>
   );
   return (
-    <div className="layer-item" key={layer.id + `${i}`}>
-      <p className="layer-title">{layer.title}</p>
+    <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+      <h3 className="text-xs font-bold">{layer.title}</h3>
       {label}
     </div>
   );
