@@ -62,8 +62,8 @@
         width: 5px;
         height: 5px;
         border: 1px solid;
-        border-color: $base-yellow;
-        background-color: $base-yellow;
+        border-color: $primary-color;
+        background-color: $primary-color;
         border-radius: 50%;
       }
     }
@@ -552,7 +552,7 @@
 }
 
 .layers-control-container {
-  color: $dark-grey;
+  //color: $dark-grey;
 
   .layers-control-checkbox {
     display: flex;
@@ -575,7 +575,6 @@
     }
 
     .radio-container {
-      $primary-color: rgb(234, 125, 68);
       $secondary-color: rgb(102, 102, 102);
       $standard-font: normal 400 18px 'PT Sans', sans-serif;
       [type='radio']:checked,
@@ -627,7 +626,7 @@
       }
     }
     .imagery-edit-button {
-      border: 1px solid rgb(240, 171, 0);
+      border: 1px solid $primary-color;
       font-size: 10px;
       height: 20px;
       border-radius: 35px;
@@ -670,7 +669,7 @@
     left: -10px;
 
     button {
-      color: $base-yellow;
+      color: $primary-color;
       border: none;
       background-color: white;
       font-size: 1rem;
@@ -995,7 +994,7 @@
   box-shadow: 0px -1px 4px 0 rgba(0, 0, 0, 0.2);
   button {
     height: 30px;
-    border: 1px solid $base-yellow;
+    border: 1px solid $primary-color;
     text-transform: uppercase;
     -webkit-appearance: none;
     font-weight: 500;
@@ -1024,7 +1023,7 @@
     border: 0;
     border-radius: 20px;
     padding: 0.25rem 0.5rem;
-    background-color: $base-yellow;
+    background-color: $primary-color;
     color: #fff;
   }
 }
@@ -1045,7 +1044,7 @@
     -webkit-appearance: none;
     margin-top: auto;
     margin-bottom: auto;
-    border: 1px solid $base-yellow;
+    border: 1px solid $primary-color;
     background-color: $white;
     color: $dark-grey;
     font-size: 11px;
@@ -1092,7 +1091,7 @@
   }
 
   .imagery-edit-button {
-    border: 1px solid rgb(240, 171, 0);
+    border: 1px solid $primary-color;
     font-size: 10px;
     height: 20px;
     border-radius: 35px;
@@ -1145,7 +1144,7 @@
         border: transparent solid 2px;
       }
       .thumbnail.active {
-        border: 2px solid rgb(240, 171, 0);
+        border: 2px solid $primary-color;
       }
     }
   }
@@ -1389,7 +1388,7 @@
       border-width: 1px;
       width: 83px;
       padding: 5px 5px 5px 10px;
-      border: 1px solid rgb(240, 171, 0);
+      border: 1px solid $primary-color;
       font-size: 11px;
     }
   }

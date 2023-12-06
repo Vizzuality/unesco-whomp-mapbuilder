@@ -136,7 +136,7 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
       } else {
         labelIcons = layer.metadata?.legendConfig?.items.map((item: any, i: number) => {
           return (
-            <div className="label-item" key={i}>
+            <div className="label-item flex items-center space-x-2" key={i}>
               <LegendLabel type={layer.metadata?.legendConfig?.type} options={item} opacity={layer.opacity.combined} />
               <div>{item.name[language]}</div>
             </div>
