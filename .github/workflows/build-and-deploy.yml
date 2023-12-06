@@ -14,17 +14,16 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-      - name: Use Node.js 16
+      - name: Use Node.js 18
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: Install and Build 🔧
         env:
           REACT_APP_PLANET_API_KEY: ${{ secrets.REACT_APP_PLANET_API_KEY }}
         run: |
-          npm install
-          npm run build
-          npm run log
+          yarn install
+          yarn build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
