@@ -372,6 +372,8 @@ export const basemapLayersContent = {
 export const layersPanelTranslations = {
   en: {
     layers: 'Layers',
+    description:
+      'Select datasets from different categories (near-real time, protection and management, natural values, climate, socio-economic, threats and risk, and recent imagery) that you wish to visualize on the map.',
     selectAll: 'Select All',
     clearAll: 'Clear All',
     legend: 'Legend',
@@ -396,6 +398,7 @@ export const layersPanelTranslations = {
   },
   fr: {
     layers: 'Couches',
+    description: '',
     selectAll: 'Tout sélectionner',
     clearAll: 'Tout effacer',
     legend: 'Légende',

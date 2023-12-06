@@ -6,7 +6,7 @@ module.exports = {
   content: ['./dist/*.html', './src/js/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      sans: ['Inter', 'sans-serif'],
+      sans: ['Avenir Next', 'Inter', 'sans-serif'],
     },
     colors: {
       white: colors.white,

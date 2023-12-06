@@ -6,6 +6,7 @@ import WebmapLayersGroup from './WebmapLayersGroup';
 import BasemapLayersGroup from './BasemapLayersGroup';
 import DefaultLayerGroup from './DefaultLayerGroup';
 import ImageryLayersGroup from './ImageryLayersGroup';
+import { layersPanelTranslations } from '../../../../../configs/translations/leftPanel.translations';
 
 import '../../../../css/leftpanel.scss';
 
@@ -21,7 +22,7 @@ const LayersTabView = (props: LayersTabViewProps) => {
   const activeTab = useSelector((store: RootState) => store.appState.leftPanel.activeTab);
   const tabViewVisible = useSelector((store: RootState) => store.appState.leftPanel.tabViewVisible);
   const hideWidgetActive = useSelector((store: RootState) => store.appState.hideWidgetActive);
-  // const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
+  const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
   const recentImagery = useSelector((store: RootState) => store.appSettings.recentImagery);
 
   const layerPanel = useSelector((store: RootState) => store.appSettings.layerPanel);
@@ -71,11 +72,7 @@ const LayersTabView = (props: LayersTabViewProps) => {
     <div className="px-10 py-6">
       {tabViewIsVisible && (
         <div className="space-y-5">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus laboriosam quis doloribus sit dicta
-            nesciunt blanditiis maxime, minus quaerat culpa nisi hic eius architecto veniam est. Repudiandae
-            perspiciatis sint quisquam.
-          </p>
+          <p>{layersPanelTranslations[selectedLanguage].description}</p>
           <div className="w-1/2 h-1 border-b border-b-gray-dark" />
           <div
             className={clsx({
