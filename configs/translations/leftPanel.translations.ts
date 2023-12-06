@@ -1,5 +1,7 @@
 export const analysisContent = {
   en: {
+    description:
+      'Run analyses of tree cover loss, land cover composition and near-real time deforestation and fire alerts.',
     analyzeExistingShapeTitle: 'Analyze a shape on the map',
     analyzeExistingShapeDirections: [
       'Use the layers tab to turn on a data layer',
@@ -162,6 +164,8 @@ export const analysisContent = {
     overlappingShapeButton: 'დაიწყეთ შერჩევა',
   },
   fr: {
+    description:
+      'Exécutez des analyses de perte de couverture arborée, de composition de la couverture terrestre et d’alertes de déforestation et d’incendie quasi-temps réel.',
     analyzeExistingShapeTitle: 'Analysez un polygone sur la carte',
     analyzeExistingShapeDirections: [
       "Utilisez l'onglet Couches pour activer une couche de données",

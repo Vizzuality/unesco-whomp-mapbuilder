@@ -8,12 +8,14 @@ import BaseAnalysis from '../../../../js/components/leftPanel/analysisPanel/Base
 import { analysisContent } from '../../../../../configs/translations/leftPanel.translations';
 import { PolygonIcon } from '../../../../images/PolygonIcon';
 import { PenIcon } from '../../../../images/penIcon';
+import { PencilIcon } from '@heroicons/react/24/solid';
 import { SelectionIcon } from '../../../../images/selectionIcon';
 import { PlusIcon } from '../../../../images/plusIcon';
 import { createSelector } from 'reselect';
 import BaseButton from '../../ui/BaseButton';
 import MultiPolygonAnalysis from './MultiPolygonAnalysis';
 import { handleCustomColorTheme } from '../../../../utils';
+import clsx from 'clsx';
 
 //Memo'd selectors
 const selectActiveFeaturesLength = createSelector(
@@ -67,7 +69,7 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
       return (
         <>
           {analyzeYourShapeFirstDirection[0]}
-          <PenIcon height={type === 'reduced' ? 18 : 25} width={type === 'reduced' ? 18 : 25} fill={'#555'} />
+          <PencilIcon className={clsx('inline-block', type === 'reduced' ? 'h-4 w-4' : 'h-6 w-6')} />
           {analyzeYourShapeFirstDirection[1]}
         </>
       );
@@ -75,7 +77,7 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
       return (
         <>
           {analyzeYourShapeFirstDirection[0]}
-          <PenIcon height={25} width={25} fill={'#555'} />
+          <PencilIcon className="h-4 w-4 inline-block" />
         </>
       );
     }
@@ -86,7 +88,7 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
       return (
         <>
           {visitTitle[0]}
-          <PenIcon height={21} width={21} fill={'#555'} />
+          <PencilIcon className="h-4 w-4 inline-block" />
           {visitTitle[1]}
         </>
       );
@@ -94,7 +96,7 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
       return (
         <>
           {visitTitle[0]}
-          <PenIcon height={21} width={21} fill={'#555'} />
+          <PencilIcon className="h-4 w-4 inline-block mx-2" />
         </>
       );
     }
@@ -102,7 +104,7 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
 
   const Buffer = () => {
     return (
-      <div className="span-wrapper buffer">
+      <div className="span-wrapper buffer text-xs">
         <span className="left" style={{ borderTop: `1px solid ${themeColor}` }} /> Or{' '}
         <span className="right" style={{ borderBottom: `1px solid ${themeColor}` }} />
       </div>
@@ -110,13 +112,13 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
   };
 
   const DefaultAnalysisContent = (): JSX.Element => (
-    <div className="analysis-tab-container">
-      <div className="directions">
-        <figure>
-          <figcaption className="title">
-            <h4>{overlappingShapeTitle}</h4>
-          </figcaption>
-          <ol>
+    <div className="analysis-tab-container px-10 py-6 space-y-5">
+      <p>{analysisContent[selectedLanguage].description}</p>
+      <div className="w-1/2 h-1 border-b border-b-gray-dark" />
+      <div className="space-y-4">
+        <div className="space-y-4">
+          <h3 className="font-bold">{overlappingShapeTitle}</h3>
+          <ol className="list-decimal pl-8 text-xs space-y-2">
             <li>{overlappingShapeDirections[0]}</li>
             <li>{overlappingShapeDirections[1]}</li>
             <li>{overlappingShapeDirections[2]}</li>
@@ -124,69 +126,73 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
             <li>{overlappingShapeDirections[4]}</li>
             <li>{overlappingShapeDirections[5]}</li>
           </ol>
-        </figure>
-        <BaseButton
-          customColorTheme={themeColor}
-          style={{ width: '15rem' }}
-          onClick={() => dispatch(setMultiPolygonSelectionMode(true))}
-        >
-          <SelectionIcon height={18} width={18} fill={'#555'} />
-          {overlappingShapeButton}
-        </BaseButton>
+          <BaseButton
+            customColorTheme={themeColor}
+            style={{ width: '15rem' }}
+            onClick={() => dispatch(setMultiPolygonSelectionMode(true))}
+          >
+            <SelectionIcon height={18} width={18} fill={'#555'} />
+            {overlappingShapeButton}
+          </BaseButton>
+        </div>
+
         <Buffer />
-        <figure>
-          <figcaption className="title">
-            <h4>{analyzeExistingShapeTitle}</h4>
-          </figcaption>
-          <ol>
+
+        <div className="space-y-4">
+          <h3 className="font-bold">{analyzeExistingShapeTitle}</h3>
+          <ol className="list-decimal pl-8 text-xs space-y-2">
             {analyzeExistingShapeDirections.map((direction: string, index: number) => (
               <li key={index}>{direction}</li>
             ))}
           </ol>
-        </figure>
-        <PolygonIcon width={100} height={100} customColorTheme={themeColor} />
+          <div className="flex justify-center">
+            <PolygonIcon width={100} height={100} customColorTheme={themeColor} />
+          </div>
+        </div>
+
         <Buffer />
-        <figure>
-          <figcaption className="title">
-            <h4>{analyzeYourShapeTitle}</h4>
-          </figcaption>
-          <ol>
+
+        <div className="space-y-4">
+          <h3 className="font-bold">{analyzeYourShapeTitle}</h3>
+          <ol className="list-decimal pl-8 text-xs space-y-2">
             <li>{returnFirstInstruction()}</li>
             {analyzeYourShapeDirections.map((direction: string, index: number) => (
               <li key={index}>{direction}</li>
             ))}
           </ol>
-        </figure>
-        <button
-          style={{ backgroundColor: themeColor }}
-          className="orange-button"
-          onClick={(): void => mapController.createPolygonSketch()}
-        >
-          <PenIcon height={25} width={25} fill={'#555'} />
-          {drawButton}
-        </button>
+          <button
+            style={{ backgroundColor: themeColor }}
+            className="orange-button"
+            onClick={(): void => mapController.createPolygonSketch()}
+          >
+            <PencilIcon className="h-4 w-4 text-white" />
+            {drawButton}
+          </button>
+        </div>
+
         <Buffer />
-        <figure>
-          <figcaption className="title">
-            <h4>{enterCoordinatesTitle}</h4>
-          </figcaption>
-          <ol>
+
+        <div className="space-y-4">
+          <h3 className="font-bold">{enterCoordinatesTitle}</h3>
+          <ol className="list-decimal pl-8 text-xs space-y-2">
             {enterCoordinatesDirections.map((direction: string, index: number) => (
               <li key={index}>{direction}</li>
             ))}
           </ol>
-        </figure>
-        <button
-          style={{ backgroundColor: themeColor }}
-          className="orange-button"
-          onClick={() => dispatch(renderModal('PenWidget-CoordinatesForm'))}
-        >
-          <PlusIcon height={25} width={25} fill={'#000'} />
-          {coordinatesButton}
-        </button>
+          <button
+            style={{ backgroundColor: themeColor }}
+            className="orange-button"
+            onClick={() => dispatch(renderModal('PenWidget-CoordinatesForm'))}
+          >
+            <PlusIcon height={25} width={25} fill={'#000'} />
+            {coordinatesButton}
+          </button>
+        </div>
+
         <Buffer />
-        <div className="drop-shapefile-container">
-          <h4>{returnVisitTitle()}</h4>
+
+        <div className="drop-shapefile-container space-y-2">
+          <h3 className="font-bold">{returnVisitTitle()}</h3>
           <UploadFile />
         </div>
       </div>
