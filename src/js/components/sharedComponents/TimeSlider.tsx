@@ -347,7 +347,7 @@ const TimeSlider = (props: TimeSliderProps): JSX.Element => {
   };
 
   return (
-    <div className="time-slider-container">
+    <div className="time-slider-container flex items-center space-x-2 -left-2.5 mb-4">
       {playButton ? (
         <button
           style={props.steps === 1 ? { color: customColorTheme } : { color: customColorTheme, visibility: 'hidden' }}

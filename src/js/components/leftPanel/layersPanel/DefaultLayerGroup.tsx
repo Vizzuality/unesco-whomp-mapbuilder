@@ -329,7 +329,7 @@ const DefaultLayerGroup = ({ layerGroupKey, layerGroupConfig }: LayerGroupProps)
           {groupOpen ? <ChevronDownIcon className="h-4 w-4" /> : <ChevronUpIcon className="h-4 w-4" />}
         </button>
       </div>
-      <div className={clsx('my-4', { hidden: !groupOpen })}>
+      <div className={clsx('layers-control-container my-4', { hidden: !groupOpen })}>
         <DragDropContext onDragEnd={onDragEnd}>{renderLayerGroup()}</DragDropContext>
       </div>
     </div>

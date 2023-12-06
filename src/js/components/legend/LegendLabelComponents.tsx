@@ -27,7 +27,7 @@ export const PointItem = (props: PointItemProps): JSX.Element => {
         width: `${width}px`,
         height: `${height}px`,
         opacity: `${opacity}`,
-        backgroundColor: `${color}`
+        backgroundColor: `${color}`,
       }}
     ></div>
   );
@@ -49,13 +49,13 @@ export const LineItem = (props: LineItemProps): JSX.Element => {
         height: '16px',
         backgroundColor: 'rgba(0,0,0,0)',
         display: 'grid',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <div
         style={{
           opacity: opacity,
-          borderBottom: `${thickness}px ${lineType} ${color}`
+          borderBottom: `${thickness}px ${lineType} ${color}`,
         }}
       ></div>
     </div>
@@ -78,7 +78,7 @@ export const BasicItem = (props: BasicItemProps): JSX.Element => {
         width: `${width}px`,
         height: `${height}px`,
         opacity: `${opacity}`,
-        backgroundColor: `${color}`
+        backgroundColor: `${color}`,
       }}
     ></div>
   );
@@ -90,17 +90,9 @@ interface PolyFromMapServerProps {
   opacity: number;
   contentType: string;
 }
-export const PolyFromMapServer = (
-  props: PolyFromMapServerProps
-): JSX.Element => {
+export const PolyFromMapServer = (props: PolyFromMapServerProps): JSX.Element => {
   const { contentType, dataURI, title, opacity } = props;
-  return (
-    <img
-      src={`data:${contentType};base64,${dataURI}`}
-      title={title}
-      style={{ opacity: `${opacity}` }}
-    />
-  );
+  return <img src={`data:${contentType};base64,${dataURI}`} title={title} style={{ opacity: `${opacity}` }} />;
 };
 
 interface GradientItemProps {
@@ -110,24 +102,24 @@ interface GradientItemProps {
 
 export const GradientItem = (props: GradientItemProps): JSX.Element => {
   const { items, language } = props;
-  const gradientColors = items.map(item => item.color).join(',');
+  const gradientColors = items.map((item) => item.color).join(',');
   const gradientHeight = items.length * 20;
   return (
-    <>
+    <div className="flex space-x-2">
       <div
         style={{
           color: 'red',
           backgroundImage: `linear-gradient(${gradientColors})`,
           width: '18px',
           height: `${gradientHeight}px`,
-          border: '1px solid #555'
+          border: '1px solid #555',
         }}
       ></div>
-      <div>
+      <div className="flex flex-col justify-between">
         {items.map((item: any, i: number) => (
-          <p key={i}>{item?.name[language] ? item.name[language] : '-'}</p>
+          <div key={i}>{item?.name[language] ? item.name[language] : '-'}</div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
