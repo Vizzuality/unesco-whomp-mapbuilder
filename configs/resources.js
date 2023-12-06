@@ -1,5 +1,5 @@
 export default {
-  webmap: 'e630d7fe00494a4586cae262381289b1',
+  webmap: 'de85e3fcc07948238aa6c1afd2a4ceb0',
   title: 'World Heritage Online Maps Platform',
   subtitle: '',
   logoUrl: '',
