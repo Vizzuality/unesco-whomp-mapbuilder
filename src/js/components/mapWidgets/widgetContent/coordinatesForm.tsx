@@ -14,7 +14,6 @@ import {
   DMSCardinalPoint,
 } from '../../../../js/types/coordinateForm';
 
-import '../../../../css/coordinatesForm';
 import { handleCustomColorTheme } from '../../../../utils';
 
 const CoordinatesForm: FunctionComponent = () => {
@@ -189,55 +188,61 @@ const CoordinatesForm: FunctionComponent = () => {
   };
 
   return (
-    <div className="coordinates-form-container">
-      <div className="directions">
-        <div className="titles">
-          <h4 className="title">{title}</h4>
-          <p>{dropdownTitle}</p>
+    <div className="space-y-5">
+      <div className="space-y-4">
+        <h4 className="font-bold">{title}</h4>
+        <div className="flex space-x-2 items-center">
+          <label>{dropdownTitle}</label>
+          <select onChange={(e) => setSelectedFormat(Number(e.target.value))}>
+            {decimalOptions.map((option: string, index: number) => (
+              <option value={index} key={index}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
-        <select onChange={(e) => setSelectedFormat(Number(e.target.value))}>
-          {decimalOptions.map((option: string, index: number) => (
-            <option value={index} key={index}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <hr />
-        {decimalOptions[selectedFormat].includes('DD') &&
-          ddSections.map((ddSection: SpecificDDSection, index: number) => {
-            return (
-              <DDSection
-                key={index}
-                ddSection={ddSection}
-                setDDFormValues={setDDFormValues}
-                degreeSymbol={degree}
-                renderRemoveButton={index > 2 ? true : false}
-                setSection={setSection}
-              />
-            );
-          })}
-        {decimalOptions[selectedFormat].includes('DMS') &&
-          dmsSections.map((dmsSection: SpecificDMSSection, index: number) => {
-            return (
-              <DMSSection
-                dmsSection={dmsSection}
-                setDMSFormValues={setDMSFormValues}
-                setDMSCardinalType={setDMSCardinalType}
-                degreeSymbol={degree}
-                minuteSymbol={minutes}
-                secondsSymbol={seconds}
-                key={index}
-                renderRemoveButton={index > 2 ? true : false}
-                setSection={setSection}
-              />
-            );
-          })}
-        <div className="buttons-wrapper">
-          <button onClick={(): void => setSection(true)}>{addMoreLabel}</button>
-          <button className="orange-button" style={{ backgroundColor: themeColor }} onClick={() => setShape()}>
-            {makeShapeLabel}
-          </button>
-        </div>
+      </div>
+
+      <hr className="w-1/2 border-t-gray-dark" />
+
+      {decimalOptions[selectedFormat].includes('DD') &&
+        ddSections.map((ddSection: SpecificDDSection, index: number) => {
+          return (
+            <DDSection
+              key={index}
+              ddSection={ddSection}
+              setDDFormValues={setDDFormValues}
+              degreeSymbol={degree}
+              renderRemoveButton={index > 2 ? true : false}
+              setSection={setSection}
+            />
+          );
+        })}
+
+      {decimalOptions[selectedFormat].includes('DMS') &&
+        dmsSections.map((dmsSection: SpecificDMSSection, index: number) => {
+          return (
+            <DMSSection
+              dmsSection={dmsSection}
+              setDMSFormValues={setDMSFormValues}
+              setDMSCardinalType={setDMSCardinalType}
+              degreeSymbol={degree}
+              minuteSymbol={minutes}
+              secondsSymbol={seconds}
+              key={index}
+              renderRemoveButton={index > 2 ? true : false}
+              setSection={setSection}
+            />
+          );
+        })}
+
+      <div className="flex items-center space-x-4">
+        <button className="btn-secondary" onClick={(): void => setSection(true)}>
+          {addMoreLabel}
+        </button>
+        <button className="btn" onClick={() => setShape()}>
+          {makeShapeLabel}
+        </button>
       </div>
     </div>
   );

@@ -175,6 +175,7 @@ export const searchContent = {
     latitude: 'Lat',
     longitude: 'Lon',
     title: 'Search for feature:',
+    coordinatesTitle: 'Search by coordinates:',
     buttonTitle: 'Search',
   },
   az: {
@@ -205,6 +206,7 @@ export const searchContent = {
     latitude: 'Lat',
     longitude: 'Lon',
     title: 'Recherche de polygones:',
+    coordinatesTitle: 'Recherche par coordonnées:',
     buttonTitle: 'Chercher',
   },
   es: {
