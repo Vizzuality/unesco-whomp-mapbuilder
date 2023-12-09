@@ -65,7 +65,7 @@ const SelectWrap = styled.div`
     width: 0.8em;
     height: 0.5em;
     margin-right: 10px;
-    background-color: #e8a600;
+    background-color: #0077d4;
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   }
   select,

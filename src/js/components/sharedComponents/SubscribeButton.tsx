@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
+import clsx from 'clsx';
+
 import { renderModal } from '../../../js/store/appState/actions';
 import { RootState } from '../../../js/store/index';
 
 import '../../../css/subscribeButton.scss';
-import { handleCustomColorTheme } from '../../../utils';
 
 const subscribeButtonTranslations = {
   zh: '保存到“我的 GFW”中',
@@ -22,7 +23,6 @@ const subscribeButtonTranslations = {
 export const SubscribeButton = (): JSX.Element => {
   const dispatch = useDispatch();
   const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
-  const customColorTheme = useSelector((store: RootState) => store.appSettings.customColorTheme);
   const activeFeatures = useSelector((store: RootState) => store.mapviewState.activeFeatures);
   const activeFeatureIndex = useSelector((store: RootState) => store.mapviewState.activeFeatureIndex);
   const profileComplete = useSelector((store: RootState) => store.appState.isProfileComplete);
@@ -31,9 +31,6 @@ export const SubscribeButton = (): JSX.Element => {
   const selectedFeature = activeFeatures[activeFeatureIndex[0]].features[activeFeatureIndex[1]];
   const selectedFeatureType = selectedFeature.geometry.type;
   const subscribeDisabled = selectedFeatureType === 'point' || selectedFeatureType === 'polyline';
-  const backgroundColor = subscribeDisabled ? '#b9b9b9' : 'white';
-
-  const themeColor = handleCustomColorTheme(customColorTheme);
 
   const handleSubscribe = () => {
     //Force user to complete the profile
@@ -50,11 +47,7 @@ export const SubscribeButton = (): JSX.Element => {
       <span data-tip={'Subscriptions disabled for point and line features'} data-offset="{'top': -5}">
         <button
           disabled={subscribeDisabled}
-          style={{
-            border: `1px solid ${themeColor}`,
-            backgroundColor: `${backgroundColor}`,
-          }}
-          className="subscribe-button"
+          className={clsx('btn-secondary', { 'opacity-50': !subscribeDisabled })}
           onClick={() => handleSubscribe()}
         >
           {subscribeButtonTranslations[selectedLanguage]} <div className="subscribe-icon"></div>

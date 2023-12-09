@@ -25,10 +25,11 @@ import { DateRangePicker } from '../../sharedComponents/DateRangePicker';
 
 import { defaultAnalysisModules } from '../../../../../configs/analysis-config';
 
-import '../../../../css/leftpanel.scss';
-import 'react-datepicker/dist/react-datepicker.css';
+// import '../../../../css/leftpanel.scss';
+// import 'react-datepicker/dist/react-datepicker.css';
 import { handleCustomColorTheme } from '../../../../utils';
 import { DATES } from '../../../../../configs/dates-config';
+import clsx from 'clsx';
 
 type InputTypes = 'range-slider' | 'tcd' | 'date-picker';
 
@@ -210,16 +211,14 @@ const BaseAnalysis = (): JSX.Element => {
           <>
             <p style={{ fontWeight: 'bold', fontSize: '16px' }}>{currentAnalysis?.title[selectedLanguage]}</p>
             <p style={{ fontSize: '12px' }}>{currentAnalysis?.description[selectedLanguage]}</p>
-            <div>
+            <div className="mt-4">
               {currentAnalysis?.analysisParams.length !== 0 &&
                 currentAnalysis?.analysisParams.map((param: AnalysisParam, i: number) => {
                   return (
-                    <div className="ui-analysis-wrapper" key={i}>
-                      <div className="ui-description">
-                        <div className="number">
-                          <p>{i + 1}</p>
-                        </div>
-                        <p>{param.label[selectedLanguage]}</p>
+                    <div className="ui-analysis-wrapper space-y-4" key={i}>
+                      <div className="ui-description flex items-center text-xs space-x-2">
+                        <div className="number">{i + 1}</div>
+                        <div>{param.label[selectedLanguage]}</div>
                       </div>
                       <div className="analysis-input">{renderInputComponent(param, currentAnalysis)}</div>
                     </div>
@@ -241,7 +240,11 @@ const BaseAnalysis = (): JSX.Element => {
     }
 
     return (
-      <select className="analysis-select" value={selectedAnalysis || 'default'} onChange={handleAnalysisOptionChange}>
+      <select
+        className="analysis-select w-full"
+        value={selectedAnalysis || 'default'}
+        onChange={handleAnalysisOptionChange}
+      >
         <option value="default">{analysisTranslations.defaultAnalysisLabel[selectedLanguage]}</option>
         {defaultAnalysisModules
           .filter((m) => {
@@ -345,35 +348,27 @@ const BaseAnalysis = (): JSX.Element => {
 
     if (isUploadOrDrawn && renderEditButton) {
       return (
-        <>
-          <button
-            className="orange-button base-analysis-size"
-            style={{ backgroundColor: themeColor }}
-            onClick={(): void => setEditSketch()}
-          >
+        <div className="flex items-center space-x-2">
+          <button className="btn" style={{ backgroundColor: themeColor }} onClick={(): void => setEditSketch()}>
             {analysisTranslations.editButton[selectedLanguage]}
           </button>
-          <button className="delete-button" onClick={(): void => setDelete()}>
+          <button className="btn-secondary" onClick={(): void => setDelete()}>
             {analysisTranslations.deleteButton[selectedLanguage]}
           </button>
-        </>
+        </div>
       );
     }
 
     if (isUploadOrDrawn && renderEditButton === false) {
       return (
-        <>
-          <button
-            className="orange-button base-analysis-size"
-            style={{ backgroundColor: themeColor }}
-            onClick={(): void => setSaveSketch()}
-          >
+        <div className="flex items-center space-x-2">
+          <button className="btn" style={{ backgroundColor: themeColor }} onClick={(): void => setSaveSketch()}>
             {analysisTranslations.saveButton[selectedLanguage]}
           </button>
-          <button className="delete-button" onClick={(): void => setDelete()}>
+          <button className="btn-secondary" onClick={(): void => setDelete()}>
             {analysisTranslations.deleteButton[selectedLanguage]}
           </button>
-        </>
+        </div>
       );
     }
   };
@@ -386,17 +381,20 @@ const BaseAnalysis = (): JSX.Element => {
   return (
     <>
       {geostoreReady ? (
-        <div className="base-analysis-content">
-          <div className="layer-title">
-            <span>{title === null ? 'User Drawn Feature' : title}</span>
+        <div className="base-analysis-content px-10 py-8 space-y-4">
+          <div className="space-y-4">
+            <h2 className="font-bold">{title === null ? 'User Drawn Feature' : title}</h2>
             {returnButtons()}
           </div>
+
           <AnalysisOptions />
+
           {!vegaSpec && !chartError && (
             <div className="analysis-instructions" style={{ height: 300 }}>
               <AnalysisInstructions />
             </div>
           )}
+
           {chartError && (
             <div
               style={{
@@ -412,11 +410,13 @@ const BaseAnalysis = (): JSX.Element => {
               No data exists for this area, please select another area.
             </div>
           )}
+
           {chartLoading && (
             <>
               <p style={{ textAlign: 'center', marginTop: '30px' }}>Loading Chart...</p>
             </>
           )}
+
           {vegaSpec && (
             <>
               <div
@@ -445,21 +445,21 @@ const BaseAnalysis = (): JSX.Element => {
             </>
           )}
           {!chartError && (
-            <span data-tip={'Analysis disabled for point and line features'} data-offset="{'top': -5}">
+            <div
+              data-tip={'Analysis disabled for point and line features'}
+              data-offset="{'top': -5}"
+              className="flex items-center space-x-2"
+            >
               <button
                 disabled={selectedAnalysis === 'default' || featureIsNotAllowed}
-                style={selectedAnalysis !== 'default' ? { backgroundColor: themeColor } : {}}
-                className={
-                  selectedAnalysis === 'default' || featureIsNotAllowed ? 'orange-button disabled' : 'orange-button'
-                }
+                className={clsx('btn', { 'opacity-50': selectedAnalysis === 'default' || featureIsNotAllowed })}
                 onClick={runAnalysis}
               >
                 {analysisTranslations.runAnalysisButton[selectedLanguage]}
               </button>
               {!multiPolygonSelection && (
                 <button
-                  style={{ backgroundColor: themeColor }}
-                  className={'orange-button'}
+                  className="btn"
                   onClick={() => {
                     dispatch(setMultiPolygonSelectionMode(true));
                   }}
@@ -467,7 +467,7 @@ const BaseAnalysis = (): JSX.Element => {
                   Analyze overlapping area
                 </button>
               )}
-            </span>
+            </div>
           )}
           <ReactTooltip effect="solid" className="tab-tooltip" disable={!featureIsNotAllowed} />
           <DataTabFooter />

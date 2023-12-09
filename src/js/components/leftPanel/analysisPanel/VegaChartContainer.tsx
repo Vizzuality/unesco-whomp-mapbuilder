@@ -19,7 +19,7 @@ function createChartWrapperStyle(chartType?: string): object {
       return {
         maxWidth: '30rem',
         minHeight: '280px',
-        maxHeight: '300px',
+        maxHeight: '400px',
         width: '100%',
         margin: '1rem auto',
       };
@@ -27,7 +27,7 @@ function createChartWrapperStyle(chartType?: string): object {
       return {
         maxWidth: '290px',
         minHeight: '280px',
-        maxHeight: '300px',
+        maxHeight: '400px',
         width: '100%',
         margin: '1rem auto',
       };
@@ -35,7 +35,7 @@ function createChartWrapperStyle(chartType?: string): object {
       return {
         maxWidth: '60rem',
         minHeight: '280px',
-        maxHeight: '300px',
+        maxHeight: '400px',
         width: '100%',
         margin: '1rem auto',
       };
@@ -43,7 +43,7 @@ function createChartWrapperStyle(chartType?: string): object {
       return {
         maxWidth: '60rem',
         minHeight: '280px',
-        maxHeight: '300px',
+        maxHeight: '400px',
         width: '100%',
         margin: '1rem auto',
       };
@@ -51,7 +51,7 @@ function createChartWrapperStyle(chartType?: string): object {
       return {
         maxWidth: '60rem',
         minHeight: '280px',
-        maxHeight: '300px',
+        maxHeight: '400px',
         width: '100%',
         margin: '1rem auto',
       };

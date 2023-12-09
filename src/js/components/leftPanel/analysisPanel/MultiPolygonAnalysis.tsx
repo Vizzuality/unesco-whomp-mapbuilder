@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
+
 import { RootState } from '../../../store';
 import BaseButton from '../../ui/BaseButton';
 import { BackIcon } from '../../../../images/backIcon';
@@ -51,31 +53,6 @@ const MultiPolygonAnalysis = ({ initAnalyze }: Props) => {
         });
     }
   }, [analysisFeatureList]);
-
-  const BottomBtnWrap = styled.div`
-    display: grid;
-    grid-template-columns: 80px 160px;
-    gap: 15px;
-    padding: 0 15px 10px 15px;
-  `;
-  const BackButton = styled(BaseButton)`
-    background-color: white;
-    color: ${themeColor};
-    border: 2px solid ${themeColor};
-    text-transform: capitalize;
-  `;
-  const MultiPolyWrap = styled.div`
-    padding: 0 15px 10px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: #767676;
-    p {
-      border-bottom: 1px solid gray;
-      margin: 0 auto;
-      padding: 10px 0 10px 0;
-    }
-  `;
 
   const handleInputSelection = React.useCallback(
     (inputIndex: number) => {
@@ -175,46 +152,46 @@ const MultiPolygonAnalysis = ({ initAnalyze }: Props) => {
   `;
 
   return (
-    <div>
-      <MultiPolyWrap>
-        <p>{overlappingShapeTitle}</p>
-        {!analysisFeatureList[0] ? (
-          <MethodSelection
-            handleInputSelection={handleInputSelection}
-            customColorTheme={themeColor}
-            selectedLanguage={selectedLanguage}
-            placeholder={`${selectShape} 1 ...`}
-            inputIndex={0}
-          />
-        ) : (
-          <SelectedShapeContainer inputIndex={0} label={`${selectShape} 1 ...`} />
-        )}
-        {!analysisFeatureList[1] ? (
-          <MethodSelection
-            handleInputSelection={handleInputSelection}
-            customColorTheme={themeColor}
-            selectedLanguage={selectedLanguage}
-            placeholder={`${selectShape} 2 ...`}
-            inputIndex={1}
-          />
-        ) : (
-          <SelectedShapeContainer inputIndex={1} label={`${selectShape} 2 ...`} />
-        )}
-        {overlap === 'analyzing' && (
-          <AnalyzingStatus>
-            <AnalyzingIcon width={20} height={20} />
-            <p>Detecting Overlapping Area ...</p>
-          </AnalyzingStatus>
-        )}
-        {overlap === 'failed' && (
-          <FailedStatus>
-            <ErrorIcon width={20} height={20} />
-            <p>Overlapping Area Not Detected</p>
-          </FailedStatus>
-        )}
-      </MultiPolyWrap>
-      <BottomBtnWrap>
-        <BackButton
+    <div className="px-10 py-8 space-y-4">
+      <p>{overlappingShapeTitle}</p>
+      {!analysisFeatureList[0] ? (
+        <MethodSelection
+          handleInputSelection={handleInputSelection}
+          customColorTheme={themeColor}
+          selectedLanguage={selectedLanguage}
+          placeholder={`${selectShape} 1 ...`}
+          inputIndex={0}
+        />
+      ) : (
+        <SelectedShapeContainer inputIndex={0} label={`${selectShape} 1 ...`} />
+      )}
+      {!analysisFeatureList[1] ? (
+        <MethodSelection
+          handleInputSelection={handleInputSelection}
+          customColorTheme={themeColor}
+          selectedLanguage={selectedLanguage}
+          placeholder={`${selectShape} 2 ...`}
+          inputIndex={1}
+        />
+      ) : (
+        <SelectedShapeContainer inputIndex={1} label={`${selectShape} 2 ...`} />
+      )}
+      {overlap === 'analyzing' && (
+        <AnalyzingStatus>
+          <AnalyzingIcon width={20} height={20} />
+          <p>Detecting Overlapping Area ...</p>
+        </AnalyzingStatus>
+      )}
+      {overlap === 'failed' && (
+        <FailedStatus>
+          <ErrorIcon width={20} height={20} />
+          <p>Overlapping Area Not Detected</p>
+        </FailedStatus>
+      )}
+      <div className="flex items-center space-x-2 border-t border-gray-light py-4">
+        <button
+          className="btn-secondary"
+          type="button"
           onClick={() => {
             dispatch(setMultiPolygonSelectionMode(false));
             //clear polygons from redux and the map
@@ -224,19 +201,20 @@ const MultiPolygonAnalysis = ({ initAnalyze }: Props) => {
             clearMultiPolygonLayer();
           }}
         >
-          <BackIcon height={12} width={12} fill={themeColor} />
-          {back}
-        </BackButton>
-        <BaseButton
-          customColorTheme={themeColor}
+          <ArrowUturnLeftIcon className="h-4 w-4" />
+          <span>{back}</span>
+        </button>
+        <button
+          type="button"
+          className="btn"
           disabled={overlap !== 'intersect'}
           onClick={() => {
             initAnalyze(true);
           }}
         >
           {analyze}
-        </BaseButton>
-      </BottomBtnWrap>
+        </button>
+      </div>
     </div>
   );
 };

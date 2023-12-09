@@ -5,12 +5,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../js/store/index';
 
 const DataTabFooter = (): JSX.Element => {
-  const isLoggedIn = useSelector(
-    (store: RootState) => store.appState.isLoggedIn
-  );
+  const isLoggedIn = useSelector((store: RootState) => store.appState.isLoggedIn);
 
   return (
-    <div className="data-tabview-footer">
+    <div className="border-t border-gray-light py-6 mt-6 flex items-center space-x-2">
       <PrintReportButton />
       {isLoggedIn && <SubscribeButton />}
     </div>

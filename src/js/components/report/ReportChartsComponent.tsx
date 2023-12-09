@@ -261,11 +261,9 @@ const ChartModule = (props: ChartModuleProps): JSX.Element => {
             currentAnalysis?.analysisParams.map((uiParam: any, i: number) => {
               return (
                 <div className="ui-analysis-wrapper" key={i}>
-                  <div className="ui-description">
-                    <div className="number">
-                      <p>{i + 1}</p>
-                    </div>
-                    <p>{uiParam.label[language]}</p>
+                  <div className="ui-description flex items-center text-xs space-x-2">
+                    <div className="number">{i + 1}</div>
+                    <div>{uiParam.label[language]}</div>
                   </div>
                   <div className="analysis-input">{renderInputComponent(uiParam, currentAnalysis.analysisId)}</div>
                 </div>

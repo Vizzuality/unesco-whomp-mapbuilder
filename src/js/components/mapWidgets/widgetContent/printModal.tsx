@@ -40,7 +40,7 @@ export const PrintModal: FunctionComponent = () => {
       {printOptions.map((printOption: string, index: number) => {
         return (
           <button
-            className="btn w-full"
+            className="btn"
             style={{ backgroundColor: themeColor }}
             key={index}
             onClick={(): Promise<void> => printMap(printOption)}
