@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { PlusIcon, PencilIcon } from '@heroicons/react/24/solid';
+import clsx from 'clsx';
+
 import UploadFile from '../../../../js/components/sharedComponents/UploadFile';
 import { mapController } from '../../../../js/controllers/mapController';
 import { renderModal, setMultiPolygonSelectionMode } from '../../../../js/store/appState/actions';
@@ -7,15 +10,10 @@ import { RootState } from '../../../../js/store';
 import BaseAnalysis from '../../../../js/components/leftPanel/analysisPanel/BaseAnalysis';
 import { analysisContent } from '../../../../../configs/translations/leftPanel.translations';
 import { PolygonIcon } from '../../../../images/PolygonIcon';
-import { PenIcon } from '../../../../images/penIcon';
-import { PencilIcon } from '@heroicons/react/24/solid';
 import { SelectionIcon } from '../../../../images/selectionIcon';
-import { PlusIcon } from '../../../../images/plusIcon';
 import { createSelector } from 'reselect';
-import BaseButton from '../../ui/BaseButton';
 import MultiPolygonAnalysis from './MultiPolygonAnalysis';
 import { handleCustomColorTheme } from '../../../../utils';
-import clsx from 'clsx';
 
 //Memo'd selectors
 const selectActiveFeaturesLength = createSelector(
@@ -126,14 +124,10 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
             <li>{overlappingShapeDirections[4]}</li>
             <li>{overlappingShapeDirections[5]}</li>
           </ol>
-          <BaseButton
-            customColorTheme={themeColor}
-            style={{ width: '15rem' }}
-            onClick={() => dispatch(setMultiPolygonSelectionMode(true))}
-          >
-            <SelectionIcon height={18} width={18} fill={'#555'} />
-            {overlappingShapeButton}
-          </BaseButton>
+          <button className="btn" type="button" onClick={() => dispatch(setMultiPolygonSelectionMode(true))}>
+            <SelectionIcon height={18} width={18} fill="white" />
+            <span>{overlappingShapeButton}</span>
+          </button>
         </div>
 
         <Buffer />
@@ -162,11 +156,11 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
           </ol>
           <button
             style={{ backgroundColor: themeColor }}
-            className="orange-button"
+            className="btn"
             onClick={(): void => mapController.createPolygonSketch()}
           >
             <PencilIcon className="h-4 w-4 text-white" />
-            {drawButton}
+            <span>{drawButton}</span>
           </button>
         </div>
 
@@ -181,11 +175,11 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
           </ol>
           <button
             style={{ backgroundColor: themeColor }}
-            className="orange-button"
+            className="btn"
             onClick={() => dispatch(renderModal('PenWidget-CoordinatesForm'))}
           >
-            <PlusIcon height={25} width={25} fill={'#000'} />
-            {coordinatesButton}
+            <PlusIcon className="h-4 w-4" />
+            <span>{coordinatesButton}</span>
           </button>
         </div>
 

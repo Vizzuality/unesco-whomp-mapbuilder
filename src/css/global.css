@@ -25,3 +25,15 @@
     @apply underline;
   }
 }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center space-x-2 bg-primary border border-primary hover:bg-secondary transition-colors uppercase font-bold text-xs text-white px-4 py-2 rounded;
+  }
+  .btn-dialog {
+    @apply h-8 w-8 rounded-full border border-white bg-primary hover:bg-secondary transition-colors flex items-center justify-center;
+  }
+  .next-spinner {
+    @apply h-6 w-6 text-gray-light animate-spin;
+  }
+}
