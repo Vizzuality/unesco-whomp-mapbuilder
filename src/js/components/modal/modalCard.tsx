@@ -1,5 +1,7 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import clsx from 'clsx';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { PrintModal } from '../mapWidgets/widgetContent/printModal';
 import ShareContent from '../../../js/components/mapWidgets/widgetContent/shareContent';
@@ -123,21 +125,25 @@ const ModalCard: FunctionComponent<{}> = () => {
       {modalType !== '' ? (
         <>
           <div
-            className={`dim-container ${setClassName()}`}
+            className={clsx('fixed top-0 left-0 w-full h-full bg-black/50 z-40', {
+              hidden: setClassName() === 'measure-widget',
+            })}
             onClick={() => dispatch(renderModal(''))}
             role="button"
             tabIndex={0}
-          ></div>
-          <div className={`modal-card-container ${setClassName()}`}>
-            <button style={{ color: '#555' }} className="exit-button" onClick={() => dispatch(renderModal(''))}>
-              <svg className="svg-icon">
-                <svg id="shape-close" viewBox="0 0 25 25">
-                  <title>Close</title>
-                  <path d="M 5 19 L 19 5 L 21 7 L 7 21 L 5 19 ZM 7 5 L 21 19 L 19 21 L 5 7 L 7 5 Z"></path>
-                </svg>
-              </svg>
+          />
+          <div
+            className={clsx(
+              'absolute rounded bg-white z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-80vh'
+            )}
+          >
+            <button
+              className="absolute -top-4 -right-4 h-8 w-8 rounded-full border border-white bg-primary hover:bg-secondary transition-colors flex items-center justify-center"
+              onClick={() => dispatch(renderModal(''))}
+            >
+              <XMarkIcon className="h-6 w-6 text-white" />
             </button>
-            {returnContent()}
+            <div className="p-10 overflow-y-auto">{returnContent()}</div>
           </div>
         </>
       ) : null}

@@ -610,17 +610,3 @@
     }
   }
 }
-
-.dim-container {
-  position: fixed;
-  z-index: 3;
-  opacity: 0.5;
-  width: 100%;
-  background-color: $black;
-  top: 0;
-  height: 100%;
-
-  &.measure-widget {
-    display: none;
-  }
-}
