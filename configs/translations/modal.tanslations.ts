@@ -2,52 +2,52 @@ export const printContent = {
   en: {
     buttonLabel: 'Choose a print output',
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   az: {
     buttonLabel: 'Çap çıxışını seçin',
     dropdownLabel: 'Çap eding',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   nl: {
     buttonLabel: 'Kies een afdruk output',
     dropdownLabel: 'Afdrukken ',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   hy: {
     buttonLabel: 'Ընտրել արդյունքները տպման համար ',
     dropdownLabel: 'տպել',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   ka: {
     buttonLabel: 'აარჩიეთ ბეჭდვის ფორმატი',
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   fr: {
     buttonLabel: "Choisissez un format d'impression",
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   es: {
     buttonLabel: 'Elegir diseño de página',
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   pt: {
     buttonLabel: 'Escolher saída de impressão.',
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   id: {
     buttonLabel: 'Choose a print output',
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
   zh: {
     buttonLabel: '选择打印模板',
     dropdownLabel: 'Print',
-    printOptions: ['Landscape', 'MAP_ONLY'],
+    printOptions: ['MAP_ONLY'],
   },
 };
 

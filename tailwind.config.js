@@ -13,6 +13,7 @@ module.exports = {
     colors: {
       white: colors.white,
       black: colors.black,
+      red: colors.red,
       primary: 'hsla(206, 100%, 42%, 1)',
       secondary: 'hsla(206, 100%, 33%, 1)',
       warn: 'hsla(47, 100%, 49%, 1)',

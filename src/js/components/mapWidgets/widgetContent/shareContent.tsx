@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import { FaXTwitter, FaFacebookF } from 'react-icons/fa6';
 
 import { RootState } from '../../../../js/store/index';
-import { TwitterIcon } from '../../../../images/twitterIcon';
-import { FacebookIcon } from '../../../../images/facebookIcon';
 import { shareContent } from '../../../../../configs/translations/modal.tanslations';
 import { analysisReportConfig } from '../../../../../configs/translations/report.translations';
 import { getShareableURL } from '../../../../js/helpers/shareFunctionality';
@@ -80,10 +78,7 @@ const ShareContent: FunctionComponent = () => {
           ref={urlRef}
           className="border border-gray-dark rounded grow p-2 text-xs text-gray-dark"
         />
-        <button
-          className="bg-primary border border-primary hover:bg-secondary transition-colors text-xs text-white px-4 py-2 rounded"
-          onClick={(): void => copyURLToClipboard()}
-        >
+        <button className="btn" onClick={(): void => copyURLToClipboard()}>
           {copyButtonInShareModal[selectedLanguage]}
         </button>
       </div>

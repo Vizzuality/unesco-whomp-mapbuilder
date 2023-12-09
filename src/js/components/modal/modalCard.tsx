@@ -137,11 +137,8 @@ const ModalCard: FunctionComponent<{}> = () => {
               'absolute rounded bg-white z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-80vh'
             )}
           >
-            <button
-              className="absolute -top-4 -right-4 h-8 w-8 rounded-full border border-white bg-primary hover:bg-secondary transition-colors flex items-center justify-center"
-              onClick={() => dispatch(renderModal(''))}
-            >
-              <XMarkIcon className="h-6 w-6 text-white" />
+            <button className="absolute -top-4 -right-4 btn-dialog" onClick={() => dispatch(renderModal(''))}>
+              <XMarkIcon className="h-5 w-5 text-white" />
             </button>
             <div className="p-10 overflow-y-auto">{returnContent()}</div>
           </div>

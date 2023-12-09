@@ -9,8 +9,7 @@ import { geojsonToArcGIS } from '../../helpers/spatialDataTransformation';
 import { registerGeometry } from '../../helpers/geometryRegistration';
 import { mapController } from '../../controllers/mapController';
 import { uploadContent } from '../../../../configs/translations/upload.translations';
-
-import '../../../css/uploadFile.scss';
+import clsx from 'clsx';
 
 const UploadFile = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -107,19 +106,24 @@ const UploadFile = (): JSX.Element => {
   };
 
   return (
-    <div className="upload-container">
+    <div className="space-y-4">
       <div
-        className="upload-wrapper"
+        className="border-dashed border-2 border-gray-light rounded-md h-20 relative"
         onDragOver={(e: DragEvent<HTMLDivElement>): void => onDragFile(e)}
         onDrop={(e: DragEvent<HTMLDivElement>): Promise<void> => onDropFile(e)}
       >
-        <button className="btn" onClick={() => document.getElementById('upload-file-input')?.click()}>
+        <button
+          className="p-6 absolute w-full h-full text-xs"
+          onClick={() => document.getElementById('upload-file-input')?.click()}
+        >
           Click or drop a custom shapefile here
         </button>
-        <input type="file" id="upload-file-input" onChange={(e: any) => onDropFile(e)} />
-        <span>{shapefileButton}</span>
+        <input type="file" id="upload-file-input" onChange={(e: any) => onDropFile(e)} className="invisible" />
+        <span className="invisible">{shapefileButton}</span>
       </div>
-      <p className={`shapefile-instructions ${wrongFileType ? 'red' : ''}`}>* {shapefileInstructions}</p>
+      <div className={clsx('text-xs', wrongFileType ? 'text-red-400' : 'text-gray-light')}>
+        * {shapefileInstructions}
+      </div>
     </div>
   );
 };

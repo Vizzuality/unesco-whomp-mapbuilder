@@ -225,13 +225,10 @@ const LeftPanel = (): React.ReactElement => {
         <TabViewContainer tabViewsToRender={tabsToRender} />
       </div>
       <button
-        className={clsx(
-          'absolute h-8 w-8 top-[30px] right-0 z-20 flex items-center justify-center rounded-full border border-white bg-primary hover:bg-secondary transition-colors transition-transform duration-150',
-          {
-            'translate-x-1/2': isShowing,
-            'translate-x-12': !isShowing,
-          }
-        )}
+        className={clsx('btn-dialog absolute top-[30px] right-0 z-20 transition-transform duration-150', {
+          'translate-x-1/2': isShowing,
+          'translate-x-12': !isShowing,
+        })}
         onClick={handleToggle}
       >
         <ChevronLeftIcon
