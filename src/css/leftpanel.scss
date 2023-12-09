@@ -744,7 +744,6 @@
   flex-wrap: wrap;
   flex-direction: column;
   padding: 10px 0;
-  font-family: $fira-sans;
   font-size: 1rem;
 
   .layer-group-title {
@@ -840,10 +839,10 @@
   background: #f2f2f2;
 }
 
-.esri-search {
-  position: relative;
-  top: 50px;
-}
+// .esri-search {
+//   position: relative;
+//   top: 50px;
+// }
 
 //DATA PANEL STYLES, may need to extract this into separate file
 .data-tab-default-container {

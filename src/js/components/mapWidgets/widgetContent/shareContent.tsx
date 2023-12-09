@@ -71,13 +71,7 @@ const ShareContent: FunctionComponent = () => {
       <h2 className="font-bold">{title}</h2>
       <p className="text-xs">{shareModalTitle[selectedLanguage]}</p>
       <div className="flex items-center justify-between space-x-2">
-        <input
-          type="text"
-          readOnly
-          value={urlValue}
-          ref={urlRef}
-          className="border border-gray-dark rounded grow p-2 text-xs text-gray-dark"
-        />
+        <input type="text" readOnly value={urlValue} ref={urlRef} className="form-input grow" />
         <button className="btn" onClick={(): void => copyURLToClipboard()}>
           {copyButtonInShareModal[selectedLanguage]}
         </button>

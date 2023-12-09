@@ -134,13 +134,23 @@ const ModalCard: FunctionComponent<{}> = () => {
           />
           <div
             className={clsx(
-              'absolute rounded bg-white z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-80vh'
+              'absolute min-w-[500px] rounded bg-white z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-sm',
+              {
+                'top-[70px] left-auto right-[120px] translate-x-0 translate-y-0 min-w-0':
+                  setClassName() === 'measure-widget',
+              }
             )}
           >
             <button className="absolute -top-4 -right-4 btn-dialog" onClick={() => dispatch(renderModal(''))}>
               <XMarkIcon className="h-5 w-5 text-white" />
             </button>
-            <div className="p-10 overflow-y-auto">{returnContent()}</div>
+            <div
+              className={clsx('p-10 max-h-[80vh] overflow-y-auto', {
+                'p-4': setClassName() === 'measure-widget',
+              })}
+            >
+              {returnContent()}
+            </div>
           </div>
         </>
       ) : null}

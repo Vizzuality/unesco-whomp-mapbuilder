@@ -30,10 +30,17 @@
   .btn {
     @apply inline-flex items-center space-x-2 bg-primary border border-primary hover:bg-secondary transition-colors uppercase font-bold text-xs text-white px-4 py-2 rounded;
   }
+  .btn-secondary {
+    @apply btn text-primary bg-transparent border border-primary hover:bg-primary hover:text-white;
+  }
   .btn-dialog {
     @apply h-8 w-8 rounded-full border border-white bg-primary hover:bg-secondary transition-colors flex items-center justify-center;
   }
   .next-spinner {
     @apply h-6 w-6 text-gray-light animate-spin;
+  }
+
+  .form-input {
+    @apply border border-gray-dark rounded p-2 text-xs text-gray-dark;
   }
 }

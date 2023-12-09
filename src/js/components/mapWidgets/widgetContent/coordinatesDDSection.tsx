@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { TrashIcon } from '@heroicons/react/24/outline';
+
 import { RootState } from '../../../../js/store/index';
 import { DDSectionProps } from '../../../../js/types/coordinateForm';
 import { coordinatesContent } from '../../../../../configs/translations/modal.tanslations';
-import { TrashCanIcon } from '../../../../images/trashCanIcon';
 
 export default function DDSection(props: DDSectionProps): JSX.Element {
   const selectedLanguage = useSelector((state: RootState) => state.appState.selectedLanguage);
@@ -13,17 +14,18 @@ export default function DDSection(props: DDSectionProps): JSX.Element {
   const { rowNum, latitude, longitude } = ddSection;
 
   return (
-    <>
+    <div className="space-y-4">
       {renderRemoveButton && (
-        <button onClick={(): void => setSection(false)} className="remove-button">
-          REMOVE <TrashCanIcon height={20} width={20} fill={'#555'} />
+        <button onClick={(): void => setSection(false)} className="btn-secondary">
+          <span>Remove</span>
+          <TrashIcon className="h-4 w-4" />
         </button>
       )}
-      <div className="dds-wrapper">
-        <div className="degree-section">
-          <span>{latitudeLabel}</span>
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label>{latitudeLabel}</label>
 
-          <div className="input-wrapper">
+          <div className="flex items-center space-x-2">
             <input
               type="number"
               name="latitude coordinates"
@@ -34,17 +36,18 @@ export default function DDSection(props: DDSectionProps): JSX.Element {
                 setDDFormValues({
                   userInput: e.target.value,
                   rowNum,
-                  coordinateType: 'latitude'
+                  coordinateType: 'latitude',
                 })
               }
+              className="form-input grow"
             />
             <span>{degreeSymbol}</span>
           </div>
         </div>
-        <div className="degree-section">
-          <span>{longitudeLabel}</span>
+        <div>
+          <label>{longitudeLabel}</label>
 
-          <div className="input-wrapper">
+          <div className="flex items-center space-x-2">
             <input
               type="number"
               name="longitude coordinates"
@@ -55,15 +58,16 @@ export default function DDSection(props: DDSectionProps): JSX.Element {
                 setDDFormValues({
                   userInput: e.target.value,
                   rowNum,
-                  coordinateType: 'longitude'
+                  coordinateType: 'longitude',
                 })
               }
+              className="form-input grow"
             />
             <span>{degreeSymbol}</span>
           </div>
         </div>
       </div>
-      <hr />
-    </>
+      <hr className="w-1/2 border-t-gray-dark" />
+    </div>
   );
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { TrashIcon } from '@heroicons/react/24/outline';
+
 import { RootState } from '../../../../js/store/index';
 import { coordinatesContent } from '../../../../../configs/translations/modal.tanslations';
 import { DMSFormValues, CoordinateProps } from '../../../../js/types/coordinateForm';
-import { TrashCanIcon } from '../../../../images/trashCanIcon';
 
 import '../../../../css/coordinatesForm.scss';
 
@@ -34,20 +35,24 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
     minuteSymbol,
     secondsSymbol,
     renderRemoveButton,
-    setSection
+    setSection,
   } = props;
   const { rowNum, latitude, longitude } = dmsSection;
 
   return (
     <>
-      <div className="dms-wrapper">
-        {renderRemoveButton && (
-          <button onClick={(): void => setSection(false)} className="remove-button">
-            REMOVE <TrashCanIcon height={20} width={20} fill={'#555'} />
-          </button>
-        )}
-        <span>{latitudeLabel}</span>
-        <div className="input-wrapper">
+      <div>
+        <div className="flex items-center justify-between">
+          <label>{latitudeLabel}</label>
+          {renderRemoveButton && (
+            <button onClick={(): void => setSection(false)} className="btn-secondary mb-4">
+              <TrashIcon className="w-4 h-4" />
+              <span>Remove</span>
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center space-x-2">
           <input
             type="number"
             name="latitude coordinates"
@@ -57,9 +62,10 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
                 coordinateValue: e.target.value,
                 rowNum,
                 coordinateType: 'latitude',
-                degreeType: 'degree'
+                degreeType: 'degree',
               })
             }
+            className="form-input"
           />
           <span className="degree">{degreeSymbol}</span>
           <input
@@ -71,9 +77,10 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
                 coordinateValue: e.target.value,
                 rowNum,
                 coordinateType: 'latitude',
-                degreeType: 'minutes'
+                degreeType: 'minutes',
               })
             }
+            className="form-input"
           />
           <span className="degree">{minuteSymbol}</span>
           <input
@@ -85,9 +92,10 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
                 coordinateValue: e.target.value,
                 rowNum,
                 coordinateType: 'latitude',
-                degreeType: 'seconds'
+                degreeType: 'seconds',
               })
             }
+            className="form-input"
           />
           <span className="degree">{secondsSymbol}</span>
           <select
@@ -96,7 +104,7 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
               setDMSCardinalType({
                 specificPoint: e.target.value,
                 rowNum,
-                coordinateType: 'latitude'
+                coordinateType: 'latitude',
               })
             }
           >
@@ -106,8 +114,8 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
         </div>
       </div>
       <div className="dms-wrapper">
-        <span>{longitudeLabel}</span>
-        <div className="input-wrapper">
+        <label>{longitudeLabel}</label>
+        <div className="flex items-center space-x-2">
           <input
             type="number"
             name="longitude coordinates"
@@ -117,9 +125,10 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
                 coordinateValue: e.target.value,
                 rowNum,
                 coordinateType: 'longitude',
-                degreeType: 'degree'
+                degreeType: 'degree',
               })
             }
+            className="form-input"
           />
           <span className="degree">{degreeSymbol}</span>
           <input
@@ -131,9 +140,10 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
                 coordinateValue: e.target.value,
                 rowNum,
                 coordinateType: 'longitude',
-                degreeType: 'minutes'
+                degreeType: 'minutes',
               })
             }
+            className="form-input"
           />
           <span className="degree">{minuteSymbol}</span>
           <input
@@ -145,9 +155,10 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
                 coordinateValue: e.target.value,
                 rowNum,
                 coordinateType: 'longitude',
-                degreeType: 'seconds'
+                degreeType: 'seconds',
               })
             }
+            className="form-input"
           />
           <span className="degree">{secondsSymbol}</span>
           <select
@@ -156,7 +167,7 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
               setDMSCardinalType({
                 specificPoint: e.target.value,
                 rowNum,
-                coordinateType: 'longitude'
+                coordinateType: 'longitude',
               })
             }
           >
@@ -165,7 +176,7 @@ export default function DMSSection(props: DMSSectionProps): JSX.Element {
           </select>
         </div>
       </div>
-      <hr />
+      <hr className="w-1/2 border-t-gray-dark" />
     </>
   );
 }
