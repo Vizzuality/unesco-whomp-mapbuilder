@@ -5,13 +5,15 @@
 @font-face {
   font-family: 'Avenir Next';
   src: url(../fonts/AvenirNextLTPro-Regular.otf);
-  font-weight: normal;
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: 'Avenir Next';
   src: url(../fonts/AvenirNextLTPro-Bold.otf);
-  font-weight: bold;
+  font-style: normal;
+  font-weight: 700;
 }
 
 @layer base {

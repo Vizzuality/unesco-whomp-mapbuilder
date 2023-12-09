@@ -1,5 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { FaXTwitter, FaFacebookF } from 'react-icons/fa6';
+
 import { RootState } from '../../../../js/store/index';
 import { TwitterIcon } from '../../../../images/twitterIcon';
 import { FacebookIcon } from '../../../../images/facebookIcon';
@@ -67,22 +69,31 @@ const ShareContent: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="modal-content-container">
-      <div className="directions">
-        <h4 className="title">{title}</h4>
-        <p>{shareModalTitle[selectedLanguage]}</p>
-        <div className="copy-link-wrapper">
-          <input type="text" readOnly value={urlValue} ref={urlRef}></input>
-          <button onClick={(): void => copyURLToClipboard()}>{copyButtonInShareModal[selectedLanguage]}</button>
-        </div>
-        <div className="share-button-wrapper">
-          <button onClick={(): void => shareTwitter()} className="share-button twitter">
-            <TwitterIcon width={20} height={20} fill={'#fff'} />
-          </button>
-          <button onClick={(): void => shareFacebook()} className="share-button facebook">
-            <FacebookIcon width={20} height={20} fill={'#fff'} />
-          </button>
-        </div>
+    <div className="space-y-4">
+      <h2 className="font-bold">{title}</h2>
+      <p className="text-xs">{shareModalTitle[selectedLanguage]}</p>
+      <div className="flex items-center justify-between space-x-2">
+        <input
+          type="text"
+          readOnly
+          value={urlValue}
+          ref={urlRef}
+          className="border border-gray-dark rounded grow p-2 text-xs text-gray-dark"
+        />
+        <button
+          className="bg-primary border border-primary hover:bg-secondary transition-colors text-xs text-white px-4 py-2 rounded"
+          onClick={(): void => copyURLToClipboard()}
+        >
+          {copyButtonInShareModal[selectedLanguage]}
+        </button>
+      </div>
+      <div className="flex items-center justify-center space-x-4">
+        <button onClick={(): void => shareTwitter()}>
+          <FaXTwitter className="h-4 w-4 text-primary" />
+        </button>
+        <button onClick={(): void => shareFacebook()}>
+          <FaFacebookF className="h-4 w-4 text-primary" />
+        </button>
       </div>
     </div>
   );

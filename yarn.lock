@@ -16503,6 +16503,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-icons@npm:^4.12.0":
+  version: 4.12.0
+  resolution: "react-icons@npm:4.12.0"
+  peerDependencies:
+    react: "*"
+  checksum: 2170f43031ee7365539f72d4075cbe6c7fbf9a66d6cf4494aa9393b194272da0564f5b19d1b24dbfc567c0ac89f5fe5b8974d92dd83f61e252388dde6a226fb8
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.12.0, react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -19567,6 +19576,7 @@ __metadata:
     react-datepicker: "npm:^4.8.0"
     react-dom: "npm:^17.0.2"
     react-hook-form: "npm:7.17.5"
+    react-icons: "npm:^4.12.0"
     react-is: "npm:^18.2.0"
     react-measure: "npm:^2.3.0"
     react-redux: "npm:^7.1.3"

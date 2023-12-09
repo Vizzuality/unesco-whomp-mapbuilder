@@ -6,11 +6,15 @@ module.exports = {
   content: ['./dist/*.html', './src/js/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      sans: ['Avenir Next', 'Inter', 'sans-serif'],
+      fontFamily: {
+        sans: ['Avenir Next', 'Inter', 'sans-serif'],
+      },
     },
     colors: {
       white: colors.white,
+      black: colors.black,
       primary: 'hsla(206, 100%, 42%, 1)',
+      secondary: 'hsla(206, 100%, 33%, 1)',
       warn: 'hsla(47, 100%, 49%, 1)',
       gray: {
         dark: 'hsla(206, 100%, 15%, 1)',
