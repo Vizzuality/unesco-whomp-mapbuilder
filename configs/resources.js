@@ -12,7 +12,7 @@ export default {
   mapThemes: '',
   narrative: '',
   hideHeader: true,
-  hideFooter: true,
+  hideFooter: false,
   includeMyGFWLogin: false,
   navLinksInNewTab: false,
   customColorTheme: '#0077D4',

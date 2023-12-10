@@ -1,6 +1,9 @@
 import React from 'react';
+import clsx from 'clsx';
+import { Listbox } from '@headlessui/react';
+import { ArrowPathIcon } from '@heroicons/react/24/outline';
+
 import { mapController } from '../../../js/controllers/mapController';
-import { InfoboxIcon } from '../../..//images/infoBoxIcon';
 import { headerContent } from '../../../../configs/translations/header.translations';
 
 interface DropProps {
@@ -52,49 +55,36 @@ function valueToLang(abbrev: string): string {
 
 const LanguageDropdown = (props: DropProps) => {
   const labels = [props.language, props.alternativeLanguage];
+
   return (
-    <div className="language-dropdown-container" data-cy="lang-dropdown">
-      <ul className="dropdown" role="list">
-        <span className="label-wrapper" role="listitem">
-          <InfoboxIcon height={16} width={16} fill={'#555'} />
-          <li className="dropdown-label">
-            {headerContent[props.selectedLanguage].language}
-          </li>
-        </span>
-        <ul className="options" role="listitem">
-          <li
-            data-lang={labels[0]}
-            role="button"
-            aria-labelledby="dropdown-label"
-            id={`dropdown__selected ${
-              headerContent[props.selectedLanguage].language
-            }`}
-            tabIndex={0}
-            onClick={() => mapController.changeLanguage(props.language)}
-            className={`app-header__language
-              ${props.selectedLanguage === props.language ? 'selected' : ''}
-           `}
-          >
-            {valueToLang(props.language)}
-          </li>
-          <li
-            data-lang={labels[1]}
-            role="button"
-            aria-labelledby="dropdown-label"
-            id={`dropdown__selected ${props.alternativeLanguage}`}
-            tabIndex={0}
-            onClick={() =>
-              mapController.changeLanguage(props.alternativeLanguage)
-            }
-            className={`app-header__language
-              ${props.selectedLanguage === props.language ? 'selected' : ''}
-           `}
-          >
-            {valueToLang(props.alternativeLanguage)}
-          </li>
-        </ul>
-      </ul>
-    </div>
+    <Listbox as="div" className="relative">
+      <Listbox.Button className="flex items-center space-x-2">
+        <ArrowPathIcon className="h-4 w-4" />
+        <span>{headerContent[props.selectedLanguage].language}</span>
+      </Listbox.Button>
+      <Listbox.Options className="absolute left-0 bottom-full z-10 mb-2 origin-bottom-left bg-white rounded shadow-sm ring-1 ring-gray-light">
+        <Listbox.Option
+          className={clsx('px-4 py-2 cursor-pointer hover:bg-primary hover:text-white', {
+            'bg-primary text-white': props.selectedLanguage === props.language,
+          })}
+          value={props.language}
+          onClick={() => mapController.changeLanguage(props.language)}
+          data-lang={labels[0]}
+        >
+          {valueToLang(props.language)}
+        </Listbox.Option>
+        <Listbox.Option
+          className={clsx('px-4 py-2 cursor-pointer hover:bg-primary hover:text-white', {
+            'bg-primary text-white': props.selectedLanguage === props.alternativeLanguage,
+          })}
+          value={props.alternativeLanguage}
+          onClick={() => mapController.changeLanguage(props.alternativeLanguage)}
+          data-lang={labels[1]}
+        >
+          {valueToLang(props.alternativeLanguage)}
+        </Listbox.Option>
+      </Listbox.Options>
+    </Listbox>
   );
 };
 

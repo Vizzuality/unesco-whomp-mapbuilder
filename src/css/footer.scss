@@ -1,53 +1,57 @@
 @import 'variables.scss';
 
-.footer-container {
-  display: grid;
-  grid-template-columns: auto 1fr 2fr;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 0.25rem;
-  align-items: center;
+// .footer-container {
+//   display: grid;
+//   grid-template-columns: auto 1fr 2fr;
+//   position: absolute;
+//   bottom: 0;
+//   width: 100%;
+//   background-color: rgba(255, 255, 255, 0.5);
+//   padding: 0.25rem;
+//   align-items: center;
 
-  .footer-links {
-    display: flex;
-    p {
-      margin: 0;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      margin-left: 10px;
-      color: #555;
-      border-right: 1px solid #555;
-      padding-right: 10px;
-      font-size: 12px;
-      font-family: $fira-sans;
-      a {
-        color: inherit;
-      }
-    }
-    span {
-      margin-top: 0.2rem;
-    }
-  }
+//   .footer-links {
+//     display: flex;
+//     p {
+//       margin: 0;
+//       margin-top: 10px;
+//       margin-bottom: 10px;
+//       margin-left: 10px;
+//       color: #555;
+//       border-right: 1px solid #555;
+//       padding-right: 10px;
+//       font-size: 12px;
+//       font-family: $fira-sans;
+//       a {
+//         color: inherit;
+//       }
+//     }
+//     span {
+//       margin-top: 0.2rem;
+//     }
+//   }
 
-  .attribution {
-    max-width: 950px;
-    white-space: nowrap;
-    background-color: rgba(0, 0, 0, 0);
+//   .attribution {
+//     max-width: 950px;
+//     white-space: nowrap;
+//     background-color: rgba(0, 0, 0, 0);
 
-    .esri-attribution__sources--open {
-      max-width: 950px !important;
-    }
-  }
-  .scaleBar {
-    margin-right: 15px;
-    margin-left: 10px;
-  }
-}
+//     .esri-attribution__sources--open {
+//       max-width: 950px !important;
+//     }
+//   }
+//   .scaleBar {
+//     margin-right: 15px;
+//     margin-left: 10px;
+//   }
+// }
 
-@media screen and (max-width: 475px) {
-  .footer-container {
-    bottom: 2.5rem;
-  }
+// @media screen and (max-width: 475px) {
+//   .footer-container {
+//     bottom: 2.5rem;
+//   }
+// }
+
+.esri-attribution {
+  background-color: transparent !important;
 }
