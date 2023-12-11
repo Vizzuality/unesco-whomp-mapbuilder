@@ -1,5 +1,5 @@
 export default {
-  webmap: 'de85e3fcc07948238aa6c1afd2a4ceb0',
+  webmap: '6a46e9f0ca644faca6c6e1f513267fa0',
   title: 'World Heritage Online Maps Platform',
   subtitle: '',
   logoUrl: '',
@@ -18,7 +18,7 @@ export default {
   customColorTheme: '#0077D4',
   language: 'en',
   useAlternativeLanguage: true,
-  alternativeWebmap: 'e630d7fe00494a4586cae262381289b1',
+  alternativeWebmap: '6a46e9f0ca644faca6c6e1f513267fa0',
   alternativeLanguage: 'fr',
   alternativeLanguageTitle: 'UNESCO WHOMP',
   alternativeLanguageSubtitle: '',
