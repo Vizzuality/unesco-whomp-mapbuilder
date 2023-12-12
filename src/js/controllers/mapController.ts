@@ -110,7 +110,7 @@ export class MapController {
 
   async initializeMap(domRef: RefObject<any>): Promise<void> {
     this._domRef = domRef;
-    const { appSettings, appState } = store.getState();
+    const { appSettings, appState, mapviewState } = store.getState();
 
     const [MapView, WebMap, Portal, GraphicsLayer, Polygon, Graphic] = await loadModules([
       'esri/views/MapView',
@@ -187,6 +187,7 @@ export class MapController {
         store.dispatch(isMapReady(true));
         //default scale for map
         this._webmapBasemap = this._map?.basemap.clone();
+        // this.setActiveBasemap(mapviewState.activeBasemap);
         if (!this._mapview) return;
         store.dispatch(changeMapScale(this._mapview.scale));
         const { latitude, longitude } = this._mapview.center;

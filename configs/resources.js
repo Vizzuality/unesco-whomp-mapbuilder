@@ -20,7 +20,7 @@ export default {
   useAlternativeLanguage: true,
   alternativeWebmap: '6a46e9f0ca644faca6c6e1f513267fa0',
   alternativeLanguage: 'fr',
-  alternativeLanguageTitle: 'UNESCO WHOMP',
+  alternativeLanguageTitle: 'Plateforme de cartes en ligne du patrimoine mondial',
   alternativeLanguageSubtitle: '',
   alternativeMapThemes: '',
   alternativeNarrative: '',
@@ -72,6 +72,12 @@ export default {
   disabledAnalysisModules: [], //'VIIRS_FIRES', 'GLAD_ALERTS', 'TC_LOSS', 'IFL', 'LCC'
   // layers added in Arcgis Online, map id layer with the group id
   webmapLayerGroupsMap: {
+    '18c59090835-layer-73': 'GROUP_CUSTOM_BASEMAP',
+    '18c590868ad-layer-72': 'GROUP_CUSTOM_BASEMAP',
+    '18c5907c5ac-layer-71': 'GROUP_CUSTOM_BASEMAP',
+    '18c5906db15-layer-70': 'GROUP_CUSTOM_BASEMAP',
+    '18c590636fa-layer-69': 'GROUP_CUSTOM_BASEMAP',
+    '18c590528da-layer-68': 'GROUP_CUSTOM_BASEMAP',
     '18c58fa310b-layer-64': 'GROUP_THREATS_AND_RISKS',
     '18c58f6c14a-layer-62': 'GROUP_THREATS_AND_RISKS',
     '18c58f281b8-layer-61': 'GROUP_THREATS_AND_RISKS',
@@ -443,6 +449,15 @@ export default {
     //     },
     //   ],
     // },
+    GROUP_CUSTOM_BASEMAP: {
+      order: 9,
+      groupType: 'default',
+      label: {
+        en: 'Custom basemap',
+        fr: 'Personnaliser le fond de carte',
+      },
+      layers: [],
+    },
     GROUP_IMAGERY: {
       groupType: 'imagery',
       order: 10,

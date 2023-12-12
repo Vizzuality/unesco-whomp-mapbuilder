@@ -23,7 +23,7 @@ const initialState: MapviewState = {
   activeFeatures: [],
   activeFeatureIndex: [0, 0], //first element is the index of the layer, second is the index of feature
   documents: null,
-  activeBasemap: 'webmap',
+  activeBasemap: 'satellite',
   timeSlider: [2001, 2021],
   scale: 0,
   mapCenterCoordinates: { latitude: 0, longitude: 0 },

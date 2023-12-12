@@ -165,7 +165,7 @@ export const analysisContent = {
   },
   fr: {
     description:
-      'Exécutez des analyses de perte de couverture arborée, de composition de la couverture terrestre et d’alertes de déforestation et d’incendie quasi-temps réel.',
+      'Effectuez des analyses de perte de couvert forestier, occupation des sols et alertes de déforestation et d’incendies en temps quasi réel.',
     analyzeExistingShapeTitle: 'Analysez un polygone sur la carte',
     analyzeExistingShapeDirections: [
       "Utilisez l'onglet Couches pour activer une couche de données",
@@ -430,7 +430,8 @@ export const layersPanelTranslations = {
   },
   fr: {
     layers: 'Couches',
-    description: '',
+    description:
+      'Sélectionnez des ensembles de données de différentes catégories (temps quasi réel, protection et gestion, valeurs naturelles, climat, socioéconomique, menaces et risques et imagerie récente) que vous souhaitez visualiser et ajouter à la carte.',
     selectAll: 'Tout sélectionner',
     clearAll: 'Tout effacer',
     legend: 'Légende',
