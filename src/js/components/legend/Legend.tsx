@@ -17,6 +17,7 @@ const getWindowDimensions = () => {
 };
 
 const Legend = (): JSX.Element => {
+  const hideFooter = useSelector((store: RootState) => store.appSettings.hideFooter);
   const hideLegend = useSelector((store: RootState) => store.appSettings.hideLegend);
   const hideWidgetActive = useSelector((store: RootState) => store.appState.hideWidgetActive);
   const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
@@ -78,7 +79,9 @@ const Legend = (): JSX.Element => {
     <>
       {onMobileOrDesktop && (
         <div
-          className="z-10 absolute bg-white right-6 bottom-6 py-4 px-5 rounded w-full max-w-[282px]"
+          className={clsx('z-10 absolute bg-white right-6 bottom-6 py-4 px-5 rounded w-full max-w-[282px]', {
+            'bottom-16': !hideFooter,
+          })}
           data-cy="legend"
         >
           <button

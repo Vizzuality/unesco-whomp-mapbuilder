@@ -24,7 +24,7 @@ export default {
   alternativeLanguageSubtitle: '',
   alternativeMapThemes: '',
   alternativeNarrative: '',
-  alternativeWebmapMenuName: 'Additional Layers',
+  alternativeWebmapMenuName: 'Custom layers',
   initialExtent: {
     x: null,
     y: null,
@@ -105,7 +105,7 @@ export default {
   },
   layerPanel: {
     GROUP_WEBMAP: {
-      order: 0,
+      order: 8,
       label: {},
       layers: [],
     },
@@ -145,6 +145,19 @@ export default {
           type: 'remoteDataLayer',
           uuid: '6d316908-92c8-4f95-8598-f2a0c72786af',
         },
+        {
+          id: 'AIR_QUALITY_CUSTOM',
+          groupId: 'GROUP_NEAR_REAL_TIME',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '1a08810f-34a4-4c53-8a37-6782d0ab6dec',
+          label: {
+            en: 'Air Quality',
+            fr: "Qualité de l'air",
+          },
+        },
       ],
     },
     GROUP_PROTECTION_AND_MANAGEMENT: {
@@ -172,7 +185,21 @@ export default {
         en: 'Socioeconomic',
         fr: 'Socioéconomique',
       },
-      layers: [],
+      layers: [
+        {
+          id: 'GDP_CUSTOM',
+          groupId: 'GROUP_SOCIOECONOMIC',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '59c4d394-f5a2-459d-a1a2-2a19e4823244',
+          label: {
+            en: 'Gross Domestic Product (GDP)',
+            fr: 'Produit intérieur brut (PIB)',
+          },
+        },
+      ],
     },
     GROUP_THREATS_AND_RISKS: {
       order: 6,
@@ -181,7 +208,21 @@ export default {
         en: 'Threats and Risks',
         fr: 'Menaces et risques',
       },
-      layers: [],
+      layers: [
+        {
+          id: 'CORAL_BLEACHING_RISK_CUSTOM',
+          groupId: 'GROUP_THREATS_AND_RISKS',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: 'dc2c2cc8-a351-4221-ad16-0671bc430ada',
+          label: {
+            en: 'Coral Bleaching Risk',
+            fr: 'Risque de blanchissement des coraux',
+          },
+        },
+      ],
     },
     GROUP_CLIMATE: {
       groupType: 'default',
@@ -241,42 +282,21 @@ export default {
           type: 'remoteDataLayer',
           uuid: 'bd768c4b-f5f8-47f9-b6a0-5bb6078f0fac',
         },
-        {
-          id: 'CUSTOM_1',
-          groupId: 'GROUP_CLIMATE',
-          order: 10,
-          type: 'flagship',
-          origin: 'gfw-api',
-          layerType: 'base-tile-layer',
-          uuid: '1a08810f-34a4-4c53-8a37-6782d0ab6dec',
-          label: {
-            en: 'Custom 1',
-          },
-          sublabel: {
-            en: 'Lorem ipsum',
-          },
-        },
-        {
-          id: 'AIR_QUALITY_CUSTOM',
-          groupId: 'GROUP_CLIMATE',
-          order: 9,
-          type: 'flagship',
-          // "datasetURL": "https://data-api.globalforestwatch.org/dataset/nexgddp_change_dry_spells_2000_2080/latest",
-          // "datasetLegendConfigURL": "https://api.resourcewatch.org/v1/layer/7c497efb-1671-49bf-87a2-3c96ddb9ff88?filterIncludesByEnv=true&includes=vocabulary,metadata&env=production",
-          // datasetURL: 'https://api.resourcewatch.org/v1/dataset/c66d7f3a-d1a8-488f-af8b-302b0f2c3840',
-          // datasetLegendConfigURL: 'https://api.resourcewatch.org/v1/layer/70e900f1-2c37-470d-9367-7b34567e3084',
-          origin: 'gfw-api',
-          layerType: 'base-tile-layer',
-          uuid: '70e900f1-2c37-470d-9367-7b34567e3084',
-          label: {
-            en: 'Air Quality testing',
-            fr: 'Air Quality testing',
-          },
-          sublabel: {
-            en: '2019, 30m, global, UMD/NASA GEDI',
-            fr: '2019, 30m, global, UMD/NASA GEDI',
-          },
-        },
+        // {
+        //   id: 'CUSTOM_1',
+        //   groupId: 'GROUP_CLIMATE',
+        //   order: 10,
+        //   type: 'flagship',
+        //   origin: 'gfw-api',
+        //   layerType: 'base-tile-layer',
+        //   uuid: '1a08810f-34a4-4c53-8a37-6782d0ab6dec',
+        //   label: {
+        //     en: 'Custom 1',
+        //   },
+        //   sublabel: {
+        //     en: 'Lorem ipsum',
+        //   },
+        // },
       ],
     },
     // GROUP_LCD: {

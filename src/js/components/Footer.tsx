@@ -40,7 +40,7 @@ const Footer = (): JSX.Element => {
     <div className="absolute z-30 bg-white/40 left-0 bottom-0 w-full">
       <div className="flex items-center justify-between space-x-4 p-4 text-xs">
         {/* <div className="scaleBar" ref={scaleRef}></div> */}
-        <div>
+        <div className="shrink-0">
           {useAlternativeLanguage && alternativeWebmap && alternativeLanguage && (
             <LanguageDropdown
               language={language}
@@ -50,7 +50,7 @@ const Footer = (): JSX.Element => {
           )}
         </div>
         <div className="">{footerLinksItems}</div>
-        <div className="" ref={attRef}></div>
+        <div className="overflow-x-auto" ref={attRef}></div>
       </div>
     </div>
   );

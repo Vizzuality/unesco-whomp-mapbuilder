@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Listbox } from '@headlessui/react';
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import { GlobeAltIcon } from '@heroicons/react/24/outline';
 
 import { mapController } from '../../../js/controllers/mapController';
 import { headerContent } from '../../../../configs/translations/header.translations';
@@ -59,7 +59,7 @@ const LanguageDropdown = (props: DropProps) => {
   return (
     <Listbox as="div" className="relative">
       <Listbox.Button className="flex items-center space-x-2">
-        <ArrowPathIcon className="h-4 w-4" />
+        <GlobeAltIcon className="h-4 w-4" />
         <span>{headerContent[props.selectedLanguage].language}</span>
       </Listbox.Button>
       <Listbox.Options className="absolute left-0 bottom-full z-10 mb-2 origin-bottom-left bg-white rounded shadow-sm ring-1 ring-gray-light">

@@ -66,7 +66,7 @@ const initialState: AppState = {
   leftPanel: {
     tabViewVisible: true,
     activeTab: 'layers',
-    openLayerGroup: 'GROUP_WEBMAP',
+    openLayerGroup: 'GROUP_WORLD_HERITAGE',
     density: 5,
     analysisDateRange: [format(new Date(Date.now()), 'yyyy-MM-dd'), format(new Date(Date.now()), 'yyyy-MM-dd')],
     analysisYearRange: [2001, 2018],
