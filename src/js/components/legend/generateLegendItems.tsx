@@ -58,7 +58,7 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
           item.label = item.label && item.label.length ? item.label : layer.title;
           const subLabels = item.legend.map((subitem: any, i: number) => {
             return (
-              <div key={i} className="sublayer-item-feature">
+              <div key={`${layer.id}-legend-sublabel-${i}`} className="sublayer-item-feature">
                 <div>
                   <LegendLabel type={'webmap'} options={subitem} opacity={layer.opacity.combined} />
                 </div>
@@ -67,14 +67,14 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
             );
           });
           return (
-            <div className="label-item-feature space-y-1" key={i}>
+            <div className="label-item-feature space-y-1" key={`${layer.id}-legend-feature-${i}`}>
               {layer.type === 'tiled' && <div className="title">{item.name}</div>}
               {subLabels}
             </div>
           );
         });
         return (
-          <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+          <div className="layer-item space-y-1" key={`${layer.id}-legend-item-${i}`}>
             <h3 className="text-xs font-bold">{layer.title}</h3>
             {labelIcons}
           </div>

@@ -22,7 +22,7 @@ const ManualLegend = (props: ManualLegendProps) => {
     </div>
   );
   return (
-    <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+    <div className="layer-item space-y-1" key={`${layer.id}-manual-legend-item-${i}`}>
       <h3 className="text-xs font-bold">{layer.title}</h3>
       {label}
     </div>

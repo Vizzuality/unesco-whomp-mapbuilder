@@ -417,8 +417,21 @@ export async function getRemoteAndServiceLayers(): Promise<any> {
                 metadata: {
                   metadata: metadata,
                   legendConfig: item.legend || {
-                    name: item.label,
+                    name: {
+                      en: item.name,
+                      fr: item.name,
+                    },
                     ...layer.attributes.legendConfig,
+                    items: layer.attributes.legendConfig.items.map((item) => {
+                      return {
+                        color: item.color,
+                        id: `${layer.attributes.slug}-${item.id}`,
+                        name: {
+                          en: item.name,
+                          fr: item.name,
+                        },
+                      };
+                    }),
                   },
                   interactionConfig: intConfig,
                 },
@@ -443,7 +456,7 @@ export async function getRemoteAndServiceLayers(): Promise<any> {
     configObject['items'] = config.attributes.legendConfig.items.map((item) => {
       return {
         color: item.color,
-        id: item.id,
+        id: `${config.attributes.slug}-${item.id}`,
         name: {
           en: item.name,
         },
