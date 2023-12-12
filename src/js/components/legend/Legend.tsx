@@ -79,8 +79,9 @@ const Legend = (): JSX.Element => {
     <>
       {onMobileOrDesktop && (
         <div
-          className={clsx('z-10 absolute bg-white right-6 bottom-6 py-4 px-5 rounded w-full max-w-[282px]', {
+          className={clsx('z-10 absolute bg-white right-6 py-4 px-5 rounded w-full max-w-[282px]', {
             'bottom-16': !hideFooter,
+            'bottom-6': hideFooter,
           })}
           data-cy="legend"
         >
