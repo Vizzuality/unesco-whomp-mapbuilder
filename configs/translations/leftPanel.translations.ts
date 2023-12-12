@@ -337,7 +337,7 @@ export const basemapLayersContent = {
       title: {
         en: 'Imagery',
         ka: 'Imagery',
-        fr: 'Imagery',
+        fr: 'Imagerie',
         es: 'Imagery',
         pt: 'Imagery',
         id: 'Imagery',
@@ -345,31 +345,55 @@ export const basemapLayersContent = {
       },
     },
     {
-      id: 'hybrid',
-      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/hybrid.jpg',
+      id: 'topo-vector',
+      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/satellite.jpg',
       title: {
-        en: 'Imagery with Labels',
-        ka: 'Imagery with Labels',
-        fr: 'Imagery with Labels',
-        es: 'Imagery with Labels',
-        pt: 'Imagery with Labels',
-        id: 'Imagery with Labels',
-        zh: 'Imagery with Labels',
+        en: 'Topographic',
+        fr: 'Topographique',
       },
     },
     {
-      id: 'osm',
+      id: 'streets-vector',
       thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/osm.jpg',
       title: {
-        en: 'Open Street Map',
+        en: 'World Street Map',
         ka: 'Open Street Map',
-        fr: 'Open Street Map',
+        fr: 'Carte mondiale des rues',
         es: 'Open Street Map',
         pt: 'Open Street Map',
         id: 'Open Street Map',
         zh: 'Open Street Map',
       },
     },
+    {
+      id: 'gray-vector',
+      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/satellite.jpg',
+      title: {
+        en: 'Light grey canvas',
+        fr: 'Frond gris clair',
+      },
+    },
+    {
+      id: 'dark-gray-vector',
+      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/satellite.jpg',
+      title: {
+        en: 'Dark gray',
+        fr: 'Fond foncé',
+      },
+    },
+    // {
+    //   id: 'hybrid',
+    //   thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/hybrid.jpg',
+    //   title: {
+    //     en: 'Imagery with Labels',
+    //     ka: 'Imagery with Labels',
+    //     fr: 'Imagery with Labels',
+    //     es: 'Imagery with Labels',
+    //     pt: 'Imagery with Labels',
+    //     id: 'Imagery with Labels',
+    //     zh: 'Imagery with Labels',
+    //   },
+    // },
   ],
 };
 
