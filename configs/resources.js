@@ -495,34 +495,7 @@ export default {
         zh: 'Basemap',
         ka: 'საბაზო რუკა',
       },
-      layers: [
-        {
-          id: 'wri_mono',
-          thumbnailUrl: 'https://my.gfw-mapbuilder.org/img/wri_mono.png',
-          title: {
-            en: 'WRI Mono',
-            fr: 'WRI Mono',
-            es: 'WRI Mono',
-            pt: 'WRI Mono',
-            id: 'WRI Mono',
-            zh: 'WRI Mono',
-            ka: 'WRI Mono',
-          },
-        },
-        {
-          id: 'wri_contextual',
-          thumbnailUrl: 'https://my.gfw-mapbuilder.org/img/wri_contextual.png',
-          title: {
-            en: 'WRI Contextual',
-            fr: 'WRI Contextual',
-            es: 'WRI Contextual',
-            pt: 'WRI Contextual',
-            id: 'WRI Contextual',
-            zh: 'WRI Contextual',
-            ka: 'WRI Contextual',
-          },
-        },
-      ],
+      layers: [],
     },
     extraLayers: [
       {

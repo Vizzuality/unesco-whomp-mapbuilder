@@ -346,7 +346,8 @@ export const basemapLayersContent = {
     },
     {
       id: 'topo-vector',
-      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/satellite.jpg',
+      thumbnailUrl:
+        'https://www.arcgis.com/sharing/rest/content/items/7dc6cea0b1764a1f9af2e679f642f0f5/info/thumbnail/Topographic_600x400_thumb.jpg',
       title: {
         en: 'Topographic',
         fr: 'Topographique',
@@ -354,7 +355,8 @@ export const basemapLayersContent = {
     },
     {
       id: 'streets-vector',
-      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/osm.jpg',
+      thumbnailUrl:
+        'https://www.arcgis.com/sharing/rest/content/items/de26a3cf4cc9451298ea173c4b324736/info/thumbnail/thumbnail1561650886307.jpeg',
       title: {
         en: 'World Street Map',
         ka: 'Open Street Map',
@@ -367,7 +369,8 @@ export const basemapLayersContent = {
     },
     {
       id: 'gray-vector',
-      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/satellite.jpg',
+      thumbnailUrl:
+        'https://www.arcgis.com/sharing/rest/content/items/8a2cba3b0ebf4140b7c0dc5ee149549a/info/thumbnail/thumbnail1561651296556.jpeg',
       title: {
         en: 'Light grey canvas',
         fr: 'Frond gris clair',
@@ -375,7 +378,8 @@ export const basemapLayersContent = {
     },
     {
       id: 'dark-gray-vector',
-      thumbnailUrl: 'https://my.gfw-mapbuilder.org/js/arcgis-api-mapbuilder-1.2/esri/images/basemap/satellite.jpg',
+      thumbnailUrl:
+        'https://www.arcgis.com/sharing/rest/content/items/c11ce4f7801740b2905eb03ddc963ac8/info/thumbnail/thumbnail1561649860011.jpeg',
       title: {
         en: 'Dark gray',
         fr: 'Fond foncé',
