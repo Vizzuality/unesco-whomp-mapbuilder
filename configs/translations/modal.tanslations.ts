@@ -174,9 +174,9 @@ export const searchContent = {
   en: {
     latitude: 'Lat',
     longitude: 'Lon',
-    title: 'Search for feature:',
-    coordinatesTitle: 'Search by coordinates:',
-    buttonTitle: 'Search',
+    title: 'Locate:',
+    coordinatesTitle: 'Search by coordinate:',
+    buttonTitle: 'Go to',
   },
   az: {
     latitude: 'Enlik',
@@ -205,9 +205,9 @@ export const searchContent = {
   fr: {
     latitude: 'Lat',
     longitude: 'Lon',
-    title: 'Recherche de polygones:',
+    title: 'Rechercher:',
     coordinatesTitle: 'Recherche par coordonnées:',
-    buttonTitle: 'Chercher',
+    buttonTitle: 'Aller',
   },
   es: {
     latitude: 'Latitud',
