@@ -179,19 +179,6 @@ export default {
             fr: "Qualité de l'air",
           },
         },
-        {
-          id: 'CARTO_LAYER_CUSTOM',
-          groupId: 'GROUP_NEAR_REAL_TIME',
-          order: 9,
-          type: 'flagship',
-          origin: 'gfw-api',
-          layerType: 'base-tile-layer',
-          uuid: 'fdf06d8c-72e9-48a7-80f1-27bd5f19342c',
-          label: {
-            en: 'Water stress',
-            fr: "Qualité de l'air",
-          },
-        },
       ],
     },
     GROUP_PROTECTION_AND_MANAGEMENT: {
@@ -233,6 +220,19 @@ export default {
             fr: 'Produit intérieur brut (PIB)',
           },
         },
+        {
+          id: 'WATER_STRESS_CUSTOM',
+          groupId: 'GROUP_SOCIOECONOMIC',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: 'fdf06d8c-72e9-48a7-80f1-27bd5f19342c',
+          label: {
+            en: 'Water stress',
+            fr: 'Stress hydrique',
+          },
+        },
       ],
     },
     GROUP_THREATS_AND_RISKS: {
@@ -243,6 +243,58 @@ export default {
         fr: 'Menaces et risques',
       },
       layers: [
+        {
+          id: 'PROJECTED_WATER_STRESS_CUSTOM',
+          groupId: 'GROUP_THREATS_AND_RISKS',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '90992233-36d7-45f9-97db-0ccf28275285',
+          label: {
+            en: 'Projected Water stress',
+            fr: 'Stress hydrique projeté',
+          },
+        },
+        {
+          id: 'RIVERINE_FLOOD_RISK_CUSTOM',
+          groupId: 'GROUP_THREATS_AND_RISKS',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '2a652430-f94c-4185-b1ad-fae38502dfd2',
+          label: {
+            en: 'Riverine Flood Risk',
+            fr: "Risque d'inondation des cours d'eau",
+          },
+        },
+        {
+          id: 'DROUGHT_RISK_CUSTOM',
+          groupId: 'GROUP_THREATS_AND_RISKS',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: 'cf0bd43a-529b-4c46-8f95-927279608ba7',
+          label: {
+            en: 'Drought Risk',
+            fr: 'Risque de sécheresse',
+          },
+        },
+        {
+          id: 'COASTAL_FLOOD_RISK_STRESS_CUSTOM',
+          groupId: 'GROUP_THREATS_AND_RISKS',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: '8f355cf2-bfbd-4692-8e23-a5c689fa02d7',
+          label: {
+            en: 'Coastal Flood Risk',
+            fr: "Risque d'inondation côtière",
+          },
+        },
         {
           id: 'CORAL_BLEACHING_RISK_CUSTOM',
           groupId: 'GROUP_THREATS_AND_RISKS',
