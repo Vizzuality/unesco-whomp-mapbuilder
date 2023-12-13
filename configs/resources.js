@@ -123,6 +123,7 @@ export default {
     '18c58986620-layer-2': 'GROUP_WORLD_HERITAGE',
     '18c58986622-layer-3': 'GROUP_WORLD_HERITAGE',
     '18c58986623-layer-4': 'GROUP_WORLD_HERITAGE',
+    sdei_global_annual_avg_pm2_5_2001_2010_image_service_7231: 'GROUP_SOCIOECONOMIC',
   },
   layerPanel: {
     GROUP_WEBMAP: {

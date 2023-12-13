@@ -67,6 +67,7 @@ const Legend = (): JSX.Element => {
     const visibleLayers = allAvailableLayers
       .filter((l) => l.visible)
       .filter((l) => !ignoredLayers.includes(l.id))
+      .filter((l) => l.group !== 'GROUP_CUSTOM_BASEMAP') // ignore custom basemap
       .filter((l) => layerIsInScale(l, scale));
     //sync layer loading state with legend comp
     setVisibleLayersToShow(visibleLayers);
