@@ -302,7 +302,7 @@ const DataTabView = (props: DataTabProps): JSX.Element => {
   const tabViewIsVisible = tabViewVisible && activeTab === props.label;
 
   return (
-    <div className={tabViewIsVisible ? 'tabview-container' : 'hide tabview-container'}>
+    <div className={tabViewIsVisible ? 'tabview-container px-10 py-8' : 'hide tabview-container'}>
       {activeFeatures.length === 0 ? <DefaultTabView customColorTheme={themeColor} /> : <FeatureDataView />}
     </div>
   );

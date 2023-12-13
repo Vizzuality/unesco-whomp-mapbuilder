@@ -256,19 +256,19 @@ const GenericLayerControl = (props: LayerControlProps): React.ReactElement => {
     }
   };
 
-  const openInfoModal = (): void => {
-    let layerId;
-    if (layer.title === 'GFW Integrated Alerts') {
-      layerId = gfwLayer;
-    } else {
-      layerId = layer.id;
-    }
-    if (layer) {
-      dispatch(renderModal('InfoContent'));
-      dispatch(setInfoModalLayerID(layerId));
-    }
-    return;
-  };
+  // const openInfoModal = (): void => {
+  //   let layerId;
+  //   if (layer.title === 'GFW Integrated Alerts') {
+  //     layerId = gfwLayer;
+  //   } else {
+  //     layerId = layer.id;
+  //   }
+  //   if (layer) {
+  //     dispatch(renderModal('InfoContent'));
+  //     dispatch(setInfoModalLayerID(layerId));
+  //   }
+  //   return;
+  // };
 
   const toggleOpacitySlider = (): void => {
     setOpacityControl(!opacityControl);
@@ -449,10 +449,11 @@ const GenericLayerControl = (props: LayerControlProps): React.ReactElement => {
             <button type="button" onClick={(): void => toggleOpacitySlider()}>
               <OpacityIcon width={12} height={12} fill={themeColor} />
             </button>
-            <button type="button" onClick={(): void => openInfoModal()}>
-              {/* <InfoIcon width={8} height={8} fill={'#fff'} /> */}
-              <InformationCircleIcon className="w-4 h-4 text-primary" />
-            </button>
+            {/* {layer.group !== 'GROUP_WORLD_HERITAGE' && (
+              <button type="button" onClick={(): void => openInfoModal()}>
+                <InformationCircleIcon className="w-4 h-4 text-primary" />
+              </button>)
+            } */}
             {layer.dashboardURL && (
               <button type="button" onClick={(): void => openDashModal()}>
                 <DashboardIcon width={12} height={12} fill={themeColor} />

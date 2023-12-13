@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
-import { ChartBarIcon, Square3Stack3DIcon } from '@heroicons/react/24/solid';
+import { ChartBarIcon, Square3Stack3DIcon, CircleStackIcon } from '@heroicons/react/24/solid';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 import { RootState } from '../../../js/store/index';
 import { selectActiveTab, toggleTabviewPanel } from '../../../js/store/appState/actions';
 import TabViewContainer from './TabViewContainer';
 
-import { DataTabIcon } from '../../../images/dataTabIcon';
 import { DocumentsTabIcon } from '../../../images/documentsTabIcon';
 import { InfoTabIcon } from '../../../images/infoTabIcon';
 import { HamburgerIcon } from '../../../images/hamburgerIcon';
@@ -170,7 +169,7 @@ const LeftPanel = (): React.ReactElement => {
     },
     {
       label: 'data',
-      icon: DataTabIcon,
+      icon: () => <CircleStackIcon className="h-6 w-6" />,
       tooltipText: 'Data',
       render: false,
     },
