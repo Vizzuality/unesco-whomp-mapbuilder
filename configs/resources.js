@@ -1,5 +1,5 @@
 export default {
-  webmap: '77c5be20e31c4db89034cf0496c0fb00',
+  webmap: '0e163aaf5a15423a94ebfa1945dfc328',
   title: 'World Heritage Online Maps Platform',
   subtitle: '',
   logoUrl: '',
@@ -18,7 +18,7 @@ export default {
   customColorTheme: '#0077D4',
   language: 'en',
   useAlternativeLanguage: true,
-  alternativeWebmap: '6a46e9f0ca644faca6c6e1f513267fa0',
+  alternativeWebmap: 'a180fa4dbd154ce28f39bc1ac72a557f',
   alternativeLanguage: 'fr',
   alternativeLanguageTitle: 'Plateforme de cartes en ligne du patrimoine mondial',
   alternativeLanguageSubtitle: '',
