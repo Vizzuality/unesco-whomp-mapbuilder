@@ -171,7 +171,7 @@ const LeftPanel = (): React.ReactElement => {
       label: 'data',
       icon: () => <CircleStackIcon className="h-6 w-6" />,
       tooltipText: 'Data',
-      render: false,
+      render: true,
     },
     {
       label: 'analysis',
