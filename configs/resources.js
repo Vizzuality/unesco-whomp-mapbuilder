@@ -179,6 +179,19 @@ export default {
             fr: "Qualité de l'air",
           },
         },
+        {
+          id: 'CARTO_LAYER_CUSTOM',
+          groupId: 'GROUP_NEAR_REAL_TIME',
+          order: 9,
+          type: 'flagship',
+          origin: 'gfw-api',
+          layerType: 'base-tile-layer',
+          uuid: 'fdf06d8c-72e9-48a7-80f1-27bd5f19342c',
+          label: {
+            en: 'Water stress',
+            fr: "Qualité de l'air",
+          },
+        },
       ],
     },
     GROUP_PROTECTION_AND_MANAGEMENT: {
