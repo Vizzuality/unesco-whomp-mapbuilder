@@ -12,6 +12,48 @@ import {
 } from '../../types/layersTypes';
 import legendInfoController from '../legendInfo';
 
+type CartoParams = {
+  stat_tag: 'API';
+  config: string;
+  api_key?: string;
+};
+
+async function getCartoTileURL(layer) {
+  const { attributes } = layer || {};
+  const { layerConfig } = attributes || {};
+
+  if (!layerConfig) return;
+
+  const layerTpl = JSON.stringify({
+    version: '1.3.0',
+    stat_tag: 'API',
+    layers: layerConfig.body.layers,
+  });
+  const apiParams: CartoParams = {
+    stat_tag: 'API',
+    config: encodeURIComponent(layerTpl),
+  };
+  const apiParamsString = Object.keys(apiParams)
+    .map((k) => `${k}=${apiParams[k as keyof CartoParams]}`)
+    .join('&');
+  const url = `https://${layerConfig.account}.carto.com/api/v1/map?${apiParamsString}`;
+
+  const response = await fetch(url, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const data = await response.json();
+
+  return `${data.cdn_url.templates.https.url}/${layerConfig.account}/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png`.replace(
+    '{s}',
+    'a'
+  );
+}
+
 async function createVectorLayerLegendInfo(layer: any): Promise<any> {
   const layerStyleInfo = await fetch(layer.url)
     .then((res) => res.json())
@@ -398,19 +440,26 @@ export async function getRemoteAndServiceLayers(): Promise<any> {
       .then((layer) => {
         return fetch(`${baseMetadataURL}${layer.attributes.applicationConfig.metadata}`)
           .then((response) => response.json())
-          .then((metadata) => {
+          .then(async (metadata) => {
             const intConfig = layer.attributes?.interactionConfig;
             item.groupId = item.layerGroupId;
+            let tileUrl;
+
+            if (layer.attributes.provider === 'gee') {
+              tileUrl = `https://api.resourcewatch.org/v1/layer/${layer.id}/tile/gee/{z}/{x}/{y}`;
+            } else if (layer.attributes.provider === 'cartodb' || layer.attributes.provider === 'carto') {
+              tileUrl = await getCartoTileURL(layer);
+            } else {
+              tileUrl = layer.attributes.layerConfig?.source?.tiles?.[0];
+            }
+
             return {
               dataLayer: item,
               layer: {
                 id: item.id,
                 opacity: item.opacity || 1,
                 order: item.order,
-                url:
-                  layer.attributes.provider === 'gee'
-                    ? `https://api.resourcewatch.org/v1/layer/${layer.id}/tile/gee/{z}/{x}/{y}`
-                    : layer.attributes.layerConfig.source.tiles[0],
+                url: tileUrl,
                 type: item.layerType,
                 label: item.label,
                 sublabel: item.sublabel,
