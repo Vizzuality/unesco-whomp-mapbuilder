@@ -316,21 +316,6 @@ export default {
           type: 'remoteDataLayer',
           uuid: 'bd768c4b-f5f8-47f9-b6a0-5bb6078f0fac',
         },
-        // {
-        //   id: 'CUSTOM_1',
-        //   groupId: 'GROUP_CLIMATE',
-        //   order: 10,
-        //   type: 'flagship',
-        //   origin: 'gfw-api',
-        //   layerType: 'base-tile-layer',
-        //   uuid: '1a08810f-34a4-4c53-8a37-6782d0ab6dec',
-        //   label: {
-        //     en: 'Custom 1',
-        //   },
-        //   sublabel: {
-        //     en: 'Lorem ipsum',
-        //   },
-        // },
       ],
     },
     // GROUP_LCD: {
