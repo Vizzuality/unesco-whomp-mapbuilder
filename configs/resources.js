@@ -198,10 +198,23 @@ export default {
         en: 'Natural Values',
         fr: 'Valeurs naturelles',
       },
-      layers: [],
+      layers: [
+        {
+          id: 'LAND_COVER',
+          order: 0,
+          type: 'remoteDataLayer',
+          uuid: 'b8d3f175-0565-443f-839a-49eb890a4b3d',
+        },
+        {
+          id: 'TREE_COVER',
+          order: 1,
+          type: 'remoteDataLayer',
+          uuid: '2569adca-ef87-42c4-a153-57c5e8ba0ef7',
+        },
+      ],
     },
     GROUP_SOCIOECONOMIC: {
-      order: 5,
+      order: 6,
       groupType: 'default',
       label: {
         en: 'Socioeconomic',
@@ -237,7 +250,7 @@ export default {
       ],
     },
     GROUP_THREATS_AND_RISKS: {
-      order: 6,
+      order: 7,
       groupType: 'default',
       label: {
         en: 'Threats and Risks',
@@ -300,7 +313,7 @@ export default {
     },
     GROUP_CLIMATE: {
       groupType: 'default',
-      order: 7,
+      order: 5,
       label: {
         en: 'Climate',
         fr: 'Climat',
@@ -314,42 +327,42 @@ export default {
         nl: 'Klimaat',
       },
       layers: [
-        {
-          id: 'CARBON_SEQ',
-          order: 1,
-          type: 'remoteDataLayer',
-          uuid: 'e7208398-0acd-4f73-a824-c4fe1e356e0c',
-        },
-        {
-          id: 'DRY_SPELLS',
-          order: 3,
-          type: 'remoteDataLayer',
-          uuid: '41936f95-094b-4ad9-8b8a-70fc159bd0ba',
-        },
-        {
-          id: 'AIR_QUALITY',
-          order: 3,
-          type: 'remoteDataLayer',
-          uuid: '67d8aed9-8eb3-4396-99a4-f0eee7295226',
-        },
-        {
-          id: 'WIND_SPEED',
-          order: 4,
-          type: 'remoteDataLayer',
-          uuid: '9fa60bd9-0643-4d0a-a569-0036e902d1f9',
-        },
-        {
-          id: 'FOREST_CARBON_GROSS_REMOVALS',
-          order: 6,
-          type: 'remoteDataLayer',
-          uuid: '79010c83-e62e-4744-96ed-130736daa651', // layer id
-        },
-        {
-          id: 'FOREST_CARBON_GROSS_EMISSIONS',
-          order: 7,
-          type: 'remoteDataLayer',
-          uuid: '0b45cb69-6432-449f-af38-25cdcda85d55',
-        },
+        // {
+        //   id: 'CARBON_SEQ',
+        //   order: 1,
+        //   type: 'remoteDataLayer',
+        //   uuid: 'e7208398-0acd-4f73-a824-c4fe1e356e0c',
+        // },
+        // {
+        //   id: 'DRY_SPELLS',
+        //   order: 3,
+        //   type: 'remoteDataLayer',
+        //   uuid: '41936f95-094b-4ad9-8b8a-70fc159bd0ba',
+        // },
+        // {
+        //   id: 'AIR_QUALITY',
+        //   order: 3,
+        //   type: 'remoteDataLayer',
+        //   uuid: '67d8aed9-8eb3-4396-99a4-f0eee7295226',
+        // },
+        // {
+        //   id: 'WIND_SPEED',
+        //   order: 4,
+        //   type: 'remoteDataLayer',
+        //   uuid: '9fa60bd9-0643-4d0a-a569-0036e902d1f9',
+        // },
+        // {
+        //   id: 'FOREST_CARBON_GROSS_REMOVALS',
+        //   order: 6,
+        //   type: 'remoteDataLayer',
+        //   uuid: '79010c83-e62e-4744-96ed-130736daa651', // layer id
+        // },
+        // {
+        //   id: 'FOREST_CARBON_GROSS_EMISSIONS',
+        //   order: 7,
+        //   type: 'remoteDataLayer',
+        //   uuid: '0b45cb69-6432-449f-af38-25cdcda85d55',
+        // },
         {
           id: 'FOREST_CARBON_NET_FLUX',
           order: 8,
@@ -522,14 +535,14 @@ export default {
       order: 9,
       groupType: 'default',
       label: {
-        en: 'Custom basemap',
-        fr: 'Personnaliser le fond de carte',
+        en: 'Basemap',
+        fr: 'Fond de carte',
       },
       layers: [],
     },
     GROUP_IMAGERY: {
       groupType: 'imagery',
-      order: 10,
+      order: 8,
       label: {
         en: 'Recent Imagery',
         fr: 'Recent Imagery',
@@ -571,7 +584,7 @@ export default {
       groupType: 'basemap',
       order: 200,
       label: {
-        en: 'Basemap',
+        en: 'Basemap (hidden)',
         fr: 'Basemap',
         es: 'Basemap',
         pt: 'Basemap',

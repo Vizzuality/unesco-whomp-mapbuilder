@@ -187,7 +187,6 @@ export class MapController {
         store.dispatch(isMapReady(true));
         //default scale for map
         this._webmapBasemap = this._map?.basemap.clone();
-        this.setActiveBasemap(mapviewState.activeBasemap);
         if (!this._mapview) return;
         store.dispatch(changeMapScale(this._mapview.scale));
         const { latitude, longitude } = this._mapview.center;
