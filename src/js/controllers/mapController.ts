@@ -110,7 +110,7 @@ export class MapController {
 
   async initializeMap(domRef: RefObject<any>): Promise<void> {
     this._domRef = domRef;
-    const { appSettings, appState, mapviewState } = store.getState();
+    const { appSettings, appState } = store.getState();
 
     const [MapView, WebMap, Portal, GraphicsLayer, Polygon, Graphic] = await loadModules([
       'esri/views/MapView',
@@ -139,6 +139,10 @@ export class MapController {
       map: this._map,
       container: domRef.current,
     });
+
+    this._mapview.constraints = {
+      minZoom: 3,
+    };
 
     //if we have init extent, use it.
     if (appSettings.initialExtent) {
