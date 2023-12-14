@@ -69,6 +69,11 @@ const WebmapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
     mapController.reorderLayer(movedLayer.id, result.destination.index);
   }
 
+  // Hidden if no layers in group
+  if (layersInGroup?.length === 0) {
+    return <></>;
+  }
+
   return (
     <div className="layer-group-container">
       <div

@@ -327,7 +327,7 @@ const BasemapLayersGroup = (props: LayerGroupProps): React.ReactElement => {
   );
 
   return (
-    <div className="layer-group-container">
+    <div className="layer-group-container invisible">
       <div
         className="layer-group-title"
         onClick={handleGroupToggle}
