@@ -80,7 +80,7 @@ const Legend = (): JSX.Element => {
     <>
       {onMobileOrDesktop && (
         <div
-          className={clsx('z-10 absolute bg-white right-6 py-4 px-5 rounded w-full max-w-[282px]', {
+          className={clsx('z-10 absolute bg-white right-6 rounded w-full max-w-[282px]', {
             'bottom-16': !hideFooter,
             'bottom-6': hideFooter,
           })}
@@ -97,8 +97,10 @@ const Legend = (): JSX.Element => {
               })}
             />
           </button>
-          <div className={legendOpen && !hideWidgetActive ? 'space-y-4 max-h-[50vh] overflow-y-auto' : 'hidden'}>
-            <h2 className="text-xs">{layersPanelTranslations[selectedLanguage].legend || 'Legend'}</h2>
+          <div
+            className={legendOpen && !hideWidgetActive ? 'py-4 px-5 space-y-4 max-h-[50vh] overflow-y-auto' : 'hidden'}
+          >
+            <h2 className="text-xs font-bold">{layersPanelTranslations[selectedLanguage].legend || 'Legend'}</h2>
             <LegendItems
               visibleLayers={visibleLayersToShow}
               language={selectedLanguage}

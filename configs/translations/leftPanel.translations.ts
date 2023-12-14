@@ -405,7 +405,7 @@ export const layersPanelTranslations = {
   en: {
     layers: 'Layers',
     description:
-      'Select datasets from different categories (near-real time, protection and management, natural values, climate, socio-economic, threats and risk, and recent imagery) that you wish to visualize on the map.',
+      'Select datasets from different categories that you wish to visualize on the map. Double click on the layer to get additional information about the datasets.',
     selectAll: 'Select All',
     clearAll: 'Clear All',
     legend: 'Legend',
@@ -431,7 +431,7 @@ export const layersPanelTranslations = {
   fr: {
     layers: 'Couches',
     description:
-      'Sélectionnez des ensembles de données de différentes catégories (temps quasi réel, protection et gestion, valeurs naturelles, climat, socioéconomique, menaces et risques et imagerie récente) que vous souhaitez visualiser et ajouter à la carte.',
+      'Sélectionnez des ensembles de données de différentes catégories que vous souhaitez visualiser et ajouter à la carte.',
     selectAll: 'Tout sélectionner',
     clearAll: 'Tout effacer',
     legend: 'Légende',

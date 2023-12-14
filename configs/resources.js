@@ -50,7 +50,7 @@ export default {
   treeCoverGain: true,
   treeCoverLoss: true,
   tropicalTreeCover: true,
-  treeMosaicLandscapes: true,
+  treeMosaicLandscapes: false,
   forestCarbonGrossRemovals: true,
   forestCarbonGrossEmissions: true,
   forestCarbonNetFlux: true,
@@ -124,6 +124,9 @@ export default {
     '18c58986622-layer-3': 'GROUP_WORLD_HERITAGE',
     '18c58986623-layer-4': 'GROUP_WORLD_HERITAGE',
     sdei_global_annual_avg_pm2_5_2001_2010_image_service_7231: 'GROUP_SOCIOECONOMIC',
+    sdei_global_annual_avg_pm2_5_2001_2010_image_service_6238: 'GROUP_SOCIOECONOMIC',
+    WCMC_013_014_Seagrass_WMS_845: 'GROUP_NATURAL_VALUES',
+    GFSR_3hour_6782: 'GROUP_NEAR_REAL_TIME',
   },
   layerPanel: {
     GROUP_WEBMAP: {
