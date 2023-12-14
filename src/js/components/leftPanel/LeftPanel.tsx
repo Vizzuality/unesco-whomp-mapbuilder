@@ -7,6 +7,11 @@ import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { RootState } from '../../../js/store/index';
 import { selectActiveTab, toggleTabviewPanel } from '../../../js/store/appState/actions';
 import TabViewContainer from './TabViewContainer';
+import {
+  analysisContent,
+  layersPanelTranslations,
+  dataTabConfig,
+} from '../../../../configs/translations/leftPanel.translations';
 
 import { DocumentsTabIcon } from '../../../images/documentsTabIcon';
 import { InfoTabIcon } from '../../../images/infoTabIcon';
@@ -15,6 +20,7 @@ import { HamburgerIcon } from '../../../images/hamburgerIcon';
 export interface TabProps {
   key: string;
   label: string;
+  title: string;
   icon: React.SFC<React.SVGProps<SVGSVGElement>>;
   tooltipText: string;
   activeTab: string;
@@ -29,6 +35,7 @@ const Tab = (props: TabProps): React.ReactElement => {
   const {
     activeTab,
     label,
+    title,
     icon: Icon,
     documentFlashingActive,
     setDocumentFlashing,
@@ -71,7 +78,7 @@ const Tab = (props: TabProps): React.ReactElement => {
     <button
       // data-tip={label}
       data-offset="{'top': -5}"
-      className={clsx('flex items-center text-white border-b-[6px] border-primary space-x-3 py-2 px-6', {
+      className={clsx('flex items-center text-white border-b-[6px] border-primary space-x-3 py-2 px-2', {
         'border-white': label === activeTab && tabViewVisible,
       })}
       aria-label="left panel tab"
@@ -80,7 +87,7 @@ const Tab = (props: TabProps): React.ReactElement => {
       {<Icon />}
       {documentFlashingActive && documents && documents.length && <span className="yellow-alert" />}
       {analysisFlashingActive && <span className="yellow-alert" />}
-      <span className="uppercase text-xs font-bold">{label}</span>
+      <span className="uppercase text-xs font-bold">{title}</span>
     </button>
   );
 };
@@ -90,6 +97,7 @@ interface TabRenderObject {
   icon: React.SFC<React.SVGProps<SVGSVGElement>>;
   tooltipText: string;
   render: boolean | undefined;
+  title: string;
 }
 
 interface TabsProps {
@@ -99,6 +107,7 @@ interface TabsProps {
 const Tabs = (props: TabsProps): React.ReactElement => {
   const [documentFlashing, setDocumentFlashing] = useState(false);
   const [analysisFlashing, setAnalysisFlashing] = useState(false);
+
   //Active Tab in the store
   const savedActiveTab = useSelector((store: RootState) => store.appState.leftPanel.activeTab);
 
@@ -130,6 +139,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
       <Tab
         key={tab.label}
         label={tab.label}
+        title={tab.title}
         tooltipText={tab.tooltipText}
         icon={tab.icon}
         activeTab={savedActiveTab}
@@ -145,6 +155,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 };
 
 const LeftPanel = (): React.ReactElement => {
+  const selectedLanguage = useSelector((store: RootState) => store.appState.selectedLanguage);
   const [isShowing, setIsShowing] = useState<boolean>(true);
   const hideWidgetActive = useSelector((store: RootState) => store.appState.hideWidgetActive);
   const renderDocTab = useSelector((store: RootState) => store.appSettings.includeDocumentsTab);
@@ -160,36 +171,42 @@ const LeftPanel = (): React.ReactElement => {
       icon: InfoTabIcon,
       tooltipText: 'Info',
       render: renderInfoTab,
+      title: 'Info',
     },
     {
       label: 'layers',
       icon: () => <Square3Stack3DIcon className="h-6 w-6" />,
-      tooltipText: 'Layers',
+      tooltipText: 'Visualize',
       render: true,
+      title: layersPanelTranslations[selectedLanguage].tabTitle,
     },
     {
       label: 'data',
       icon: () => <CircleStackIcon className="h-6 w-6" />,
       tooltipText: 'Data',
       render: true,
+      title: dataTabConfig[selectedLanguage].tabTitle,
     },
     {
       label: 'analysis',
       icon: () => <ChartBarIcon className="h-6 w-6" />,
       tooltipText: 'Analysis',
       render: true,
+      title: analysisContent[selectedLanguage].tabTitle,
     },
     {
       label: 'documents',
       icon: DocumentsTabIcon,
       tooltipText: 'Documents',
       render: renderDocTab, //Example of it coming from resources file
+      title: 'Documents',
     },
     {
       label: 'menu',
       icon: HamburgerIcon,
       tooltipText: 'Menu',
       render: false,
+      title: 'Menu',
     },
   ];
 
