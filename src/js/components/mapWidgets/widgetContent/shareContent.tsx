@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { FaXTwitter, FaFacebookF } from 'react-icons/fa6';
 
 import { RootState } from '../../../../js/store/index';
 import { shareContent } from '../../../../../configs/translations/modal.tanslations';
@@ -14,23 +13,12 @@ const ShareContent: FunctionComponent = () => {
   const [urlValue, setUrlValue] = useState<any>('');
   const { title } = shareContent[selectedLanguage];
   const { shareModalTitle, copyButtonInShareModal } = analysisReportConfig;
-  const popupDimensions = 'toolbar=0,status=0,height=650,width=450';
 
   const copyURLToClipboard = (): void => {
     urlRef.current.select();
     document.execCommand('copy');
     // ? do we need a bitly account (like in master branch) to shortern URLs ?
     // TODO which accounts for long mapbuilder URLs
-  };
-
-  const shareTwitter = (): void => {
-    window.open(`https://twitter.com/share?url=${window.location.href}`, 'Twitter', popupDimensions);
-  };
-
-  const shareFacebook = (): void => {
-    // https://www.facebook.com/sharer.php?u=http://bit.ly/2I6y3Te
-
-    window.open(`https://www.facebook.com/sharer.php?u=${window.location.href}`, 'Facebook', popupDimensions);
   };
 
   useEffect((): any => {
@@ -74,14 +62,6 @@ const ShareContent: FunctionComponent = () => {
         <input type="text" readOnly value={urlValue} ref={urlRef} className="form-input grow" />
         <button className="btn" onClick={(): void => copyURLToClipboard()}>
           {copyButtonInShareModal[selectedLanguage]}
-        </button>
-      </div>
-      <div className="flex items-center justify-center space-x-4">
-        <button onClick={(): void => shareTwitter()}>
-          <FaXTwitter className="h-4 w-4 text-primary" />
-        </button>
-        <button onClick={(): void => shareFacebook()}>
-          <FaFacebookF className="h-4 w-4 text-primary" />
         </button>
       </div>
     </div>

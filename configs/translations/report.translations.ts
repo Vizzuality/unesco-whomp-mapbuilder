@@ -1,7 +1,7 @@
 export const analysisReportConfig = {
   shareModalTitle: {
-    en: 'Copy and paste the link to share it or use the buttons below to share on social media.',
-    fr: 'Copiez et collez le lien pour le partager ou utilisez les boutons ci-dessous pour le partager sur les réseaux sociaux.',
+    en: 'Copy and paste the link to share the platform.',
+    fr: 'Copiez et collez le lien pour partager la plateforme',
     es: 'Copie y pegue el enlace para compartirlo o utilice los botones siguientes para compartirlo en las redes sociales.',
     pt: 'Copiar e colar o link para o partilhar ou utilizar os botões abaixo para o partilhar nas redes sociais.',
     id: 'Salin dan tempel tautan untuk membagikannya atau gunakan tombol di bawah ini untuk berbagi di media sosial.',

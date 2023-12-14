@@ -15,7 +15,7 @@ export const headerContent = {
     stories: 'My Stories',
     profile: 'My GFW Profile',
     logout: 'Log Out',
-    language: 'Select Language',
+    language: 'Select language',
   },
   az: {
     about: 'About',
@@ -104,7 +104,7 @@ export const headerContent = {
     stories: 'Mes histoires',
     profile: 'Mon profil',
     logout: 'Déconnecter',
-    language: 'Choisir Langue',
+    language: 'Choisir langue',
   },
   es: {
     about: 'Acerca de',
@@ -155,7 +155,7 @@ export const headerContent = {
     stories: 'Cerita Saya',
     profile: 'Mon profil',
     logout: 'Keluar',
-    language: 'Select Language',
+    language: 'Select language',
   },
   zh: {
     about: '关于',
