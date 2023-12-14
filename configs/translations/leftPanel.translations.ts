@@ -1,6 +1,6 @@
 export const analysisContent = {
   en: {
-    tabTitle: 'Analyze',
+    tabTitle: '3. Analyze',
     description:
       'Run analyses of tree cover loss, land cover composition and near-real time deforestation and fire alerts.',
     analyzeExistingShapeTitle: 'Analyze a shape on the map',
@@ -165,7 +165,7 @@ export const analysisContent = {
     overlappingShapeButton: 'დაიწყეთ შერჩევა',
   },
   fr: {
-    tabTitle: 'Analyser',
+    tabTitle: '3. Analyser',
     description:
       'Effectuez des analyses de perte de couvert forestier, occupation des sols et alertes de déforestation et d’incendies en temps quasi réel.',
     analyzeExistingShapeTitle: 'Analysez un polygone sur la carte',
@@ -405,7 +405,7 @@ export const basemapLayersContent = {
 
 export const layersPanelTranslations = {
   en: {
-    tabTitle: 'Visualize',
+    tabTitle: '1. Visualize',
     layers: 'Layers',
     description:
       'Select datasets from different categories that you wish to visualize on the map. Double click on the layer to get additional information about the datasets.',
@@ -432,7 +432,7 @@ export const layersPanelTranslations = {
     legend: 'Պայմանական նշաններ',
   },
   fr: {
-    tabTitle: 'Visualizer',
+    tabTitle: '1. Visualizer',
     layers: 'Couches',
     description:
       'Sélectionnez des ensembles de données de différentes catégories que vous souhaitez visualiser et ajouter à la carte.',
@@ -580,7 +580,7 @@ export const layerControlsTranslations = {
 
 export const dataTabConfig = {
   en: {
-    tabTitle: 'Select data',
+    tabTitle: '2. Select data',
     header: 'Select a shape on the map',
     instructionsList: ['Use the layers tab to turn on a data layer', 'Select a shape on the map'],
   },
@@ -607,7 +607,7 @@ export const dataTabConfig = {
     instructionsList: ['მონაცემების ფენის ჩასართავად გამოიყენეთ ფენების მენიუ', 'აარჩიეთ ფიგურა რუკაზე'],
   },
   fr: {
-    tabTitle: 'Selectionner les donnes',
+    tabTitle: '2. Selectionner les donnes',
     header: 'Sélectionnez un polygone sur la carte',
     instructionsList: [
       "Utiliser l'onglet Couches pour activer une couche de données",
