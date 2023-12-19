@@ -100,7 +100,9 @@ const Legend = (): JSX.Element => {
           <div
             className={legendOpen && !hideWidgetActive ? 'py-4 px-5 space-y-4 max-h-[50vh] overflow-y-auto' : 'hidden'}
           >
-            <h2 className="text-xs font-bold">{layersPanelTranslations[selectedLanguage].legend || 'Legend'}</h2>
+            <h2 className="text-xs font-bold uppercase">
+              {layersPanelTranslations[selectedLanguage].legend || 'Legend'}
+            </h2>
             <LegendItems
               visibleLayers={visibleLayersToShow}
               language={selectedLanguage}

@@ -180,7 +180,11 @@ export default {
           uuid: '1a08810f-34a4-4c53-8a37-6782d0ab6dec',
           label: {
             en: 'Air Quality',
-            fr: "Qualité de l'air",
+            fr: 'Qualité de l’air',
+          },
+          sublabel: {
+            en: 'Forecasted PM2.5 (µg/m3)',
+            fr: 'Prévision PM2.5 (µg/m³)',
           },
         },
       ],
@@ -236,6 +240,10 @@ export default {
             en: 'Gross Domestic Product (GDP)',
             fr: 'Produit intérieur brut (PIB)',
           },
+          sublabel: {
+            en: '(2011 USD, millions)',
+            fr: '(2011 USD, millions)',
+          },
         },
         {
           id: 'WATER_STRESS_CUSTOM',
@@ -246,8 +254,8 @@ export default {
           layerType: 'base-tile-layer',
           uuid: 'fdf06d8c-72e9-48a7-80f1-27bd5f19342c',
           label: {
-            en: 'Water stress',
-            fr: 'Stress hydrique',
+            en: 'Water Stress',
+            fr: 'Stress Hydrique',
           },
         },
       ],
@@ -269,8 +277,12 @@ export default {
           layerType: 'base-tile-layer',
           uuid: '90992233-36d7-45f9-97db-0ccf28275285',
           label: {
-            en: 'Projected Water stress',
+            en: 'Projected Change in Water Stress by 2030',
             fr: 'Stress hydrique projeté',
+          },
+          sublabel: {
+            en: '(business as usual scenario)',
+            fr: '(scénario du statu quo)',
           },
         },
         {
@@ -349,12 +361,6 @@ export default {
         //   uuid: '67d8aed9-8eb3-4396-99a4-f0eee7295226',
         // },
         // {
-        //   id: 'WIND_SPEED',
-        //   order: 4,
-        //   type: 'remoteDataLayer',
-        //   uuid: '9fa60bd9-0643-4d0a-a569-0036e902d1f9',
-        // },
-        // {
         //   id: 'FOREST_CARBON_GROSS_REMOVALS',
         //   order: 6,
         //   type: 'remoteDataLayer',
@@ -366,6 +372,12 @@ export default {
         //   type: 'remoteDataLayer',
         //   uuid: '0b45cb69-6432-449f-af38-25cdcda85d55',
         // },
+        {
+          id: 'WIND_SPEED',
+          order: 4,
+          type: 'remoteDataLayer',
+          uuid: '9fa60bd9-0643-4d0a-a569-0036e902d1f9',
+        },
         {
           id: 'FOREST_CARBON_NET_FLUX',
           order: 8,
@@ -381,8 +393,12 @@ export default {
           layerType: 'base-tile-layer',
           uuid: '61c8acc0-753a-473d-9b70-b9690497b31f',
           label: {
-            en: 'Coral Bleaching Risk',
-            fr: 'Risque de blanchissement des coraux',
+            en: 'Projected Coral Bleaching',
+            fr: 'Blanchiment projeté des coraux',
+          },
+          sublabel: {
+            en: '(onset year of annual events under the RCP 4.5 scenario)',
+            fr: '(année d’apparition des événements annuels dans le cadre du scénario RCP 4.5)',
           },
         },
       ],
