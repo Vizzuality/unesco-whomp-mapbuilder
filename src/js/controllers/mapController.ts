@@ -585,6 +585,9 @@ export class MapController {
       store.dispatch(setLanguage(lang));
       store.dispatch(changeMapScale(this._mapview.scale));
       const { latitude, longitude } = this._mapview.center;
+      this._mapview.constraints = {
+        minZoom: 3,
+      };
       store.dispatch(changeMapCenterCoordinates({ latitude, longitude }));
       this._mapview!.watch('extent', (newExtent) => {
         if (!this._mapview) return;

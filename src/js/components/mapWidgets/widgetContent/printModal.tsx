@@ -16,7 +16,7 @@ export const PrintModal: FunctionComponent = () => {
 
   const customColorTheme = useSelector((state: RootState) => state.appSettings.customColorTheme);
 
-  const { buttonLabel, printOptions } = printContent[selectedLanguage];
+  const { buttonLabel, printOptions, printLabels, pdfButton } = printContent[selectedLanguage];
 
   const themeColor = handleCustomColorTheme(customColorTheme);
 
@@ -45,7 +45,7 @@ export const PrintModal: FunctionComponent = () => {
             key={index}
             onClick={(): Promise<void> => printMap(printOption)}
           >
-            {printOption}
+            {printLabels[index]}
           </button>
         );
       })}
@@ -62,7 +62,7 @@ export const PrintModal: FunctionComponent = () => {
             rel="noopener noreferrer"
             className="block flex items-center space-x-1 font-bold text-xs"
           >
-            <span>View PDF</span>
+            <span>{pdfButton}</span>
             <ArrowTopRightOnSquareIcon className="h-4 w-4" />
           </a>
         </div>

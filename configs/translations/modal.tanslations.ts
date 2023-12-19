@@ -3,6 +3,8 @@ export const printContent = {
     buttonLabel: 'Choose a print output',
     dropdownLabel: 'Print',
     printOptions: ['MAP_ONLY'],
+    printLabels: ['Print Map'],
+    pdfButton: 'View PDF',
   },
   az: {
     buttonLabel: 'Çap çıxışını seçin',
@@ -26,8 +28,10 @@ export const printContent = {
   },
   fr: {
     buttonLabel: "Choisissez un format d'impression",
-    dropdownLabel: 'Print',
+    dropdownLabel: 'Imprimer',
     printOptions: ['MAP_ONLY'],
+    printLabels: ['Imprimer carte'],
+    pdfButton: 'Voir PDF',
   },
   es: {
     buttonLabel: 'Elegir diseño de página',

@@ -9,7 +9,6 @@ import { renderModal, setMultiPolygonSelectionMode } from '../../../../js/store/
 import { RootState } from '../../../../js/store';
 import BaseAnalysis from '../../../../js/components/leftPanel/analysisPanel/BaseAnalysis';
 import { analysisContent } from '../../../../../configs/translations/leftPanel.translations';
-import { PolygonIcon } from '../../../../images/PolygonIcon';
 import { SelectionIcon } from '../../../../images/selectionIcon';
 import { createSelector } from 'reselect';
 import MultiPolygonAnalysis from './MultiPolygonAnalysis';
@@ -115,33 +114,12 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
       <div className="w-1/2 h-1 border-b border-b-gray-dark" />
       <div className="space-y-4">
         <div className="space-y-4">
-          <h3 className="font-bold">{overlappingShapeTitle}</h3>
-          <ol className="list-decimal pl-8 text-xs space-y-2">
-            <li>{overlappingShapeDirections[0]}</li>
-            <li>{overlappingShapeDirections[1]}</li>
-            <li>{overlappingShapeDirections[2]}</li>
-            <li>{overlappingShapeDirections[3]}</li>
-            <li>{overlappingShapeDirections[4]}</li>
-            <li>{overlappingShapeDirections[5]}</li>
-          </ol>
-          <button className="btn" type="button" onClick={() => dispatch(setMultiPolygonSelectionMode(true))}>
-            <SelectionIcon height={18} width={18} fill="white" />
-            <span>{overlappingShapeButton}</span>
-          </button>
-        </div>
-
-        <Buffer />
-
-        <div className="space-y-4">
           <h3 className="font-bold">{analyzeExistingShapeTitle}</h3>
           <ol className="list-decimal pl-8 text-xs space-y-2">
             {analyzeExistingShapeDirections.map((direction: string, index: number) => (
               <li key={index}>{direction}</li>
             ))}
           </ol>
-          <div className="flex justify-center">
-            <PolygonIcon width={100} height={100} customColorTheme={themeColor} />
-          </div>
         </div>
 
         <Buffer />
@@ -161,6 +139,24 @@ const AnalysisTabView = (props: TabProps): JSX.Element => {
           >
             <PencilIcon className="h-4 w-4 text-white" />
             <span>{drawButton}</span>
+          </button>
+        </div>
+
+        <Buffer />
+
+        <div className="space-y-4">
+          <h3 className="font-bold">{overlappingShapeTitle}</h3>
+          <ol className="list-decimal pl-8 text-xs space-y-2">
+            <li>{overlappingShapeDirections[0]}</li>
+            <li>{overlappingShapeDirections[1]}</li>
+            <li>{overlappingShapeDirections[2]}</li>
+            <li>{overlappingShapeDirections[3]}</li>
+            <li>{overlappingShapeDirections[4]}</li>
+            <li>{overlappingShapeDirections[5]}</li>
+          </ol>
+          <button className="btn" type="button" onClick={() => dispatch(setMultiPolygonSelectionMode(true))}>
+            <SelectionIcon height={18} width={18} fill="white" />
+            <span>{overlappingShapeButton}</span>
           </button>
         </div>
 

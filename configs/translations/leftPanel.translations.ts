@@ -5,9 +5,9 @@ export const analysisContent = {
       'Run analyses of tree cover loss, land cover composition and near-real time deforestation and fire alerts.',
     analyzeExistingShapeTitle: 'Analyze a shape on the map',
     analyzeExistingShapeDirections: [
-      'Use the layers tab to turn on a data layer',
+      'Use the Visualize tab to turn on a data layer',
       'Select a shape on the map',
-      'Click on the analyze tab',
+      'Click on the Analyze tab',
     ],
     analyzeYourShapeTitle: 'Analyze your own shape',
     analyzeYourShapeFirstDirection: ['Choose the draw tool ', ' in the toolbox'],
@@ -24,11 +24,11 @@ export const analysisContent = {
     analyze: 'Analyze',
     overlappingShapeTitle: 'Analyze overlapping area between two shapes',
     overlappingShapeDirections: [
-      'Use the layers tab to turn on data layers',
+      'Use the Visualize tab to turn on data layers',
       'Select first shape',
-      'Click on Add to Analysis under Data Tab',
+      'Click on Add to Analysis under Select Data tab',
       'Select second shape',
-      'Click on Add to Analysis under Data Tab',
+      'Click on Add to Analysis under Select Data Tab',
       'Click on the analyze button',
     ],
     overlappingShapeButton: 'Start selecting',
@@ -582,7 +582,11 @@ export const dataTabConfig = {
   en: {
     tabTitle: '2. Select data',
     header: 'Select a shape on the map',
-    instructionsList: ['Use the layers tab to turn on a data layer', 'Select a shape on the map'],
+    instructionsList: [
+      'Use the Visualize tab to turn on a data layer',
+      'Double click on the data layer to run an analysis in the Analyze tab',
+      'If there are overlapping data layers, use Prev/Next buttons to select the data layer to run an analysis in the Analyze tab',
+    ],
   },
   az: {
     header: 'Xəritədəki formanı seçin',

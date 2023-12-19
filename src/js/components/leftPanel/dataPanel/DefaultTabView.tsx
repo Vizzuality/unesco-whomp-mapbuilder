@@ -10,21 +10,19 @@ interface DefaultTabViewProps {
 }
 
 const DefaultTabView = (props: DefaultTabViewProps): JSX.Element => {
-  const selectedLanguage = useSelector(
-    (state: RootState) => state.appState.selectedLanguage
-  );
+  const selectedLanguage = useSelector((state: RootState) => state.appState.selectedLanguage);
   const { header, instructionsList } = dataTabConfig[selectedLanguage];
 
   return (
-    <div className="data-tab-default-container">
-      <figure>
-        <figcaption className="title">{header}</figcaption>
-        <ol>
+    <div className="data-tab-default-container space-y-4">
+      <div className="space-y-4">
+        <h3 className="font-bold">{header}</h3>
+        <ol className="list-decimal pl-8 text-xs space-y-2">
           {instructionsList.map((instruction: string, index: number) => (
             <li key={index}>{instruction}</li>
           ))}
         </ol>
-      </figure>
+      </div>
       <svg className="svg-icon" style={{ width: 95, height: 75 }}>
         <svg id="icon-analysis-poly" viewBox="0 0 109 86">
           <title>Analysis Click Polygon</title>
@@ -66,76 +64,16 @@ const DefaultTabView = (props: DefaultTabViewProps): JSX.Element => {
               d="M99.726,31.687 C99.726,31.687 98.274,34.313 98.274,34.313 C98.274,34.313 51.274,8.313 51.274,8.313 C51.274,8.313 52.726,5.687 52.726,5.687 C52.726,5.687 99.726,31.687 99.726,31.687 Z"
               fillRule="evenodd"
             ></path>
-            <circle
-              className="cls-4"
-              fill={props.customColorTheme}
-              cx="54"
-              cy="9"
-              r="9"
-            ></circle>
-            <circle
-              className="cls-10"
-              fill="#FFFFFF"
-              cx="54"
-              cy="9"
-              r="6"
-            ></circle>
-            <circle
-              className="cls-4"
-              fill={props.customColorTheme}
-              cx="9"
-              cy="35"
-              r="9"
-            ></circle>
-            <circle
-              className="cls-10"
-              fill="#FFFFFF"
-              cx="9"
-              cy="35"
-              r="6"
-            ></circle>
-            <circle
-              className="cls-4"
-              fill={props.customColorTheme}
-              cx="100"
-              cy="35"
-              r="9"
-            ></circle>
-            <circle
-              className="cls-10"
-              fill="#FFFFFF"
-              cx="100"
-              cy="35"
-              r="6"
-            ></circle>
-            <circle
-              className="cls-4"
-              fill={props.customColorTheme}
-              cx="90"
-              cy="72"
-              r="9"
-            ></circle>
-            <circle
-              className="cls-10"
-              fill="#FFFFFF"
-              cx="90"
-              cy="72"
-              r="6"
-            ></circle>
-            <circle
-              className="cls-4"
-              fill={props.customColorTheme}
-              cx="18"
-              cy="72"
-              r="9"
-            ></circle>
-            <circle
-              className="cls-10"
-              fill="#FFFFFF"
-              cx="18"
-              cy="72"
-              r="6"
-            ></circle>
+            <circle className="cls-4" fill={props.customColorTheme} cx="54" cy="9" r="9"></circle>
+            <circle className="cls-10" fill="#FFFFFF" cx="54" cy="9" r="6"></circle>
+            <circle className="cls-4" fill={props.customColorTheme} cx="9" cy="35" r="9"></circle>
+            <circle className="cls-10" fill="#FFFFFF" cx="9" cy="35" r="6"></circle>
+            <circle className="cls-4" fill={props.customColorTheme} cx="100" cy="35" r="9"></circle>
+            <circle className="cls-10" fill="#FFFFFF" cx="100" cy="35" r="6"></circle>
+            <circle className="cls-4" fill={props.customColorTheme} cx="90" cy="72" r="9"></circle>
+            <circle className="cls-10" fill="#FFFFFF" cx="90" cy="72" r="6"></circle>
+            <circle className="cls-4" fill={props.customColorTheme} cx="18" cy="72" r="9"></circle>
+            <circle className="cls-10" fill="#FFFFFF" cx="18" cy="72" r="6"></circle>
             <path
               className="cls-19"
               fill="#FFFFFF"
