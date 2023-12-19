@@ -78,16 +78,23 @@ const Tab = (props: TabProps): React.ReactElement => {
     <button
       // data-tip={label}
       data-offset="{'top': -5}"
-      className={clsx('flex items-center text-white border-b-[6px] border-primary space-x-3 py-2 px-2', {
-        'border-white': label === activeTab && tabViewVisible,
-      })}
+      className={clsx(
+        'flex flex-col justify-center items-center text-white border-b-[6px] border-primary space-x-3 py-2 px-2',
+        {
+          'border-white': label === activeTab && tabViewVisible,
+        }
+      )}
       aria-label="left panel tab"
       onClick={handleTabClick}
     >
-      {<Icon />}
-      {documentFlashingActive && documents && documents.length && <span className="yellow-alert" />}
-      {analysisFlashingActive && <span className="yellow-alert" />}
-      <span className="uppercase text-xs font-bold">{title}</span>
+      <div className="flex items-center justify-center">
+        {<Icon />}
+        {documentFlashingActive && documents && documents.length && <span className="yellow-alert" />}
+        {analysisFlashingActive && <span className="yellow-alert" />}
+      </div>
+      <div>
+        <span className="uppercase text-xs font-bold">{title}</span>
+      </div>
     </button>
   );
 };
@@ -175,21 +182,21 @@ const LeftPanel = (): React.ReactElement => {
     },
     {
       label: 'layers',
-      icon: () => <Square3Stack3DIcon className="h-6 w-6" />,
+      icon: () => <Square3Stack3DIcon className="h-5 w-5" />,
       tooltipText: 'Visualize',
       render: true,
       title: layersPanelTranslations[selectedLanguage].tabTitle,
     },
     {
       label: 'data',
-      icon: () => <CircleStackIcon className="h-6 w-6" />,
+      icon: () => <CircleStackIcon className="h-5 w-5" />,
       tooltipText: 'Data',
       render: true,
       title: dataTabConfig[selectedLanguage].tabTitle,
     },
     {
       label: 'analysis',
-      icon: () => <ChartBarIcon className="h-6 w-6" />,
+      icon: () => <ChartBarIcon className="h-5 w-5" />,
       tooltipText: 'Analysis',
       render: true,
       title: analysisContent[selectedLanguage].tabTitle,

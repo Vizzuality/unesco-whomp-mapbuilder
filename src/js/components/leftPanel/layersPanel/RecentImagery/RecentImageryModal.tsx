@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../js/store';
 import imageryText from '../../../../../../configs/translations/imagery.translations';
@@ -139,8 +140,8 @@ const RecentImagery = (props: ImageryProps): JSX.Element => {
     setImageryStyleBands(determineBands);
   };
 
-  return (
-    <div className="recent-imagery-container">
+  return createPortal(
+    <div className="recent-imagery-container z-20">
       <div className="imagery-header">
         <span className="title">{imageryText[selectedLanguage].imagery[1]}</span>
         <button className="exit-button" onClick={(): void => props.modalHandler()}>
@@ -181,7 +182,7 @@ const RecentImagery = (props: ImageryProps): JSX.Element => {
         </div>
       </div>
       <div className="imagery-secondary-filters">
-        <div style={{ height: 45 }}>
+        <div className="h-[45px]">
           {hoverContent !== '' ? (
             <>
               <p>{getHoverTileContent('hoverDay')}</p>
@@ -211,7 +212,8 @@ const RecentImagery = (props: ImageryProps): JSX.Element => {
           <p>Loading data</p>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

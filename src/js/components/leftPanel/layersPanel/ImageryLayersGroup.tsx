@@ -72,26 +72,27 @@ const ImageryLayersGroup = (props: LayerGroupProps): React.ReactElement => {
     };
 
     return (
-      <>
-        <div className="layers-control-checkbox">
-          <div className="label-wrapper" style={{ width: 'auto' }}>
-            <div className="label-control-top">
+      <div className="space-y-2">
+        <div className="layers-control-checkbox flex items-center justify-between space-x-2">
+          <div className="label-wrapper flex">
+            <div className="label-control-top flex items-center space-x-2">
               <ImageryLayerSwitch layerID={props.id} customColorTheme={themeColor} />
-              <div className="title-wrapper">
-                <span className="layer-label">{props.info?.label[props.selectedLanguage] || 'Imagery Layer'}</span>
+              <div className="text-gray-dark text-xs font-bold">
+                {props.info?.label[props.selectedLanguage] || 'Imagery Layer'}
               </div>
             </div>
           </div>
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              alignItems: 'center',
-            }}
+            className="flex items-center justify-between"
+            // style={{
+            //   display: 'grid',
+            //   gridTemplateColumns: '1fr 1fr',
+            //   alignItems: 'center',
+            // }}
           >
             <button
               style={{ border: `1px solid ${themeColor}` }}
-              className="imagery-edit-button"
+              className="btn-secondary px-2 py-1"
               onClick={(): void => setImageryModalOpen(true)}
             >
               EDIT
@@ -118,7 +119,7 @@ const ImageryLayersGroup = (props: LayerGroupProps): React.ReactElement => {
           {parseDynamicSublabel()}
         </p>
         {props.id && <ImagerySlider layerID={props.id} />}
-      </>
+      </div>
     );
   };
 
@@ -145,7 +146,7 @@ const ImageryLayersGroup = (props: LayerGroupProps): React.ReactElement => {
 
     return (
       <CheckboxWrapper customColorTheme={props.customColorTheme}>
-        <div className="layer-checkbox imagery">
+        <div className="layer-checkbox imagery flex items-center">
           <input
             type="checkbox"
             name="styled-checkbox"
