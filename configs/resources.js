@@ -567,7 +567,7 @@ export default {
       order: 8,
       label: {
         en: 'Recent Imagery',
-        fr: 'Recent Imagery',
+        fr: 'Imagerie récente',
         es: 'Recent Imagery',
         pt: 'Recent Imagery',
         id: 'Recent Imagery',
@@ -583,7 +583,7 @@ export default {
           visible: false,
           label: {
             en: 'Recent Imagery',
-            fr: 'Recent Imagery',
+            fr: 'Imagerie récente',
             es: 'Recent Imagery',
             pt: 'Recent Imagery',
             id: 'Recent Imagery',

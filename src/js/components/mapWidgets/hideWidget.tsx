@@ -13,6 +13,8 @@ const HideWidget: FunctionComponent = () => {
   const { hideWidgetActive } = useSelector((state: RootState) => state.appState);
   const { language } = useSelector((state: RootState) => state.appSettings);
 
+  console.log(language);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
