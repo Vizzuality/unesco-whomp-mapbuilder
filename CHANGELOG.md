@@ -8,6 +8,7 @@
 - Min zoom for the map (3)
 - Translations not available by default in the UI, edited in `config/translations` folder
 - Tooltip for map controls
+- Added support for URL in the description of the tab layers
 
 ### Changed
 
@@ -21,6 +22,7 @@
 - Translations of MapBuilder layers names
 - Layers from MapBuilder edited in `config/resources.js`
 - URL for share modal depending on the language selected
+- Updated text for the Visualize tab
 
 ### Removed
 
@@ -72,6 +74,7 @@
 - Translations for UI labels and text, English and French version
 - Icon for the translation selector
 - Basemaps available from Arcgis Online, now the user can choice more
+- Custom Layers (from webmap) are only available if new layers are added
 
 ### Removed
 

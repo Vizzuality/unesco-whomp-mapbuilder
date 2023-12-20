@@ -127,6 +127,9 @@ export default {
     sdei_global_annual_avg_pm2_5_2001_2010_image_service_6238: 'GROUP_SOCIOECONOMIC',
     WCMC_013_014_Seagrass_WMS_845: 'GROUP_NATURAL_VALUES',
     GFSR_3hour_6782: 'GROUP_NEAR_REAL_TIME',
+    SPEI_v1_recent_23: 'GROUP_NEAR_REAL_TIME',
+    GFSR_3hour_8103: 'GROUP_NEAR_REAL_TIME',
+    SPEI_v1_recent_5336: 'GROUP_NEAR_REAL_TIME',
   },
   layerPanel: {
     GROUP_WEBMAP: {
