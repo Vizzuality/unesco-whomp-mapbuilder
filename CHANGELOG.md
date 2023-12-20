@@ -7,6 +7,7 @@
 - Units and text for some layers according the feedback from the client
 - Min zoom for the map (3)
 - Translations not available by default in the UI, edited in `config/translations` folder
+- Tooltip for map controls
 
 ### Changed
 
@@ -40,6 +41,7 @@
 - Support for Carto layers from RW API
 - Support for GEE layers from RW API
 - Support to show legends Carto and GEE layers from RW API
+- Prettier and Editorconfig for development consistency
 - Missing labels and text in the translations files inside the folder `config/translations`
 - Capability to move layers from Custom Layers to their category
 - New categories or layers groups

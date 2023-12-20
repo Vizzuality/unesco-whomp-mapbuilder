@@ -1,11 +1,44 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
+import { offset, useFloating, useHover, useInteractions } from '@floating-ui/react';
 
 import { mapController } from '../../controllers/mapController';
 
 import { MAP_ZOOM_BUTTON_STYLE } from './constants';
+import { RootState } from '../../../js/store/index';
+import { mapControlsTranslations } from '../../../../configs/translations/map.translations';
 
 const ZoomWidget: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenAlt, setIsOpenAlt] = useState(false);
+  const { language } = useSelector((state: RootState) => state.appSettings);
+
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpen,
+    placement: 'left',
+    middleware: [offset(5)],
+    onOpenChange: setIsOpen,
+  });
+
+  const {
+    refs: refsAlt,
+    floatingStyles: floatingStylesAlt,
+    context: contextAlt,
+  } = useFloating({
+    open: isOpen,
+    middleware: [offset(5)],
+    onOpenChange: setIsOpenAlt,
+  });
+
+  const hover = useHover(context);
+  const hoverAlt = useHover(contextAlt);
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
+  const { getReferenceProps: getReferencePropsAlt, getFloatingProps: getFloatingPropsAlt } = useInteractions([
+    hoverAlt,
+  ]);
+
   return (
     <>
       <button
@@ -13,6 +46,8 @@ const ZoomWidget: FunctionComponent = () => {
         aria-label="zoom out"
         aria-pressed={undefined}
         onClick={() => mapController.zoomInOrOut({ zoomIn: false })}
+        ref={refs.setReference}
+        {...getReferenceProps()}
       >
         <MinusIcon className="h-5 w-5" />
       </button>
@@ -21,9 +56,32 @@ const ZoomWidget: FunctionComponent = () => {
         aria-label="zoom in"
         aria-pressed={undefined}
         onClick={() => mapController.zoomInOrOut({ zoomIn: true })}
+        ref={refsAlt.setReference}
+        {...getReferencePropsAlt()}
       >
         <PlusIcon className="h-5 w-5" />
       </button>
+      {isOpen && (
+        <div
+          className="bg-gray-dark text-white text-xs p-2 rounded-md"
+          ref={refs.setFloating}
+          style={floatingStyles}
+          {...getFloatingProps()}
+        >
+          {mapControlsTranslations[language].zoomOut}
+        </div>
+      )}
+
+      {isOpenAlt && (
+        <div
+          className="bg-gray-dark text-white text-xs p-2 rounded-md"
+          ref={refsAlt.setFloating}
+          style={floatingStylesAlt}
+          {...getFloatingPropsAlt()}
+        >
+          {mapControlsTranslations[language].zoomIn}
+        </div>
+      )}
     </>
   );
 };
