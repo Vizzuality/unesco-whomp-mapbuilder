@@ -10,7 +10,7 @@ import { mapControlsTranslations } from '../../../../configs/translations/map.tr
 
 const PrintWidget: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { language } = useSelector((state: RootState) => state.appSettings);
+  const { selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const dispatch = useDispatch();
 
@@ -42,7 +42,7 @@ const PrintWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].print}
+          {mapControlsTranslations[selectedLanguage].print}
         </div>
       )}
     </>

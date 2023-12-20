@@ -12,7 +12,7 @@ import { mapControlsTranslations } from '../../../../configs/translations/map.tr
 const ZoomWidget: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAlt, setIsOpenAlt] = useState(false);
-  const { language } = useSelector((state: RootState) => state.appSettings);
+  const { selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -68,7 +68,7 @@ const ZoomWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].zoomOut}
+          {mapControlsTranslations[selectedLanguage].zoomOut}
         </div>
       )}
 
@@ -79,7 +79,7 @@ const ZoomWidget: FunctionComponent = () => {
           style={floatingStylesAlt}
           {...getFloatingPropsAlt()}
         >
-          {mapControlsTranslations[language].zoomIn}
+          {mapControlsTranslations[selectedLanguage].zoomIn}
         </div>
       )}
     </>

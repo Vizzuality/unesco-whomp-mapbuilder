@@ -9,7 +9,7 @@ import { mapControlsTranslations } from '../../../../configs/translations/map.tr
 
 const RefreshWidget: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { language } = useSelector((state: RootState) => state.appSettings);
+  const { selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -39,7 +39,7 @@ const RefreshWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].reload}
+          {mapControlsTranslations[selectedLanguage].reload}
         </div>
       )}
     </>

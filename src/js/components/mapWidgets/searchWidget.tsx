@@ -11,7 +11,7 @@ import { mapControlsTranslations } from '../../../../configs/translations/map.tr
 const SearchWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const { language } = useSelector((state: RootState) => state.appSettings);
+  const { selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -43,7 +43,7 @@ const SearchWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].search}
+          {mapControlsTranslations[selectedLanguage].search}
         </div>
       )}
     </>

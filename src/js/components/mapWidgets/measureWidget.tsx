@@ -12,7 +12,7 @@ const MeasureWidget: FunctionComponent = () => {
   const modalType = useSelector((state: RootState) => state.appState.renderModal);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const { language } = useSelector((state: RootState) => state.appSettings);
+  const { selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -51,7 +51,7 @@ const MeasureWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].measurement}
+          {mapControlsTranslations[selectedLanguage].measurement}
         </div>
       )}
     </>

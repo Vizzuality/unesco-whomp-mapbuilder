@@ -11,7 +11,7 @@ import { mapControlsTranslations } from '../../../../configs/translations/map.tr
 const PenWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const { language } = useSelector((state: RootState) => state.appSettings);
+  const { selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -42,7 +42,7 @@ const PenWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].draw}
+          {mapControlsTranslations[selectedLanguage].draw}
         </div>
       )}
     </>

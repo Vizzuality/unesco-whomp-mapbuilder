@@ -10,10 +10,7 @@ import { mapControlsTranslations } from '../../../../configs/translations/map.tr
 
 const HideWidget: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const { hideWidgetActive } = useSelector((state: RootState) => state.appState);
-  const { language } = useSelector((state: RootState) => state.appSettings);
-
-  console.log(language);
+  const { hideWidgetActive, selectedLanguage } = useSelector((state: RootState) => state.appState);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,7 +47,7 @@ const HideWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].toggle}
+          {mapControlsTranslations[selectedLanguage].toggle}
         </div>
       )}
     </>
