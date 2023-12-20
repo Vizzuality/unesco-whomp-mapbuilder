@@ -21,38 +21,46 @@ const ShareContent: FunctionComponent = () => {
     // TODO which accounts for long mapbuilder URLs
   };
 
-  useEffect((): any => {
-    async function returnURL(): Promise<void> {
-      //Let's check if we are in the report mode or not
-      const reportParam = new URL(window.location.href).searchParams.get('report');
-      let reportView;
-      if (reportParam) {
-        reportView = reportParam === 'true';
-      } else {
-        reportView = false;
-      }
+  // useEffect((): any => {
+  //   async function returnURL(): Promise<void> {
+  //     //Let's check if we are in the report mode or not
+  //     const reportParam = new URL(window.location.href).searchParams.get('report');
+  //     let reportView;
+  //     if (reportParam) {
+  //       reportView = reportParam === 'true';
+  //     } else {
+  //       reportView = false;
+  //     }
 
-      const appID = new URL(window.location.href).searchParams.get('appid');
+  //     const appID = new URL(window.location.href).searchParams.get('appid');
 
-      const baseUrl = new URL(window.location.href);
+  //     const baseUrl = new URL(window.location.href);
 
-      if (reportView) {
-        //If we are in Report VIEW, we already have a share URL, no need to do anything
-        setUrlValue(baseUrl);
-      } else {
-        //Construct share URL based on parameters. For REPORT view, we need to register geometry and
-        //get back geostoreID to add to the URL, for NORMAL views we do not share the active feature
-        //so that is not done currently.
-        const stateUrl = await getShareableURL({ report: reportView });
-        let combinedReportURL = baseUrl.origin + baseUrl.pathname;
-        combinedReportURL = appID
-          ? combinedReportURL + '?' + 'appid=' + appID + '&' + stateUrl
-          : combinedReportURL + '?' + stateUrl;
-        setUrlValue(combinedReportURL);
-      }
+  //     if (reportView) {
+  //       //If we are in Report VIEW, we already have a share URL, no need to do anything
+  //       setUrlValue(baseUrl);
+  //     } else {
+  //       //Construct share URL based on parameters. For REPORT view, we need to register geometry and
+  //       //get back geostoreID to add to the URL, for NORMAL views we do not share the active feature
+  //       //so that is not done currently.
+  //       const stateUrl = await getShareableURL({ report: reportView });
+  //       let combinedReportURL = baseUrl.origin + baseUrl.pathname;
+  //       combinedReportURL = appID
+  //         ? combinedReportURL + '?' + 'appid=' + appID + '&' + stateUrl
+  //         : combinedReportURL + '?' + stateUrl;
+  //       setUrlValue(combinedReportURL);
+  //     }
+  //   }
+  //   returnURL();
+  // }, []);
+
+  useEffect(() => {
+    if (selectedLanguage === 'en') {
+      setUrlValue('https://whc.unesco.org/en/wh-gis/');
+    } else if (selectedLanguage === 'fr') {
+      setUrlValue('https://whc.unesco.org/fr/wh-gis/');
     }
-    returnURL();
-  }, []);
+  }, [selectedLanguage]);
 
   return (
     <div className="space-y-4">

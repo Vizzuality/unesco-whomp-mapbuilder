@@ -42,7 +42,7 @@ const ShareWidget: FunctionComponent = () => {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          {mapControlsTranslations[language].measurement}
+          {mapControlsTranslations[language].share}
         </div>
       )}
     </>

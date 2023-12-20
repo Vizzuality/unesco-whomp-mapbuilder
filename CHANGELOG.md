@@ -20,6 +20,7 @@
 - More changes on the UI for modal controls
 - Translations of MapBuilder layers names
 - Layers from MapBuilder edited in `config/resources.js`
+- URL for share modal depending on the language selected
 
 ### Removed
 
