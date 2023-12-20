@@ -241,7 +241,7 @@ const BaseAnalysis = (): JSX.Element => {
 
     return (
       <select
-        className="analysis-select w-full"
+        className="analysis-select w-full border border-gray-light rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         value={selectedAnalysis || 'default'}
         onChange={handleAnalysisOptionChange}
       >

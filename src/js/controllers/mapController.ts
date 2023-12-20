@@ -200,6 +200,10 @@ export class MapController {
           throtthledUpdater(newExtent, this._mapview);
         });
 
+        this._mapview.constraints = {
+          minZoom: 3,
+        };
+
         //Set layer default dates
         this.setVIIRSDates();
         this.setGLADDates();
