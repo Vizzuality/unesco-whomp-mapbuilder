@@ -23,6 +23,7 @@
 - Layers from MapBuilder edited in `config/resources.js`
 - URL for share modal depending on the language selected
 - Updated text for the Visualize tab
+- Added border to Select data tab layers
 
 ### Removed
 

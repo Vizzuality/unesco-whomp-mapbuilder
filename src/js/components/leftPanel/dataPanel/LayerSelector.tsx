@@ -8,7 +8,7 @@ interface LayerSelectorProps {
   generateLayerTitle: (activeFeature: any) => string;
 }
 const LayerSelector = (props: LayerSelectorProps): JSX.Element => {
-  const options = props.activeFeatures.map(f => {
+  const options = props.activeFeatures.map((f) => {
     //If we are dealing with sublayer, selection value is sublayerID otherwise it is layerID
     const selectionValue = f.sublayerID ? f.sublayerID : f.layerID;
     const layerTitle = props.generateLayerTitle(f);
@@ -31,6 +31,7 @@ const LayerSelector = (props: LayerSelectorProps): JSX.Element => {
         id="layer-select"
         value={selectionValue}
         onChange={(e): void => props.handleLayerSelection(e.target.value)}
+        className="border border-gray-light rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       >
         {options}
       </select>
