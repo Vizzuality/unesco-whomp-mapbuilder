@@ -1,5 +1,7 @@
 # UNESCO WHOMP Map Builder
 
+![UNESCO WHOMP Map Builder template screenshot](/screenshot.png 'UNESCO WHOMP Map Builder template screenshot')
+
 > Template for UNESCO WHOMP based on the [WRI MapBuilder](https://github.com/wri/gfw-mapbuilder) application and ArcGIS Online.
 
 ## Development
@@ -33,7 +35,7 @@ yarn build
 
 ## App configuration
 
-The instructions and documentation about how to configure the app are in [docs/configuration.md] file.
+The instructions and documentation about how to configure the app are in [docs/configuration.md](docs/configuration.md) file.
 
 ## Deployment
 
