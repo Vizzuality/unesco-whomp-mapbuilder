@@ -49,9 +49,11 @@ import {
   SET_RADD_ALERT_START,
   SET_RADD_ALERT_END,
   SET_ACTIVE_TREE_MOSAIC_LAYER,
+  SET_IS_LOADING,
 } from './types';
 
 const initialState: AppState = {
+  isLoading: false,
   selectedLanguage: 'en',
   renderModal: '',
   renderGFWDropdown: false,
@@ -114,6 +116,11 @@ const initialState: AppState = {
 
 export function appStateReducer(state = initialState, action: AppStateTypes): AppState {
   switch (action.type) {
+    case SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
     case SET_SELECTED_SEARCH_WIDGET_LAYER:
       return {
         ...state,

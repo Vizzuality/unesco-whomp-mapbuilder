@@ -2,9 +2,14 @@
 
 ## [1.1.1] - 2023-12-21
 
+### Added
+
+- Loader when layers are loading
+
 ### Fixed
 
 - Legend index on render which causes error generating legends
+- Zoom limit was not working when the user navigates to another tab
 
 ## [1.1.0] - 2023-12-20
 

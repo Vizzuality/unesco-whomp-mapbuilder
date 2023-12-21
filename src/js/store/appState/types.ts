@@ -60,6 +60,7 @@ interface SelectedSearchWidgetLayer {
 }
 
 export interface AppState {
+  isLoading: boolean;
   leftPanel: LeftPanel;
   renderModal: string;
   renderGFWDropdown: boolean;
@@ -81,6 +82,7 @@ export interface AppState {
 }
 
 //Action names available
+export const SET_IS_LOADING = 'SET_CUSTOM_IS_LOADING';
 export const RENDER_MODAL = 'RENDER_MODAL';
 export const RENDER_INFO_MODAL = 'RENDER_INFO_MODAL';
 export const RENDER_GFW_DROPDOWN = 'RENDER_GFW_DROPDOWN';
@@ -129,6 +131,11 @@ export const SET_ANALYSIS_FEATURE_LIST = 'SET_ANALYSIS_FEATURE_LIST';
 
 export const SET_LAND_COVER_YEAR_RANGE = 'SET_LAND_COVER_YEAR_RANGE';
 export const SET_LAND_COVER_YEAR_VALUE = 'SET_LAND_COVER_YEAR_VALUE';
+
+export interface SetIsLoadingAction {
+  type: typeof SET_IS_LOADING;
+  payload: AppState['isLoading'];
+}
 
 interface SetSelectedSearchWidgetLayer {
   type: typeof SET_SELECTED_SEARCH_WIDGET_LAYER;
@@ -356,6 +363,7 @@ interface SetActiveTreeMosaicLayer {
 }
 
 export type AppStateTypes =
+  | SetIsLoadingAction
   | ToggleTabviewPanelAction
   | RenderModalAction
   | RenderInfoModalAction

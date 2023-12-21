@@ -29,6 +29,7 @@ const App = (props: AppSettings | any): JSX.Element => {
   const showBanner = useSelector((store: RootState) => store.appSettings.treeMosaicLandscapes);
   const hideHeader = useSelector((store: RootState) => store.appSettings.hideHeader);
   const sharinghost = useSelector((store: RootState) => store.appSettings.sharinghost);
+  const isLoading = useSelector((store: RootState) => store.appState.isLoading);
 
   // always load WRI default analytics code
   loadDefaultGoogleAnalytics('GTM-TJFZWSB');
@@ -149,6 +150,17 @@ const App = (props: AppSettings | any): JSX.Element => {
           {showBanner && <Banner />}
           <MapContent report={reportView} />
           <ModalCard />
+          {isLoading && (
+            <Loader
+              containerPositionStyling={{
+                position: 'absolute',
+                top: '40%',
+                left: '50%',
+              }}
+              color={'white'}
+              size={30}
+            />
+          )}
         </div>
       )}
     </>

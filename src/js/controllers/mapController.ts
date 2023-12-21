@@ -29,6 +29,7 @@ import {
   setUserCoordinates,
 } from '../store/mapview/actions';
 import {
+  setIsLoading,
   renderModal,
   selectActiveTab,
   setAnalysisFeatureList,
@@ -57,6 +58,7 @@ import {
 import legendInfoController from '../helpers/legendInfo';
 import { parseExtentConfig } from '../helpers/mapController/configParsing';
 import { overwriteColorTheme } from '../store/appSettings/actions';
+import type { SetIsLoadingAction } from '../store/appState/types';
 
 setDefaultOptions({ css: true, version: '4.19' });
 
@@ -287,8 +289,11 @@ export class MapController {
         //In case of sharing functionality, check for URL containing layer visibility and opacity information
         const layerInfosFromURL = getLayerInfoFromURL();
 
+        store.dispatch<SetIsLoadingAction>(setIsLoading(true));
+
         //@ts-ignore -- this ensures that webmap layers are ready on map before the steps get initialized
         Promise.all(this._map?.layers.items.map((l) => l.load())).then(async () => {
+          // store.dispatch(setLoading(true));
           //Add layers that are already on the map (webmap layers) to redux array
           const mapLayerObjects: LayerProps[] = await extractWebmapLayerObjects(this._map);
           store.dispatch(allAvailableLayers(mapLayerObjects));
@@ -461,6 +466,8 @@ export class MapController {
             //Sketch view model setup
             this.initializeAndSetSketch();
           });
+
+          store.dispatch<SetIsLoadingAction>(setIsLoading(false));
         });
       },
       (error: Error) => {
@@ -788,6 +795,8 @@ export class MapController {
 
   zoomInOrOut({ zoomIn }: ZoomParams): void {
     if (this._mapview) {
+      if (!zoomIn && this._mapview.zoom === 3) return; // min zoom 3
+
       const zoomNum = zoomIn ? this._mapview.zoom + 1 : this._mapview.zoom - 1;
 
       this._mapview.goTo({

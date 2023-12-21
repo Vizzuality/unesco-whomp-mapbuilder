@@ -1,4 +1,5 @@
 import {
+  SET_IS_LOADING,
   TOGGLE_TABVIEW_PANEL,
   RENDER_MODAL,
   RENDER_INFO_MODAL,
@@ -367,6 +368,13 @@ export function setTreeMosaicHectaresValue(payload: number) {
 export function setActiveTreeMosaicLayer(payload: TreeMosaicLayerTypes) {
   return {
     type: SET_ACTIVE_TREE_MOSAIC_LAYER,
+    payload,
+  };
+}
+
+export function setIsLoading(payload: AppState['isLoading']) {
+  return {
+    type: SET_IS_LOADING as typeof SET_IS_LOADING,
     payload,
   };
 }
