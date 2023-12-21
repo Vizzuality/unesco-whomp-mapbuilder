@@ -20,7 +20,7 @@ class LegendInfoController {
       .catch((e) => console.error(e));
   };
 
-  getLegendInfoFromRenderer = (layer: LayerProps): any => {
+  getLegendInfoFromRenderer = (layer: LayerProps, index?: number): any => {
     const esriLayer = mapController._map?.findLayerById(layer.id) as any;
 
     if (!esriLayer) return;
@@ -30,11 +30,11 @@ class LegendInfoController {
 
       if (esriLayer.type === 'group') {
         esriLayer.layers.forEach((layer) => {
-          const newLegend = generateLegendInfo(layer);
+          const newLegend = generateLegendInfo(layer, index);
           container.push(...newLegend);
         });
       } else {
-        const newLegend = generateLegendInfo(esriLayer);
+        const newLegend = generateLegendInfo(esriLayer, index);
         container.push(...newLegend);
       }
       return container;

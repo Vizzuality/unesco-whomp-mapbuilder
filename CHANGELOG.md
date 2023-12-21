@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1] - 2023-12-21
+
+### Fixed
+
+- Legend index on render which causes error generating legends
+
 ## [1.1.0] - 2023-12-20
 
 ### Added

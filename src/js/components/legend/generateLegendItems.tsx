@@ -47,9 +47,10 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
   const integratedAlertLabel = useSelector((store: RootState) => store.appState.leftPanel.gfwLayerLabel);
 
   const items = props.visibleLayers.map((layer, i) => {
+    const topIndex = i;
     //@TODO this needs some refactoring to make it more readable!!
     if (!layer.legendInfo) {
-      return <ManualLegend layer={layer} language={language} i={i} />;
+      return <ManualLegend layer={layer} language={language} i={i} key={`${layer.id}-legend-item-${i}`} />;
     } else if (layer.legendInfo && layer.origin === 'service') {
       if (layer.type === 'wms') {
         return generateWMSLegendInfo(layer, i);
@@ -88,18 +89,18 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
           item.label = item.label && item.label.length ? item.label : layer.title;
           const rendererExists = checkForRenderer(layer);
           return (
-            <div className="flex items-center space-x-2" key={i}>
+            <div className="flex items-center space-x-2" key={`${layer.id}-legend-item-${i}`}>
               {!rendererExists ? (
                 <LegendLabel type={layer.type} options={item} opacity={layer.opacity.combined} />
               ) : (
-                legendInfoController.getLegendInfoFromRenderer(layer)
+                legendInfoController.getLegendInfoFromRenderer(layer, topIndex)
               )}
               <div>{item.label}</div>
             </div>
           );
         });
         return (
-          <div className="layer-item space-y-1" key={layer.id + `${i}`}>
+          <div className="layer-item space-y-1" key={`${layer.id}-legend-item-${i}`}>
             <h3 className="text-xs font-bold">{layer.title}</h3>
             {layer.legendInfo.layerName && <div className="title">{layer.legendInfo.layerName}</div>}
             {labelIcons}
@@ -119,7 +120,7 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
           } else {
             subgroupItems = item.subgroup.items.map((subItem: any, i: number) => {
               return (
-                <div key={i} className="subgroup-item">
+                <div key={`${layer.id}-legend-item-${i}`} className="subgroup-item">
                   <LegendLabel type={item.subgroup.type} options={subItem} opacity={layer.opacity.combined} />
                   <p>{subItem.name[language]}</p>
                 </div>
@@ -127,7 +128,7 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
             });
           }
           return (
-            <div className="label-item subgroup" key={i}>
+            <div className="label-item subgroup" key={`${layer.id}-legend-item-${i}`}>
               <p>{item.name[language]}</p>
               <div>{subgroupItems}</div>
             </div>
@@ -136,7 +137,7 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
       } else {
         labelIcons = layer.metadata?.legendConfig?.items.map((item: any, i: number) => {
           return (
-            <div className="label-item flex items-center space-x-2" key={i}>
+            <div className="label-item flex items-center space-x-2" key={`${layer.id}-legend-item-${i}`}>
               <LegendLabel type={layer.metadata?.legendConfig?.type} options={item} opacity={layer.opacity.combined} />
               <div>{item.name[language]}</div>
             </div>
@@ -145,7 +146,7 @@ const LegendItems = (props: LegendItemProps): JSX.Element => {
       }
 
       return (
-        <div className="space-y-2" key={layer.id + `${i}`}>
+        <div className="space-y-2" key={`${layer.id}-legend-item-${i}`}>
           <h3 className="text-xs font-bold">
             {layer.title === 'Integrated Deforestation Alerts' ? integratedAlertLabel : layer.title}
           </h3>

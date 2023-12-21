@@ -9,7 +9,8 @@ interface ManualLegendProps {
 
 const ManualLegend = (props: ManualLegendProps) => {
   const { layer, language, i } = props;
-  const legendInfo = legendInfoController.getLegendInfoFromRenderer(layer);
+  const legendInfo = legendInfoController.getLegendInfoFromRenderer(layer, i);
+
   let versionedLabel = '';
   if (layer.versions) {
     const idx = layer?.versionIndex || 0;

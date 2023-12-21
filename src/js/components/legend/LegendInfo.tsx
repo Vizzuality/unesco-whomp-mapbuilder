@@ -92,13 +92,13 @@ function createSymbolStyles(symbol: any): JSX.Element | undefined {
   return symbolDOMElement;
 }
 
-export function generateLegendInfo(layer: any) {
+export function generateLegendInfo(layer: any, index?: number) {
   const container: any = [];
   if (layer?.renderer?.symbol) {
     const defaultSymbol = layer.renderer.symbol;
     const symbolDOMElement = createSymbolStyles(defaultSymbol);
     container.push(
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2" key={`legend-info-item-${index}-${layer.uid || layer.id}`}>
         <div>{symbolDOMElement}</div>
         <div>{layer.title}</div>
       </div>
@@ -134,11 +134,11 @@ export function generateLegendInfo(layer: any) {
       if (gradientElement.colors.length) {
         const gradientString = `linear-gradient(180deg, ${gradientElement.colors.join(',')})`;
         container.push(
-          <div className="sublayer-item-feature gradient">
+          <div className="sublayer-item-feature gradient" key={`legend-info-item-${index}-${layer.uid || layer.id}`}>
             <div className="gradient-icon" style={{ background: gradientString }}></div>
             <div style={{ fontSize: '0.7rem' }}>
               {gradientElement.labels.map((l, i) => (
-                <p key={i} style={{ margin: 0, padding: 0 }}>
+                <p key={`gradient-item-${l}-${i}`} style={{ margin: 0, padding: 0 }}>
                   {l}
                 </p>
               ))}
@@ -153,7 +153,7 @@ export function generateLegendInfo(layer: any) {
       const defaultSymbol = value.symbol;
       const symbolDOMElement = createSymbolStyles(defaultSymbol);
       container.push(
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2" key={`legend-info-item-${index}-${layer.uid || layer.id}`}>
           <div>{symbolDOMElement}</div>
           <span>{value.label}</span>
         </div>
@@ -164,7 +164,10 @@ export function generateLegendInfo(layer: any) {
       const defaultSymbol = value.symbol;
       const symbolDOMElement = createSymbolStyles(defaultSymbol);
       container.push(
-        <div className="flex items-center space-x-2">
+        <div
+          className="flex items-center space-x-2"
+          key={`legend-info-item-${index}-${layer.uid || layer.id}-${value.value}`}
+        >
           <div>{symbolDOMElement}</div>
           <div>{value.label}</div>
         </div>
