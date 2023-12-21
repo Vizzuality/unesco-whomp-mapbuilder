@@ -408,7 +408,7 @@ export const layersPanelTranslations = {
     tabTitle: '1. Visualize',
     layers: 'Layers',
     description:
-      'Select datasets from different categories that you wish to visualize on the map. Click on the layer to get additional information about the datasets. Metadata and tutorial is also available <a href="https://whc.unesco.org/uploads/activities/documents/activity-1142-19.pdf" target="_blank">here</a>.',
+      'Select datasets from different categories that you wish to visualize on the map. Click on the layer to get additional information about the datasets. Metadata and a tutorial are also available <a href="https://whc.unesco.org/uploads/activities/documents/activity-1142-19.pdf" target="_blank">here</a>.',
     selectAll: 'Select All',
     clearAll: 'Clear All',
     legend: 'Legend',
